@@ -1,0 +1,22 @@
+[
+  {
+    "group": "normal_geometry_control",
+    "n": 6,
+    "mean_delta_window_dice": -0.00802899329285702,
+    "mean_delta_target_dice": -0.0011351577650961138,
+    "target_improved001": 0,
+    "target_worsened001": 0,
+    "window_ID_rescued05": 0,
+    "window_ID_lost05": 0
+  },
+  {
+    "group": "seam_candidate",
+    "n": 6,
+    "mean_delta_window_dice": 0.031301313715387975,
+    "mean_delta_target_dice": 0.06570106215222936,
+    "target_improved001": 3,
+    "target_worsened001": 2,
+    "window_ID_rescued05": 2,
+    "window_ID_lost05": 0
+  }
+]

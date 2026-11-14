@@ -1,0 +1,16 @@
+{
+  "cases": 77,
+  "methods": [
+    "samrefiner_vitb_paper_fp16",
+    "ritm_hrnet32_external_mask_point1"
+  ],
+  "all_input_shas_equal": true,
+  "all_target_gt_fully_visible": true,
+  "edit_composition_exact": true,
+  "inference_GT_read": false,
+  "unavailable_omissions_retained_in_sclerosis_denominator": true,
+  "instance_scope": "window-clipped components and original GT IDs, not full-slide instance safety",
+  "whole_slide_policy_dice": "not computed: prediction-derived windows may overlap; no double-counted sum",
+  "cohort": "all40 sclerosis +40 deterministic normals; exposed development, patient identity unknown",
+  "seconds": 61.16464070000802
+}

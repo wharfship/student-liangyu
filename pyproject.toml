@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "student-liangyu"
+version = "0.1.0"
+description = "Evidence-driven glomerulus segmentation research snapshot"
+requires-python = ">=3.10"
+
+[tool.setuptools.packages.find]
+include = ["glomerulus_tools*", "ops*"]
+
+[tool.setuptools.package-data]
+glomerulus_tools = ["catalog.csv", "runtime_registry.json", "README.md"]

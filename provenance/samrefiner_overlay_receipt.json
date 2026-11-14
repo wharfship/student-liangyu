@@ -1,0 +1,5 @@
+{
+  "original_sha256": "0d0c8e4b257935968c39f4223993b5b7de1868a4a7d886092c6a0074131299ef",
+  "patched_sha256": "1afd75172f870ba2af771a004d7d9f592663a2ca9a266e950247f020fb2e56b7",
+  "reason": "Avoid a full-resolution normalization copy and autocast matmul copy; same interpolation/normalization, row32 similarity."
+}

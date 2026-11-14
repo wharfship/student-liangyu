@@ -1,0 +1,246 @@
+{
+  "repository": "supervisely-ecosystem/ritm-interactive-segmentation",
+  "archive_sha256": "41350d38d07679c61e40faa537443ff79459bf3d9cb4f9e9f64bdf8254d62e05",
+  "archive_url": "https://codeload.github.com/supervisely-ecosystem/ritm-interactive-segmentation/tar.gz/refs/heads/master",
+  "weight_file": "coco_lvis_h32_itermask.pth",
+  "weight_url": "https://github.com/supervisely-ecosystem/ritm-interactive-segmentation/releases/download/v0.1/coco_lvis_h32_itermask.pth",
+  "weight_sha256": "cc4d55e44c23c6fbed7f2ed3d9dc1fb7f4f08d8cd1642d4f38824c89f3dc44f1",
+  "files": [
+    {
+      "path": "demo.py",
+      "sha256": "b35ccc939adccbd332f233e613d7ae53244a5ec60d76cbf3c177fd33a2bf0534"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "eb5dd845c3dff016e6771e5fbb15049a203af5a0fcf6f9d0fec52e3ff1b4c48f"
+    },
+    {
+      "path": "README.md",
+      "sha256": "e803e7d082a3e548c027644c35791c9ce0a4f3d986ab9de20a25b10221725fbf"
+    },
+    {
+      "path": "isegm/data/base.py",
+      "sha256": "bc6be12723f27a272144ab600343acb421be54243d2721ec5036957cfd04e72c"
+    },
+    {
+      "path": "isegm/data/compose.py",
+      "sha256": "ac4569490fec3f0fea69d4f255439417df54a49ce21ffc59f73e824d1e944f1c"
+    },
+    {
+      "path": "isegm/data/points_sampler.py",
+      "sha256": "65a4a38db823e79c60ecbeda856c67fa5b8e6eb0ed59090dd4a1c77b111ad8ab"
+    },
+    {
+      "path": "isegm/data/sample.py",
+      "sha256": "7feab3a28b8094fea21e33db7d72b74eac39ebb8b2bb10ab7c2b0044f7a7fe3c"
+    },
+    {
+      "path": "isegm/data/transforms.py",
+      "sha256": "b46f668c805255f2ac4ab214cfd8f6fe14c2165be1082187a29f6e611fc99ca1"
+    },
+    {
+      "path": "isegm/engine/optimizer.py",
+      "sha256": "e1517c045fccc77a9c1e177d68f6ba6ee92a5b88d7fac6932d1d8f4e1b71a0db"
+    },
+    {
+      "path": "isegm/engine/trainer.py",
+      "sha256": "426f12be8a752077075abe4140f01b1c642670f6cc46d3a17ed842f71d9d6808"
+    },
+    {
+      "path": "isegm/inference/clicker.py",
+      "sha256": "747a68aafcd52c57ad25537c750104ca94a5924b912132a7f273b5ef4cbc54c5"
+    },
+    {
+      "path": "isegm/inference/evaluation.py",
+      "sha256": "a349872e7415c2cd4d756caa0e42b2e2be17124ee1ba4fe2edfe382270ba7057"
+    },
+    {
+      "path": "isegm/inference/utils.py",
+      "sha256": "eba16f3cb2d047c7cb2d30233d15c3ffa29fda985e35a2e4e5181185c0fb56da"
+    },
+    {
+      "path": "isegm/model/initializer.py",
+      "sha256": "eaaedc8e0d87c08faa4d72770d3c578696da639841e9e13bef342f72433c838f"
+    },
+    {
+      "path": "isegm/model/is_deeplab_model.py",
+      "sha256": "7038a1467d033c1b5d15fa60ab2f897e4298586ba6fa5270cf62ba5917f4f158"
+    },
+    {
+      "path": "isegm/model/is_hrnet_model.py",
+      "sha256": "75794fadd7706f6007a53b9ea31a0870c37472bff0fad2043d3d4db3f79c7f46"
+    },
+    {
+      "path": "isegm/model/is_model.py",
+      "sha256": "d6e133325ecf4610bbd8f4528f29f923178b1b08c672f3fb2eabb0f6c0b6efb4"
+    },
+    {
+      "path": "isegm/model/losses.py",
+      "sha256": "77da0a82ede89dd69aa909fd8b5b7da095055a9a15f25ac72e43bb9af3302062"
+    },
+    {
+      "path": "isegm/model/metrics.py",
+      "sha256": "7ff1616471951d9e659dd2e47025530c42c73d8846c68558c3dcdaf1a3a0ad55"
+    },
+    {
+      "path": "isegm/model/modifiers.py",
+      "sha256": "cacd6acb456e02854b8f2a73fe570d2ddf03d518aee71d64e165f7bd572e4eb1"
+    },
+    {
+      "path": "isegm/model/ops.py",
+      "sha256": "92189e1299e31f9d8f63674efa93534bda5b05c33e867ae2d185404b7b15f3c3"
+    },
+    {
+      "path": "isegm/utils/distributed.py",
+      "sha256": "249e649a8e1ebbbc787e33748076037b65ace1a7ad2387a4adb23c212a5b9c6c"
+    },
+    {
+      "path": "isegm/utils/exp.py",
+      "sha256": "c2023452efaab190cd31a8b457eb0a9378ac87167010f3ffa3f57b604b8774c2"
+    },
+    {
+      "path": "isegm/utils/log.py",
+      "sha256": "91ee3e3a5589fbfa53ebe5a45cc3bdc4fe96e0637af17ba2d66abd14eebeacf3"
+    },
+    {
+      "path": "isegm/utils/misc.py",
+      "sha256": "7e92383e2eaa3f9ea067fb9ad70659e44205a4f64ecd8f855104c68e11539cbf"
+    },
+    {
+      "path": "isegm/utils/serialization.py",
+      "sha256": "a0af1e66ff2fc0d194240ae7328f3a7693889e3491786a2c7b3caa8ac34d8255"
+    },
+    {
+      "path": "isegm/utils/vis.py",
+      "sha256": "871c9b419b2237631f030dc5a04668779e04cbb09913c7eced2055347aa13554"
+    },
+    {
+      "path": "isegm/utils/cython/dist_maps.py",
+      "sha256": "dd928ce4300f3fde6b2b605b1bf42ff352a70d618c906d64f66cc66dc6e7ae09"
+    },
+    {
+      "path": "isegm/utils/cython/__init__.py",
+      "sha256": "27daa341efcf5ecd1db6f40c7462729ed3002a8db96c7b3f67faf6cfc596d2d8"
+    },
+    {
+      "path": "isegm/utils/exp_imports/default.py",
+      "sha256": "48725d2ecdea9c0f25cec9ca7dbdcda216703719ee5c2891a86a1587e4b46d20"
+    },
+    {
+      "path": "isegm/model/modeling/basic_blocks.py",
+      "sha256": "47e4aefe7ab584e309bf813e60a4133de68872dd2fb9e5e3e4510c2154bdb2c4"
+    },
+    {
+      "path": "isegm/model/modeling/deeplab_v3.py",
+      "sha256": "8840c4403886b2315545f0dc1aeedc0f9dafa6430ba603d02006cbf361222157"
+    },
+    {
+      "path": "isegm/model/modeling/hrnet_ocr.py",
+      "sha256": "39ea60a95707ee08949b09e9b99b1f9128a0e5bbc3229225e37509296899485f"
+    },
+    {
+      "path": "isegm/model/modeling/ocr.py",
+      "sha256": "12ebc6d4ddb6fd3c15d8eb4e0009c6223edb58a8ac73142e37fa0e1b2482c0ff"
+    },
+    {
+      "path": "isegm/model/modeling/resnet.py",
+      "sha256": "0aa1322acbe2e03a7d269333bd0e2c1ae07b10b0fa01d3deac28b73c27439ced"
+    },
+    {
+      "path": "isegm/model/modeling/resnetv1b.py",
+      "sha256": "080cb1f96ce6a088c7b53162eac38491f049265513f3f7ab65918c8ffd021faf"
+    },
+    {
+      "path": "isegm/inference/predictors/base.py",
+      "sha256": "96af1f8cc962e153fe0a068718fd403c91604ef228110e9f964ea0db9a5ef702"
+    },
+    {
+      "path": "isegm/inference/predictors/brs.py",
+      "sha256": "c09dabb1e47fbb9a623d0e8a24bf2a6aabac1eed0b1c5288781e9ba70ffa748c"
+    },
+    {
+      "path": "isegm/inference/predictors/brs_functors.py",
+      "sha256": "b4514da36cc3b125c5689b6fd97e2a7f1774954635037c31cde8c099509ba8bf"
+    },
+    {
+      "path": "isegm/inference/predictors/brs_losses.py",
+      "sha256": "e6c9acaf4adb88338dd425eb1f0ae8182688e1b6c067ec627bd5c05d3d44849a"
+    },
+    {
+      "path": "isegm/inference/predictors/__init__.py",
+      "sha256": "e5dbda82065ac8feedda31037831802ee31383d0b3b2d8f1ed8ddf02324f1ae6"
+    },
+    {
+      "path": "isegm/inference/transforms/base.py",
+      "sha256": "6e583e91db15fd82094e3afa78f0dfe0d5387588e85ba914e28ec22a925ec3f3"
+    },
+    {
+      "path": "isegm/inference/transforms/crops.py",
+      "sha256": "16bf886397b0bcb647a12f0b7e5afc1cf868eb8e6656deebe3421cc756e9ae62"
+    },
+    {
+      "path": "isegm/inference/transforms/flip.py",
+      "sha256": "3fc8950ed8ba4276f732c96d9bc8d5427c0471a98ac48c6494fb209249623f41"
+    },
+    {
+      "path": "isegm/inference/transforms/limit_longest_side.py",
+      "sha256": "6e2424d486e63076d510f290ab439dba6f276c81f3467b0fcc8d1b1e235ddb3f"
+    },
+    {
+      "path": "isegm/inference/transforms/zoom_in.py",
+      "sha256": "b4727be8b7f09b936251fd38695f5eb33d4da11716bc4202b308c07f68231969"
+    },
+    {
+      "path": "isegm/inference/transforms/__init__.py",
+      "sha256": "27b7a5dac44c928b39044ca568603f7242e0ef4131b15db36975e5345f39a4aa"
+    },
+    {
+      "path": "isegm/data/datasets/ade20k.py",
+      "sha256": "ea1f2dfab44f955ce575dd845f70bc61e4e6fc6781bbdeaed818eb6e180cc516"
+    },
+    {
+      "path": "isegm/data/datasets/berkeley.py",
+      "sha256": "eddc8dbb3f8f1f14ef8799cd37026a487f3d45294a4807a5580457e8aca08cf9"
+    },
+    {
+      "path": "isegm/data/datasets/coco.py",
+      "sha256": "f50a2ea6f2969cb8e4072272377cd141dc811292251c2cb00e50d8b5202a8bac"
+    },
+    {
+      "path": "isegm/data/datasets/coco_lvis.py",
+      "sha256": "cd1c6fd776a7fdf49d4b9ea1aa80dfa8b73448182426fb056dbd4a582b70a677"
+    },
+    {
+      "path": "isegm/data/datasets/davis.py",
+      "sha256": "2f3229cb32aa28ddb2e402603094e6a931231663cdd3ed8556b929995084fe08"
+    },
+    {
+      "path": "isegm/data/datasets/grabcut.py",
+      "sha256": "01a02d62651c4f23481c5936359e02303d6468c776f77d45486ff79ac53d9711"
+    },
+    {
+      "path": "isegm/data/datasets/images_dir.py",
+      "sha256": "7ae22598e206ced4de8f084cc5d0289188873f67ca02d19f8c3be47c403b6bd2"
+    },
+    {
+      "path": "isegm/data/datasets/lvis.py",
+      "sha256": "2a54f4163c195bb7f051591b17cc722a27b7b39121977b10c75395d22f0f4b08"
+    },
+    {
+      "path": "isegm/data/datasets/openimages.py",
+      "sha256": "4381a36e03fb5c925df8c6ff00f14ffbe047e985dcfd1336a2fdeea420c6b153"
+    },
+    {
+      "path": "isegm/data/datasets/pascalvoc.py",
+      "sha256": "e18278f65a0521fd4af8b117d87150e814a31c2dc87034a3d74f17ee5cc389d5"
+    },
+    {
+      "path": "isegm/data/datasets/sbd.py",
+      "sha256": "27541e73f0758a7ec0921d723bf2b19246ec94413bc07a47e8c03bf7a2d4a492"
+    },
+    {
+      "path": "isegm/data/datasets/__init__.py",
+      "sha256": "8b68652efd08557eb0d3e127c56067198b2c3fc49c397362c550e17bb1ef90d0"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "task_id": "DEMO01",
+  "species": "human",
+  "stain": "HE",
+  "target": "whole_glomerular_unit",
+  "input_form": "patch",
+  "image": "/ABS/data/authorized_patch.png",
+  "source_mpp": 0.25,
+  "scale_evidence": "REPLACE with actual metadata or calibration evidence; .25 is only an example"
+}

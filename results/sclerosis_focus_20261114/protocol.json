@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-14",
+  "purpose": "sclerosis-specific capability, not online detection or policy validation",
+  "sclerosis_population": "all 40 hospital original sclerosis IDs; discarded class separate",
+  "normal_controls": 40,
+  "controls": "one deterministic matched normal per sclerosis ID, same WSI when available, otherwise same stain",
+  "candidate_selection": "highest-IoU existing component for offline cohort association; no GT-created locations",
+  "box": "same fixed prediction-derived recipe as old benchmark: max(512um, 2*longest predicted bbox)",
+  "unavailable": "no overlapping predicted component => no refinement input; keep omission in denominator",
+  "actions": [
+    "samrefiner_vitb_paper_fp16",
+    "ritm_hrnet32_external_mask_point1"
+  ],
+  "tuning": false,
+  "gt_in_inference_payload": false,
+  "primary": "paired per-target Dice and whole-window TP/FP/FN; normal harm",
+  "overlapping_windows": "do not sum deltas or claim a simultaneous whole-slide policy score",
+  "inference_acceptance": "all proposals evaluated; no automatic policy or Agent acceptance claimed"
+}

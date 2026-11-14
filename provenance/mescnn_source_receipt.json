@@ -1,0 +1,20 @@
+[
+  {
+    "name": "detectron2",
+    "repo": "facebookresearch/detectron2",
+    "commit": "247691a1c292654867deb35cabb27f18d75a1363",
+    "url": "https://codeload.github.com/facebookresearch/detectron2/zip/247691a1c292654867deb35cabb27f18d75a1363",
+    "path": "assets/detectron2_247691a1c292654867deb35cabb27f18d75a1363.zip",
+    "sha256": "03c18cc63041eeefc3662e1c003de11eb570d05a2b1126af9591fc256a348638",
+    "status": "downloaded"
+  },
+  {
+    "name": "mescnn",
+    "repo": "Nicolik/MESCnn",
+    "commit": "284e83781ae8e83a1362d896c2ea11fa95f82a9e",
+    "url": "https://codeload.github.com/Nicolik/MESCnn/zip/284e83781ae8e83a1362d896c2ea11fa95f82a9e",
+    "path": "assets/mescnn_284e83781ae8e83a1362d896c2ea11fa95f82a9e.zip",
+    "sha256": "768d5b1d6387d9b6e2d5a793bb2c9b696bf73056403861b9019eef5fdb1edaf5",
+    "status": "downloaded"
+  }
+]

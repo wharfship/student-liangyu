@@ -1,0 +1,8 @@
+{
+  "browser": "Edge headless Playwright",
+  "all80": true,
+  "group40": true,
+  "search1": true,
+  "javascript_errors": [],
+  "offline_local": true
+}

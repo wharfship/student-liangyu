@@ -1,0 +1,16 @@
+{
+  "all_sclerosis": 40,
+  "normal_controls": 40,
+  "prepared_cases": 77,
+  "unavailable": 3,
+  "prepared_by_cohort": {
+    "sclerosis": 37,
+    "normal_control": 40
+  },
+  "previous_hospital_sclerosis_targets": 1,
+  "sclerosis_wsis": 21,
+  "sclerosis_groups": 19,
+  "target_visible_min": 1.0,
+  "seconds": 58.43685260001803,
+  "source_masks_and_manifests_verified": true
+}

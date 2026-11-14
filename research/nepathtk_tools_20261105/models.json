@@ -1,0 +1,270 @@
+{
+  "schema_version": 1,
+  "models": [
+    {
+      "id": "unet",
+      "backend": "smp",
+      "architecture": "unet",
+      "checkpoint": "weights/unet_resnet34_d4.pt",
+      "sha256": "e53a0b6b9c06b7be2ad11fd074e0b76ff73b0ea814b151179a7ad6df840cbdb7",
+      "bytes": 97920953,
+      "config": null,
+      "tile_pixels": 1024,
+      "stride_pixels": 512,
+      "input_kind": "RGB_ROI",
+      "wsi_native": false,
+      "source_scale_required": true,
+      "target_working_mpp": 1.0,
+      "target_working_mpp_is_measured_training_mpp": false,
+      "foreground_class": 1,
+      "class_names": [
+        "background",
+        "glomerulus",
+        "artery",
+        "arteriole"
+      ],
+      "training_sources": "七中心158人肾活检；TMA87/mimickers71；train79/val26/test53；完整训练图像/成员未核公开",
+      "test_overlap": "未披露Zenodo/NEPTUNE/HuBMAP为训练来源；没有精确病例无重叠证明",
+      "code_license": "GPL-3.0 (NePathTK author code)",
+      "weight_license": "Apache-2.0 (author HF card)",
+      "author_repository": "https://github.com/Nicolik/NePathTK",
+      "author_weights": "https://huggingface.co/NePathTK/tma-segmentation",
+      "recommended_environment": "omni_seg",
+      "preprocessing": {
+        "input": "RGB raw0..255",
+        "operation": "inside author model (x-mean)/std",
+        "mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ]
+      }
+    },
+    {
+      "id": "fpn",
+      "backend": "smp",
+      "architecture": "fpn",
+      "checkpoint": "weights/fpn_resnet34_d4.pt",
+      "sha256": "315d64786dda5fe3267d539668139a8b37b28a1538705a4d8a8a9a36cf955cb4",
+      "bytes": 92778747,
+      "config": null,
+      "tile_pixels": 1024,
+      "stride_pixels": 512,
+      "input_kind": "RGB_ROI",
+      "wsi_native": false,
+      "source_scale_required": true,
+      "target_working_mpp": 1.0,
+      "target_working_mpp_is_measured_training_mpp": false,
+      "foreground_class": 1,
+      "class_names": [
+        "background",
+        "glomerulus",
+        "artery",
+        "arteriole"
+      ],
+      "training_sources": "七中心158人肾活检；TMA87/mimickers71；train79/val26/test53；完整训练图像/成员未核公开",
+      "test_overlap": "未披露Zenodo/NEPTUNE/HuBMAP为训练来源；没有精确病例无重叠证明",
+      "code_license": "GPL-3.0 (NePathTK author code)",
+      "weight_license": "Apache-2.0 (author HF card)",
+      "author_repository": "https://github.com/Nicolik/NePathTK",
+      "author_weights": "https://huggingface.co/NePathTK/tma-segmentation",
+      "recommended_environment": "omni_seg",
+      "preprocessing": {
+        "input": "RGB raw0..255",
+        "operation": "inside author model (x-mean)/std",
+        "mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ]
+      }
+    },
+    {
+      "id": "deeplabv3plus",
+      "backend": "smp",
+      "architecture": "deeplabv3plus",
+      "checkpoint": "weights/deeplabv3plus_resnet34_d4.pt",
+      "sha256": "0c12f5aa3c6f13544ede7fe59a39926c0d14ea0dd1d604dfeee112800b380a1d",
+      "bytes": 89934007,
+      "config": null,
+      "tile_pixels": 1024,
+      "stride_pixels": 512,
+      "input_kind": "RGB_ROI",
+      "wsi_native": false,
+      "source_scale_required": true,
+      "target_working_mpp": 1.0,
+      "target_working_mpp_is_measured_training_mpp": false,
+      "foreground_class": 1,
+      "class_names": [
+        "background",
+        "glomerulus",
+        "artery",
+        "arteriole"
+      ],
+      "training_sources": "七中心158人肾活检；TMA87/mimickers71；train79/val26/test53；完整训练图像/成员未核公开",
+      "test_overlap": "未披露Zenodo/NEPTUNE/HuBMAP为训练来源；没有精确病例无重叠证明",
+      "code_license": "GPL-3.0 (NePathTK author code)",
+      "weight_license": "Apache-2.0 (author HF card)",
+      "author_repository": "https://github.com/Nicolik/NePathTK",
+      "author_weights": "https://huggingface.co/NePathTK/tma-segmentation",
+      "recommended_environment": "omni_seg",
+      "preprocessing": {
+        "input": "RGB raw0..255",
+        "operation": "inside author model (x-mean)/std",
+        "mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ]
+      }
+    },
+    {
+      "id": "segformer_b5",
+      "backend": "mmseg",
+      "architecture": "segformer_b5",
+      "checkpoint": "weights/segformer_b5.pth",
+      "sha256": "1fb44517a8d0136d97a71c0ea76bd6ab9db6597444e8b2e4da568d9cd705e53b",
+      "bytes": 1004196070,
+      "config": "configs/segformer_mit-b5_8xb2-160k_kidney_1024x1024_d4.py",
+      "tile_pixels": 1024,
+      "stride_pixels": 512,
+      "input_kind": "RGB_ROI",
+      "wsi_native": false,
+      "source_scale_required": true,
+      "target_working_mpp": 1.0,
+      "target_working_mpp_is_measured_training_mpp": false,
+      "foreground_class": 1,
+      "class_names": [
+        "background",
+        "glomerulus",
+        "artery",
+        "arteriole"
+      ],
+      "training_sources": "七中心158人肾活检；TMA87/mimickers71；train79/val26/test53；完整训练图像/成员未核公开",
+      "test_overlap": "未披露Zenodo/NEPTUNE/HuBMAP为训练来源；没有精确病例无重叠证明",
+      "code_license": "GPL-3.0 (NePathTK author code)",
+      "weight_license": "Apache-2.0 (author HF card)",
+      "author_repository": "https://github.com/Nicolik/NePathTK",
+      "author_weights": "https://huggingface.co/NePathTK/tma-segmentation",
+      "recommended_environment": "segformer",
+      "preprocessing": {
+        "input": "RGB raw0..255",
+        "operation": "RGB normalization from mmseg config; no second bgr_to_rgb",
+        "mean": [
+          123.675,
+          116.28,
+          103.53
+        ],
+        "std": [
+          58.395,
+          57.12,
+          57.375
+        ]
+      }
+    },
+    {
+      "id": "mask2former_swint",
+      "backend": "mmseg",
+      "architecture": "mask2former_swint",
+      "checkpoint": "weights/mask2former_swint.pth",
+      "sha256": "b4ba7fbb1927e7ac6ca1924586bb5ac10d7bd06668524d6752f22dcdc7e24902",
+      "bytes": 656440425,
+      "config": "configs/mask2former_swin-t_8xb2-160k_kidney-1024x1024_d4.py",
+      "tile_pixels": 1024,
+      "stride_pixels": 512,
+      "input_kind": "RGB_ROI",
+      "wsi_native": false,
+      "source_scale_required": true,
+      "target_working_mpp": 1.0,
+      "target_working_mpp_is_measured_training_mpp": false,
+      "foreground_class": 1,
+      "class_names": [
+        "background",
+        "glomerulus",
+        "artery",
+        "arteriole"
+      ],
+      "training_sources": "七中心158人肾活检；TMA87/mimickers71；train79/val26/test53；完整训练图像/成员未核公开",
+      "test_overlap": "未披露Zenodo/NEPTUNE/HuBMAP为训练来源；没有精确病例无重叠证明",
+      "code_license": "GPL-3.0 (NePathTK author code)",
+      "weight_license": "Apache-2.0 (author HF card)",
+      "author_repository": "https://github.com/Nicolik/NePathTK",
+      "author_weights": "https://huggingface.co/NePathTK/tma-segmentation",
+      "recommended_environment": "segformer",
+      "preprocessing": {
+        "input": "RGB raw0..255",
+        "operation": "RGB normalization from mmseg config; no second bgr_to_rgb",
+        "mean": [
+          123.675,
+          116.28,
+          103.53
+        ],
+        "std": [
+          58.395,
+          57.12,
+          57.375
+        ]
+      }
+    },
+    {
+      "id": "segnext_mscant",
+      "backend": "mmseg",
+      "architecture": "segnext_mscant",
+      "checkpoint": "weights/segnext_mscant.pth",
+      "sha256": "bb5a8a5939930a984fd03b9372bd7405ad0b6e63d60a6f165cf2aaf21212ccef",
+      "bytes": 70574344,
+      "config": "configs/segnext_mscan-t_1xb16-adamw-160k_kidney-1024x1024_d4.py",
+      "tile_pixels": 1024,
+      "stride_pixels": 512,
+      "input_kind": "RGB_ROI",
+      "wsi_native": false,
+      "source_scale_required": true,
+      "target_working_mpp": 1.0,
+      "target_working_mpp_is_measured_training_mpp": false,
+      "foreground_class": 1,
+      "class_names": [
+        "background",
+        "glomerulus",
+        "artery",
+        "arteriole"
+      ],
+      "training_sources": "七中心158人肾活检；TMA87/mimickers71；train79/val26/test53；完整训练图像/成员未核公开",
+      "test_overlap": "未披露Zenodo/NEPTUNE/HuBMAP为训练来源；没有精确病例无重叠证明",
+      "code_license": "GPL-3.0 (NePathTK author code)",
+      "weight_license": "Apache-2.0 (author HF card)",
+      "author_repository": "https://github.com/Nicolik/NePathTK",
+      "author_weights": "https://huggingface.co/NePathTK/tma-segmentation",
+      "recommended_environment": "segformer",
+      "preprocessing": {
+        "input": "RGB raw0..255",
+        "operation": "RGB normalization from mmseg config; no second bgr_to_rgb",
+        "mean": [
+          123.675,
+          116.28,
+          103.53
+        ],
+        "std": [
+          58.395,
+          57.12,
+          57.375
+        ]
+      }
+    }
+  ],
+  "shared_training_lineage": true
+}

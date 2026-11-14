@@ -1,0 +1,80 @@
+{
+  "snapshots": {
+    "execution_snapshot": {
+      "__init__.py": "f042733ee49c5de240a9e424811ca8bf950db11a1e93d26cd6a5e08649257939",
+      "__main__.py": "9e651b576701a30caea765089f0acd022d3963e41a014686e413a37e9399f4ad",
+      "adapters.py": "5098984a26484151b3a63a1cd1ef6df521e2192a971ce11be9a8d69b4296233d",
+      "bootstrap_catalog.py": "bae439e1add8aed69b20b144fca775a4f91adee55590c002a8f1e86cd7ff5fef",
+      "build.py": "ce2b0d327c446349a3748136ead3f34a089ec841c4919355496dd3b44b4a17ed",
+      "candidate_views.py": "d603ae1ee9d9f243bc898fdfa7750ba2d4e2fcc1e986507c5a16c07214ea6789",
+      "catalog.csv": "73571b040fe849f83bbced8bee9af207810dd0ee2fd70bd65bc9e49292ce8507",
+      "catalog.py": "ec9d90dcb52d693d212c17fbf3e20665012291972acb2d21b3128768bc942877",
+      "chunked_sam_attention.py": "8d5bdcafba9522617cd353110864013a9d953b3c8a9b4f949482b8bd62531097",
+      "classification.py": "f800b7794c3c2dc3c14ef59ffab52189b33a131496337e8aed0e8503dd1f1314",
+      "contract.py": "f935bfc48b67964083b223b4bd28607a81687e2260b4053ccdb67b863ea56215",
+      "mask_refinement.py": "79d3d093125e44763d27358ec2587ad3405818e02884d2d65cbf8a4bf8752e89",
+      "multiclass.py": "9a96390f6a84120e66195da05740e6059b7cf98a578955374396593d424ea327",
+      "object_evidence.py": "bfe97ac7b1d8c97e3215bfe3bf98399fc7d578dc08b2d65fa2e7f1231953414d",
+      "prepare_wsi.py": "a0e6c2cdd20cf8699109bf2e28a6119c64ffc4040db3e8cbe82245a50f57ad6c",
+      "ritm_refinement.py": "d61bf2d9fd33eaeb09e063d8ac85baf4780bac39007b896c7bbf7a2a84e2a9e7",
+      "runtime_registry.json": "9daa49ecfcfd75ef5078cc6f42fded5535a3891636fda7e0af2bdca26e5af73f",
+      "visual_reader.py": "7e26fc4fc76f325b39c1a22e1f7904fbef2f1e3195aa35bd78ffb6f38cefbd70",
+      "vlm_jpeg.py": "468fa27601eb504a3eef1271470a303910bc2adb0a6bf2f9caeb0ca1cf71f584"
+    },
+    "execution_snapshot_memoryfix": {
+      "multiclass.py": "9a96390f6a84120e66195da05740e6059b7cf98a578955374396593d424ea327",
+      "catalog.csv": "73571b040fe849f83bbced8bee9af207810dd0ee2fd70bd65bc9e49292ce8507",
+      "__init__.py": "f042733ee49c5de240a9e424811ca8bf950db11a1e93d26cd6a5e08649257939",
+      "runtime_registry.json": "9daa49ecfcfd75ef5078cc6f42fded5535a3891636fda7e0af2bdca26e5af73f",
+      "build.py": "ce2b0d327c446349a3748136ead3f34a089ec841c4919355496dd3b44b4a17ed",
+      "visual_reader.py": "7e26fc4fc76f325b39c1a22e1f7904fbef2f1e3195aa35bd78ffb6f38cefbd70",
+      "__main__.py": "9e651b576701a30caea765089f0acd022d3963e41a014686e413a37e9399f4ad",
+      "catalog.py": "ec9d90dcb52d693d212c17fbf3e20665012291972acb2d21b3128768bc942877",
+      "ritm_refinement.py": "d61bf2d9fd33eaeb09e063d8ac85baf4780bac39007b896c7bbf7a2a84e2a9e7",
+      "prepare_wsi.py": "a0e6c2cdd20cf8699109bf2e28a6119c64ffc4040db3e8cbe82245a50f57ad6c",
+      "contract.py": "f935bfc48b67964083b223b4bd28607a81687e2260b4053ccdb67b863ea56215",
+      "object_evidence.py": "bfe97ac7b1d8c97e3215bfe3bf98399fc7d578dc08b2d65fa2e7f1231953414d",
+      "bootstrap_catalog.py": "bae439e1add8aed69b20b144fca775a4f91adee55590c002a8f1e86cd7ff5fef",
+      "vlm_jpeg.py": "468fa27601eb504a3eef1271470a303910bc2adb0a6bf2f9caeb0ca1cf71f584",
+      "candidate_views.py": "d603ae1ee9d9f243bc898fdfa7750ba2d4e2fcc1e986507c5a16c07214ea6789",
+      "classification.py": "f800b7794c3c2dc3c14ef59ffab52189b33a131496337e8aed0e8503dd1f1314",
+      "adapters.py": "5098984a26484151b3a63a1cd1ef6df521e2192a971ce11be9a8d69b4296233d",
+      "chunked_sam_attention.py": "8d5bdcafba9522617cd353110864013a9d953b3c8a9b4f949482b8bd62531097",
+      "mask_refinement.py": "4255b0f651642ce552940ee57c289d91e90e9c32cee60bbae56aa8e2af2e71f5"
+    },
+    "specialist_execution_snapshot": {
+      "adapters.py": "42226ea2b61d4127b74c1edd7412b5c417bb95c91623e536ad2936e437739a67",
+      "bootstrap_catalog.py": "bae439e1add8aed69b20b144fca775a4f91adee55590c002a8f1e86cd7ff5fef",
+      "build.py": "bf2adc065950edc4b88003fac5bfa8283f080454951fffad8533a176cb3934fd",
+      "candidate_views.py": "d603ae1ee9d9f243bc898fdfa7750ba2d4e2fcc1e986507c5a16c07214ea6789",
+      "catalog.csv": "306a86623f8bf10ed70f14a6426a48d755b02960102233295132d55626da0bd6",
+      "catalog.py": "ec9d90dcb52d693d212c17fbf3e20665012291972acb2d21b3128768bc942877",
+      "chunked_sam_attention.py": "8d5bdcafba9522617cd353110864013a9d953b3c8a9b4f949482b8bd62531097",
+      "classification.py": "f800b7794c3c2dc3c14ef59ffab52189b33a131496337e8aed0e8503dd1f1314",
+      "contract.py": "f935bfc48b67964083b223b4bd28607a81687e2260b4053ccdb67b863ea56215",
+      "mask_refinement.py": "4255b0f651642ce552940ee57c289d91e90e9c32cee60bbae56aa8e2af2e71f5",
+      "mescnn.py": "8d130d854e6fc58c1a65c56305f7727fb5c2a30bc1776a7b5b817b5bf1722b97",
+      "multiclass.py": "9a96390f6a84120e66195da05740e6059b7cf98a578955374396593d424ea327",
+      "object_evidence.py": "bfe97ac7b1d8c97e3215bfe3bf98399fc7d578dc08b2d65fa2e7f1231953414d",
+      "prepare_wsi.py": "a0e6c2cdd20cf8699109bf2e28a6119c64ffc4040db3e8cbe82245a50f57ad6c",
+      "ritm_refinement.py": "d61bf2d9fd33eaeb09e063d8ac85baf4780bac39007b896c7bbf7a2a84e2a9e7",
+      "runtime_registry.json": "39de025c425179e69bff84f3a06cb23505cbf2ce02009064a01b1c5d9a4ee3e7",
+      "visual_reader.py": "7e26fc4fc76f325b39c1a22e1f7904fbef2f1e3195aa35bd78ffb6f38cefbd70",
+      "vlm_jpeg.py": "468fa27601eb504a3eef1271470a303910bc2adb0a6bf2f9caeb0ca1cf71f584",
+      "__init__.py": "f042733ee49c5de240a9e424811ca8bf950db11a1e93d26cd6a5e08649257939",
+      "__main__.py": "146dcf3020536ed1f797c59a48df4cf8b4c55176076a96bf770c2a8718bc0ffa"
+    }
+  },
+  "baseline": {
+    "run.py": "862e7f5de1eba698cb1f3a9ab00789be5721312bcb796156620d258078b80df4",
+    "models.json": "3dd5c87cfa60573df3aefbdcc0303dc8bd0cfa4362493971e5b6b6f3fdb2274a",
+    "configs/segformer_mit-b5_8xb2-160k_kidney_1024x1024_d4.py": "f5c60bc65dd024da416fa8fd9d19f793c9910abf050522881a5a980165d6114e"
+  },
+  "completions": {
+    "inference_complete.json": "complete",
+    "specialist_inference_complete.json": "complete",
+    "seam_validation/completed.json": "complete"
+  },
+  "final_gpu_status": "0, 2717, 0\n1, 2717, 0\n2, 2717, 0\n3, 2719, 0\n4, 24126, 0\n5, 24126, 0\n",
+  "all_local_execution_sources_equal_remote": true
+}

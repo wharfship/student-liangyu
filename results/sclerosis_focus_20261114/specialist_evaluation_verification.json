@@ -1,0 +1,10 @@
+{
+  "cases": 80,
+  "input_shas_equal": true,
+  "strict_load": true,
+  "target_matching": "best IoU over predicted instances, offline target diagnostic, not online identity selector",
+  "fully_omitted": "3 GT-centered windows are capability-only references, not deployment rescue",
+  "area_filter": "pixel-area5000 sensitivity, not exact polygon QuPath implementation",
+  "no_WSI_policy_or_global_matching": true,
+  "source_status": "exposed development, training overlap unknown"
+}

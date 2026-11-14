@@ -1,0 +1,2868 @@
+{
+  "schema_version": 1,
+  "catalog_sha256": "5d0ddb0c51ea68052bc8b4fc38ee268956924554f95b07e98297be4bee3f99cd",
+  "tools": [
+    {
+      "id": "omni_full",
+      "protocol_id": "omniseg",
+      "kind": "omni_cap",
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS",
+        "SIL",
+        "TRI"
+      ],
+      "target": "whole_glomerular_unit",
+      "python": "/home/chenliangyu/miniconda3/envs/omni_seg/bin/python",
+      "source_dir": "/home/chenliangyu/project/new_agent/tools_network/Omni-Seg/Omni_seg_pipeline_gpu",
+      "checkpoint": "/home/chenliangyu/project/new_agent/tools_network/Omni-Seg/Omni_seg_pipeline_gpu/snapshots_2D/fold1_with_white_Omni-Seg_normalwhole_1201/MOTS_DynConv_fold1_with_white_scale_psuedo_allMatching_withsemi_0.1_0.1_normalwhole_0217_e81.pth",
+      "patch": 512,
+      "margin": 64,
+      "batch_size": 4,
+      "target_mpp": 2.0,
+      "scale_status": "paper-derived reference, not per-image measured MPP",
+      "confidence": "author hard-vote fusion; no calibrated confidence map returned",
+      "precision": "float32",
+      "entrypoint": "ops.tool_protocol_runner",
+      "bn_mode": "author_stored_statistics",
+      "status": "bounded_human_samples_tested_not_generalized",
+      "protocol": "all six original inference functions;4096/2048 outer;5x512 CAP/TUFT;random stride64;edge64;votes>=4;overarea.2;outeredge256;task competition",
+      "dataset_support": [
+        "hospital",
+        "hubmap2021",
+        "neptune2021",
+        "zenodo"
+      ],
+      "finite_guard": "all network forwards checked in delivered implementation; separate 1936-forward replay matched original mask",
+      "adapter": "legacy",
+      "checkpoint_sha256": "b26476d18dfee437a8d78db4e4982227d1323a8c18dbf0c5b6486c4fb5496764",
+      "name": "omni_full",
+      "enabled": true,
+      "agent_enabled": true,
+      "agent_stains": [
+        "HE",
+        "PAS",
+        "SIL",
+        "TRI"
+      ],
+      "input_forms": [
+        "patch"
+      ],
+      "limitations": [
+        "来源复用既有training_provenance_ledger.json"
+      ],
+      "training_sources": "NEPTUNE/Jayapandian KI；125患者/459WSI/1751ROI，原论文患者级6:1:3",
+      "training_data_access": "有公开KI发布来源，精确checkpoint训练manifest未知",
+      "training_overlap_status": "{\"Zenodo4299694\": \"所查材料未披露为训练来源；不是无重叠证明\", \"NEPTUNE_test20\": \"确认同来源；具体训练患者/WSI重叠未排除\", \"HuBMAP_kidney8\": \"所查材料未披露为训练来源；不是无重叠证明\", \"hospital40\": \"所查材料未披露为训练来源；不是无重叠证明\", \"HuBMAP_HPA2022_PAS_pilot3\": \"精确训练成员表未知；所选VAN图块训练/患者重叠未排除，不当独立留出证明\", \"Athena_PAS_ROI3_20261107\": \"精确训练成员未知；3个提供ROI来自1张JPH1.svs；与训练患者/WSI重叠未排除；gloms人工来源未审定\"}",
+      "code_license": "未核",
+      "weight_license": "未核"
+    },
+    {
+      "id": "ki2021_he_unit_batchstats",
+      "protocol_id": "ki2021_unet",
+      "kind": "ki2021_unit",
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE"
+      ],
+      "target": "whole_glomerular_unit",
+      "runtime_status": "diagnostic_only_low_accuracy",
+      "python": "/home/chenliangyu/miniconda3/envs/omni_seg/bin/python",
+      "source_dir": "/home/chenliangyu/project/new_agent/tools_network/Jayapandian2021_UNet",
+      "checkpoint": "/home/chenliangyu/project/new_agent/assets/ki2021/he-normal-glom-capsule-5X_unet_best_model.pth",
+      "patch": 256,
+      "margin": 64,
+      "batch_size": 1,
+      "target_mpp": 1.92,
+      "scale_status": "5x target; 1.92um/px conditional, physical calibration unresolved",
+      "confidence": "foreground softmax, uncalibrated; no instance score",
+      "preprocessing": "RGB/255; checkpoint-defined UNet; center core tiling",
+      "input_scaling": "task metadata or prespecified nominal downsample",
+      "padding_mode": "ki_author",
+      "resize_interpolation": "linear",
+      "precision": "float32",
+      "native_batch_size": 1,
+      "bn_mode": "stateless_input_batch_statistics",
+      "entrypoint": "ops.tool_protocol_runner",
+      "limitations": [
+        "BN修复不是重新训练；HE发布权重有效性问题单独保留"
+      ],
+      "batch_policy": "one patch per batch to remove dependence on grouping neighboring patches; not per-case score selection",
+      "status": "excluded_by_user_20261109",
+      "protocol": "5x RGB;256/128;reflect64+zero;RGB/255 float32;argmax center128;nearest source output;stateless BN batch1",
+      "dataset_support": [
+        "hospital",
+        "neptune2021",
+        "zenodo"
+      ],
+      "he_diagnosis": {
+        "author_supports_HE": true,
+        "current_checkpoint_status": "suspected_abnormal_published_checkpoint_or_saved_state",
+        "saved_val_loss": 8.013123e+24,
+        "saved_optimizer_lr": 0.1,
+        "root_cause_scope": "Evidence excludes unsupported stain and simple float32/scale-only explanation; no proof of exact author training or packaging failure",
+        "evidence": "outputs/ki_he_rootcause_20261031/RUN_REPORT.md",
+        "reliable_expert_accepted": false
+      },
+      "adapter": "legacy",
+      "checkpoint_sha256": "fb1d943ff11a3aaf5520d40fee14b960909fcec45ed32fdf97d8dc5a808e9570",
+      "name": "ki2021_he_unit_batchstats",
+      "enabled": false,
+      "agent_enabled": false,
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "training_sources": "NEPTUNE/Jayapandian KI，同原研究患者级6:1:3",
+      "training_data_access": "有公开KI发布来源；精确checkpoint成员未知",
+      "training_overlap_status": "{\"Zenodo4299694\": \"所查材料未披露为训练来源；不是无重叠证明\", \"NEPTUNE_test20\": \"确认同来源；具体训练患者/WSI重叠未排除\", \"HuBMAP_kidney8\": \"所查材料未披露为训练来源；不是无重叠证明\", \"hospital40\": \"所查材料未披露为训练来源；不是无重叠证明\"}",
+      "code_license": "未核",
+      "weight_license": "未核"
+    },
+    {
+      "id": "ki2021_pas_unit_batchstats",
+      "protocol_id": "ki2021_unet",
+      "kind": "ki2021_unit",
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "PAS"
+      ],
+      "target": "whole_glomerular_unit",
+      "runtime_status": "experimental_recovery_on_neptune",
+      "python": "/home/chenliangyu/miniconda3/envs/omni_seg/bin/python",
+      "source_dir": "/home/chenliangyu/project/new_agent/tools_network/Jayapandian2021_UNet",
+      "checkpoint": "/home/chenliangyu/project/new_agent/assets/ki2021/pas-normal-glomerular-unit-5X_unet_best_model.pth",
+      "patch": 256,
+      "margin": 64,
+      "batch_size": 1,
+      "target_mpp": 1.92,
+      "scale_status": "5x target; 1.92um/px conditional, physical calibration unresolved",
+      "confidence": "foreground softmax, uncalibrated; no instance score",
+      "preprocessing": "RGB/255; checkpoint-defined UNet; center core tiling",
+      "input_scaling": "task metadata or prespecified nominal downsample",
+      "padding_mode": "ki_author",
+      "resize_interpolation": "linear",
+      "precision": "float32",
+      "native_batch_size": 1,
+      "bn_mode": "stateless_input_batch_statistics",
+      "entrypoint": "ops.tool_protocol_runner",
+      "limitations": [
+        "BN修复不是重新训练；HE发布权重有效性问题单独保留"
+      ],
+      "batch_policy": "one patch per batch to remove dependence on grouping neighboring patches; not per-case score selection",
+      "status": "excluded_by_user_20261109",
+      "protocol": "5x RGB;256/128;reflect64+zero;RGB/255 float32;argmax center128;nearest source output;stateless BN batch1",
+      "dataset_support": [
+        "hubmap2021",
+        "neptune2021",
+        "zenodo"
+      ],
+      "adapter": "legacy",
+      "checkpoint_sha256": "478ba6405dc44f956378c272eb2e90fd72fe3be02305005dba29520cb64124fd",
+      "name": "ki2021_pas_unit_batchstats",
+      "enabled": false,
+      "agent_enabled": false,
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "training_sources": "NEPTUNE/Jayapandian KI，同原研究患者级6:1:3",
+      "training_data_access": "有公开KI发布来源；精确checkpoint成员未知",
+      "training_overlap_status": "{\"Zenodo4299694\": \"所查材料未披露为训练来源；不是无重叠证明\", \"NEPTUNE_test20\": \"确认同来源；具体训练患者/WSI重叠未排除\", \"HuBMAP_kidney8\": \"所查材料未披露为训练来源；不是无重叠证明\", \"hospital40\": \"所查材料未披露为训练来源；不是无重叠证明\", \"HuBMAP_HPA2022_PAS_pilot3\": \"精确训练成员表未知；所选VAN图块训练/患者重叠未排除，不当独立留出证明\", \"Athena_PAS_ROI3_20261107\": \"精确训练成员未知；3个提供ROI来自1张JPH1.svs；与训练患者/WSI重叠未排除；gloms人工来源未审定\"}",
+      "code_license": "未核",
+      "weight_license": "未核"
+    },
+    {
+      "id": "ki2021_sil_unit_batchstats",
+      "protocol_id": "ki2021_unet",
+      "kind": "ki2021_unit",
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "SIL"
+      ],
+      "target": "whole_glomerular_unit",
+      "runtime_status": "experimental_recovery_on_neptune",
+      "python": "/home/chenliangyu/miniconda3/envs/omni_seg/bin/python",
+      "source_dir": "/home/chenliangyu/project/new_agent/tools_network/Jayapandian2021_UNet",
+      "checkpoint": "/home/chenliangyu/project/new_agent/assets/ki2021/sil-normal-glomerular-unit-5X_unet_best_model.pth",
+      "patch": 256,
+      "margin": 64,
+      "batch_size": 1,
+      "target_mpp": 1.92,
+      "scale_status": "5x target; 1.92um/px conditional, physical calibration unresolved",
+      "confidence": "foreground softmax, uncalibrated; no instance score",
+      "preprocessing": "RGB/255; checkpoint-defined UNet; center core tiling",
+      "input_scaling": "task metadata or prespecified nominal downsample",
+      "padding_mode": "ki_author",
+      "resize_interpolation": "linear",
+      "precision": "float32",
+      "native_batch_size": 1,
+      "bn_mode": "stateless_input_batch_statistics",
+      "entrypoint": "ops.tool_protocol_runner",
+      "limitations": [
+        "BN修复不是重新训练；HE发布权重有效性问题单独保留"
+      ],
+      "batch_policy": "one patch per batch to remove dependence on grouping neighboring patches; not per-case score selection",
+      "status": "excluded_by_user_20261109",
+      "protocol": "5x RGB;256/128;reflect64+zero;RGB/255 float32;argmax center128;nearest source output;stateless BN batch1",
+      "dataset_support": [
+        "neptune2021"
+      ],
+      "adapter": "legacy",
+      "checkpoint_sha256": "a16ddf53b908f191aad648492f44f583f881693d29dc66f752bab1b7494b7d49",
+      "name": "ki2021_sil_unit_batchstats",
+      "enabled": false,
+      "agent_enabled": false,
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "training_sources": "NEPTUNE/Jayapandian KI，同原研究患者级6:1:3",
+      "training_data_access": "有公开KI发布来源；精确checkpoint成员未知",
+      "training_overlap_status": "{\"Zenodo4299694\": \"所查材料未披露为训练来源；不是无重叠证明\", \"NEPTUNE_test20\": \"确认同来源；具体训练患者/WSI重叠未排除\", \"HuBMAP_kidney8\": \"所查材料未披露为训练来源；不是无重叠证明\", \"hospital40\": \"所查材料未披露为训练来源；不是无重叠证明\"}",
+      "code_license": "未核",
+      "weight_license": "未核"
+    },
+    {
+      "id": "ki2021_tri_unit_batchstats",
+      "protocol_id": "ki2021_unet",
+      "kind": "ki2021_unit",
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "TRI"
+      ],
+      "target": "whole_glomerular_unit",
+      "runtime_status": "experimental_recovery_on_neptune",
+      "python": "/home/chenliangyu/miniconda3/envs/omni_seg/bin/python",
+      "source_dir": "/home/chenliangyu/project/new_agent/tools_network/Jayapandian2021_UNet",
+      "checkpoint": "/home/chenliangyu/project/new_agent/assets/ki2021/tri-normal-glomerular-unit-5X_unet_best_model.pth",
+      "patch": 256,
+      "margin": 64,
+      "batch_size": 1,
+      "target_mpp": 1.92,
+      "scale_status": "5x target; 1.92um/px conditional, physical calibration unresolved",
+      "confidence": "foreground softmax, uncalibrated; no instance score",
+      "preprocessing": "RGB/255; checkpoint-defined UNet; center core tiling",
+      "input_scaling": "task metadata or prespecified nominal downsample",
+      "padding_mode": "ki_author",
+      "resize_interpolation": "linear",
+      "precision": "float32",
+      "native_batch_size": 1,
+      "bn_mode": "stateless_input_batch_statistics",
+      "entrypoint": "ops.tool_protocol_runner",
+      "limitations": [
+        "BN修复不是重新训练；HE发布权重有效性问题单独保留"
+      ],
+      "batch_policy": "one patch per batch to remove dependence on grouping neighboring patches; not per-case score selection",
+      "status": "excluded_by_user_20261109",
+      "protocol": "5x RGB;256/128;reflect64+zero;RGB/255 float32;argmax center128;nearest source output;stateless BN batch1",
+      "dataset_support": [
+        "neptune2021"
+      ],
+      "adapter": "legacy",
+      "checkpoint_sha256": "f6b6e80b5b97dda0700531b80a68be9b7995400cef8cd71c8db513cb99550541",
+      "name": "ki2021_tri_unit_batchstats",
+      "enabled": false,
+      "agent_enabled": false,
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "training_sources": "NEPTUNE/Jayapandian KI，同原研究患者级6:1:3",
+      "training_data_access": "有公开KI发布来源；精确checkpoint成员未知",
+      "training_overlap_status": "{\"Zenodo4299694\": \"所查材料未披露为训练来源；不是无重叠证明\", \"NEPTUNE_test20\": \"确认同来源；具体训练患者/WSI重叠未排除\", \"HuBMAP_kidney8\": \"所查材料未披露为训练来源；不是无重叠证明\", \"hospital40\": \"所查材料未披露为训练来源；不是无重叠证明\"}",
+      "code_license": "未核",
+      "weight_license": "未核"
+    },
+    {
+      "id": "tokyo_espnet_pas",
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "PAS"
+      ],
+      "target": "whole_glomerular_unit",
+      "python": "/home/chenliangyu/miniconda3/envs/omni_seg/bin/python",
+      "source_dir": "/home/chenliangyu/project/new_agent/tools_network/jinseikenai_glomeruli_segmentation",
+      "checkpoint": "/home/chenliangyu/project/new_agent/tools_network/jinseikenai_glomeruli_segmentation/models/espnet_fold1.pth",
+      "mean_bgr": [
+        204.60071,
+        170.19359,
+        199.57469
+      ],
+      "std_bgr": [
+        20.61257,
+        42.92207,
+        28.401505
+      ],
+      "status": "experimental_PAS_dependent_on_localization",
+      "precondition": "predicted candidate mask with original coordinates, never annotation",
+      "protocol": "predicted candidate bbox+20um margin;BGR subtract mean/divide std;resize1024x512;divide255;ESPNet classes5 p2 q8;argmax;nearest source;union1..4 and class1 retained;clipped context flagged for review;predicted bbox does not guarantee complete anatomy",
+      "dependencies": [
+        "localization"
+      ],
+      "source_url": "https://github.com/jinseikenai/glomeruli_segmentation",
+      "default_localizer": "omni_full",
+      "dataset_support": [
+        "hubmap2021",
+        "neptune2021",
+        "zenodo"
+      ],
+      "context_requirement": "complete glomerular object and surrounding context required; clipped margin is diagnostic, not accepted as complete-object validation",
+      "adapter": "legacy",
+      "checkpoint_sha256": "ce64a7ac9562d1495cd6d0e4204ef196c198f4fe3cdbc34ad3e27630baab81b8",
+      "name": "tokyo_espnet_pas",
+      "enabled": true,
+      "agent_enabled": true,
+      "agent_stains": [
+        "PAS"
+      ],
+      "input_forms": [
+        "patch"
+      ],
+      "scale_status": "物理尺度按原工具卡",
+      "limitations": [
+        "复用既有training_provenance_ledger.json；不虚构已知划分"
+      ],
+      "training_sources": "具体老权重训练成员未知；关联2022论文Tokyo353/Kitano324 PAS数据不能直接归给此权重",
+      "training_data_access": "关联医院私有队列；老checkpoint精确来源未知",
+      "training_overlap_status": "{\"Zenodo4299694\": \"未知；缺精确训练成员\", \"NEPTUNE_test20\": \"未知；缺精确训练成员\", \"HuBMAP_kidney8\": \"未知；缺精确训练成员\", \"hospital40\": \"未知；缺精确训练成员\", \"HuBMAP_HPA2022_PAS_pilot3\": \"精确训练成员表未知；所选VAN图块训练/患者重叠未排除，不当独立留出证明\", \"Athena_PAS_ROI3_20261107\": \"精确训练成员未知；3个提供ROI来自1张JPH1.svs；与训练患者/WSI重叠未排除；gloms人工来源未审定\"}",
+      "code_license": "未核",
+      "weight_license": "未核"
+    },
+    {
+      "id": "capybara_kpis",
+      "species": [
+        "mouse"
+      ],
+      "stains": [
+        "PAS"
+      ],
+      "target": "whole_glomerular_unit",
+      "python": "/home/chenliangyu/miniconda3/envs/segformer/bin/python",
+      "checkpoint": "/home/chenliangyu/project/segment-anything/baselines/segformer/models/segformer_mit-b5_kpis_768/segformer_mit_b5_kpis_768_best_mDice.pth",
+      "config": "/home/chenliangyu/project/segment-anything/baselines/segformer/models/segformer_mit-b5_kpis_768/segformer_mit-b5_kpis_isbi_768.py",
+      "status": "bounded_mouse_PAS_patches_and_WSI_regions_tested",
+      "protocol": "existing2048 patch already scaled;BGR via paired mmseg config;internal768 stride576 logits fusion;WSI regions use cohort scale and outer2048 stride1024 sum patch softmax then argmax;WSI evidence limited to two tissue ROIs, separately from four-cohort patch checks",
+      "source_url": "https://github.com/huuquan1994/wsi_glomerulus_seg",
+      "dataset_support": [
+        "kpis_patch",
+        "kpis_wsi_roi"
+      ],
+      "adapter": "legacy",
+      "source_dir": "/home/chenliangyu/project/segment-anything/baselines/segformer/models/segformer_mit-b5_kpis_768",
+      "checkpoint_sha256": "ce4133b2e8bef72e89254917cce698d910123db138a065972b37da091582821b",
+      "allowed_dataset_ids": [
+        "kpis_patch",
+        "kpis_wsi_roi"
+      ],
+      "name": "capybara_kpis",
+      "enabled": true,
+      "agent_enabled": true,
+      "agent_stains": [
+        "PAS"
+      ],
+      "input_forms": [
+        "patch"
+      ],
+      "scale_status": "沿用KPIs队列工作格；2048外窗→模型768；未支持任意MPP自动适配",
+      "limitations": [
+        "用户已覆盖；不计新增"
+      ],
+      "training_sources": "KPIs2024鼠肾PAS：Normal/5⁄6Nx/DN/NEP25，公开train与validation、隐藏test",
+      "training_data_access": "挑战训练数据经Synapse发布，可能需账号/条款；隐藏测试不公开",
+      "training_overlap_status": "{\"Zenodo4299694\": \"所查材料未披露为训练来源；不是无重叠证明\", \"NEPTUNE_test20\": \"所查材料未披露为训练来源；不是无重叠证明\", \"HuBMAP_kidney8\": \"所查材料未披露为训练来源；不是无重叠证明\", \"hospital40\": \"所查材料未披露为训练来源；不是无重叠证明\"}",
+      "code_license": "未核",
+      "weight_license": "未核"
+    },
+    {
+      "id": "glo2_whole",
+      "protocol_id": "glo2_single",
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS",
+        "SIL",
+        "TRI"
+      ],
+      "species_stains": {
+        "human": [
+          "HE",
+          "PAS",
+          "SIL",
+          "TRI"
+        ]
+      },
+      "target": "whole_glomerular_unit",
+      "input_forms": [
+        "patch",
+        "wsi"
+      ],
+      "python": "/home/chenliangyu/miniconda3/envs/omni_seg/bin/python",
+      "source_dir": "/home/chenliangyu/project/new_agent/tools_network/Glo-In-One_v2_runtime_20261101/Glo-In-One_v2",
+      "checkpoint": "/home/chenliangyu/project/new_agent/tools_network/Glo-In-One_v2_runtime_20261101/Glo-In-One_v2/Segmentation_v2/weights/Glo_v2_segmentation_model.pth",
+      "detector_checkpoints": [
+        "/home/chenliangyu/project/new_agent/tools_network/Glo-In-One_v2_runtime_20261101/Glo-In-One_v2/Detection_v2/author_ensemble/model1_best.pth",
+        "/home/chenliangyu/project/new_agent/tools_network/Glo-In-One_v2_runtime_20261101/Glo-In-One_v2/Detection_v2/author_ensemble/model2_best.pth",
+        "/home/chenliangyu/project/new_agent/tools_network/Glo-In-One_v2_runtime_20261101/Glo-In-One_v2/Detection_v2/author_ensemble/model3_best.pth",
+        "/home/chenliangyu/project/new_agent/tools_network/Glo-In-One_v2_runtime_20261101/Glo-In-One_v2/Detection_v2/author_ensemble/model4_best.pth",
+        "/home/chenliangyu/project/new_agent/tools_network/Glo-In-One_v2_runtime_20261101/Glo-In-One_v2/Detection_v2/author_ensemble/model5_best.pth"
+      ],
+      "status": "experimental_gpu_verified_quality_variable_20261101",
+      "dataset_support": [
+        "neptune2021:8 reused development patches; nominal MPP; 2 per stain HE/PAS/SIL/TRI",
+        "hospital:1 labeled HE ROI missed; 1 different complete HE WSI execution only",
+        "glo2_author_demo:1 complete PAS WSI execution only; no GT"
+      ],
+      "protocol": "author five CircleNet DLA34 strict checkpoints;512 detector tiles stride256 at4.04um/px (official demo level2 physical grid);score>.2,circleNMS.35,author vote fusion;MPP bands crop512/1024/2048 to512 RGB;task10 whole capsule-region binary,scale0;nearest inverse;native mask union. WSI level0 BigTIFF; no Omni/GT localization",
+      "target_mpp": null,
+      "scale_status": "检测4.040058449 μm/px；分割按源MPP开区间裁2048/1024/512→512",
+      "detector_mpp": 4.040058449074074,
+      "detector_mean_bgr": [
+        0.408,
+        0.447,
+        0.47
+      ],
+      "detector_std_bgr": [
+        0.289,
+        0.274,
+        0.278
+      ],
+      "segmentation_task": 10,
+      "segmentation_scale_id": 0,
+      "max_detection_tiles": 2000,
+      "max_glomeruli": 5000,
+      "max_seconds": 3600,
+      "precondition": "RGB patch with current pixel MPP; or WSI with measured isotropic OpenSlide MPP; complete context may be clipped and is reported",
+      "limitations": [
+        "训练统计复用既有审计，不能套给CircleNet定位器"
+      ],
+      "source_url": "https://github.com/hrlblab/Glo-In-One_v2",
+      "asset_receipt": "glo2_integration_20261101/author_container_recovery.json",
+      "adapter": "legacy",
+      "checkpoint_sha256": "c7a042638cd44fa44533e6ab621cc19b4bf60cfcf620fda9e8e12cbd5ae7d3b5",
+      "detector_checkpoint_sha256": {
+        "/home/chenliangyu/project/new_agent/tools_network/Glo-In-One_v2_runtime_20261101/Glo-In-One_v2/Detection_v2/author_ensemble/model1_best.pth": "bbdc0a2d6d04eda4fbf7c76041ac980169d8f33e5c8e02c81414b5e78e176003",
+        "/home/chenliangyu/project/new_agent/tools_network/Glo-In-One_v2_runtime_20261101/Glo-In-One_v2/Detection_v2/author_ensemble/model2_best.pth": "8b543447c1b927d62dff61886a6978e03368a98ed55c3c4bc24111dea9a7286e",
+        "/home/chenliangyu/project/new_agent/tools_network/Glo-In-One_v2_runtime_20261101/Glo-In-One_v2/Detection_v2/author_ensemble/model3_best.pth": "f64310f76ed03e607ba4439b35ad732fb1f702fd35b5d15317e6c324516930ca",
+        "/home/chenliangyu/project/new_agent/tools_network/Glo-In-One_v2_runtime_20261101/Glo-In-One_v2/Detection_v2/author_ensemble/model4_best.pth": "17b931cb0c731ad5ab22b639b975bd0dc187631c1050a01adf3b641e7f617fe2",
+        "/home/chenliangyu/project/new_agent/tools_network/Glo-In-One_v2_runtime_20261101/Glo-In-One_v2/Detection_v2/author_ensemble/model5_best.pth": "e2e112becdfb3f5ccfa6c490ebab94bdb3d8306a1368941962f65a1895814765"
+      },
+      "name": "glo2_whole",
+      "enabled": true,
+      "agent_enabled": true,
+      "agent_stains": [
+        "HE",
+        "PAS",
+        "SIL",
+        "TRI"
+      ],
+      "training_sources": "KPMP＋人/鼠人工标注；部分VUMC私有；368WSI/23529patch（KPMP6586patch）",
+      "training_data_access": "公开来源＋私有混合；训练manifest未知",
+      "training_overlap_status": "{\"Zenodo4299694\": \"所查材料未披露为训练来源；不是无重叠证明\", \"NEPTUNE_test20\": \"所查材料未披露为训练来源；不是无重叠证明\", \"HuBMAP_kidney8\": \"KPMP为训练来源，但不是HuBMAP同义词；供者/切片关系未知\", \"hospital40\": \"所查材料未披露为训练来源；不是无重叠证明\", \"HuBMAP_HPA2022_PAS_pilot3\": \"精确训练成员表未知；所选VAN图块训练/患者重叠未排除，不当独立留出证明\", \"Athena_PAS_ROI3_20261107\": \"精确训练成员未知；3个提供ROI来自1张JPH1.svs；与训练患者/WSI重叠未排除；gloms人工来源未审定\"}",
+      "code_license": "未核",
+      "weight_license": "未核"
+    },
+    {
+      "adapter": "nepath",
+      "model_id": "unet",
+      "aliases": [
+        "unet"
+      ],
+      "python": "/home/chenliangyu/miniconda3/envs/omni_seg/bin/python",
+      "source_dir": "/home/chenliangyu/project/new_agent/nepathtk_tools_20261105",
+      "checkpoint": "/home/chenliangyu/project/new_agent/nepathtk_tools_20261105/weights/unet_resnet34_d4.pt",
+      "checkpoint_sha256": "e53a0b6b9c06b7be2ad11fd074e0b76ff73b0ea814b151179a7ad6df840cbdb7",
+      "patch": 1024,
+      "stride": 512,
+      "target_mpp": 1.0,
+      "requires_mpp": true,
+      "timeout_seconds": 10800,
+      "extra_paths": [
+        "/home/chenliangyu/project/new_agent/tool_expansion_20261105/deps"
+      ],
+      "io_python": "/home/chenliangyu/miniconda3/envs/omni_seg/bin/python",
+      "id": "nepath_unet",
+      "name": "NePath unet",
+      "protocol": "d4 AAG四类；概率均值→argmax→class1；无TTA；原坐标nearest",
+      "status": "pilot8_verified_WSI_wrapper_not_accuracy_validated",
+      "enabled": true,
+      "agent_enabled": true,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS",
+        "SIL",
+        "TRI"
+      ],
+      "agent_stains": [
+        "HE",
+        "PAS"
+      ],
+      "input_forms": [
+        "patch",
+        "wsi"
+      ],
+      "target": "whole_glomerular_unit",
+      "scale_status": "源MPP→1.0 μm/px工作格；1024窗/512步长；非实测训练MPP",
+      "limitations": [
+        "六架构共享数据谱系；现代mmseg预处理与首轮SMP不同；硬化未独立分类；SIL/TRI小样本，仅研究调用；其余四架构WSI精度未验收"
+      ],
+      "training_sources": "七中心自建人肾活检158例；TMA87/mimickers71；train79/val26/test53；Cologne/Turin/Milan/Weill-Cornell/Mainz/Maastricht/Budapest",
+      "training_data_access": "源码和权重公开；完整训练图像及病例划分未核到公开入口，暂按非公开自建队列登记",
+      "training_overlap_status": "{\"Zenodo4299694\": \"所查材料未披露为训练来源；不是无重叠证明\", \"NEPTUNE_test20\": \"所查材料未披露为训练来源；不是无重叠证明\", \"HuBMAP_kidney8\": \"所查材料未披露为训练来源；不是无重叠证明\", \"hospital40\": \"所查材料未披露为训练来源；不是无重叠证明\", \"HuBMAP_HPA2022_PAS_pilot3\": \"精确训练成员表未知；所选VAN图块训练/患者重叠未排除，不当独立留出证明\", \"Athena_PAS_ROI3_20261107\": \"精确训练成员未知；3个提供ROI来自1张JPH1.svs；与训练患者/WSI重叠未排除；gloms人工来源未审定\"}",
+      "code_license": "GPL-3.0 (NePathTK author code)",
+      "weight_license": "Apache-2.0 (author HF card)"
+    },
+    {
+      "adapter": "nepath",
+      "model_id": "fpn",
+      "aliases": [
+        "fpn"
+      ],
+      "python": "/home/chenliangyu/miniconda3/envs/omni_seg/bin/python",
+      "source_dir": "/home/chenliangyu/project/new_agent/nepathtk_tools_20261105",
+      "checkpoint": "/home/chenliangyu/project/new_agent/nepathtk_tools_20261105/weights/fpn_resnet34_d4.pt",
+      "checkpoint_sha256": "315d64786dda5fe3267d539668139a8b37b28a1538705a4d8a8a9a36cf955cb4",
+      "patch": 1024,
+      "stride": 512,
+      "target_mpp": 1.0,
+      "requires_mpp": true,
+      "timeout_seconds": 10800,
+      "extra_paths": [
+        "/home/chenliangyu/project/new_agent/tool_expansion_20261105/deps"
+      ],
+      "io_python": "/home/chenliangyu/miniconda3/envs/omni_seg/bin/python",
+      "id": "nepath_fpn",
+      "name": "NePath fpn",
+      "protocol": "d4 AAG四类；概率均值→argmax→class1；无TTA；原坐标nearest",
+      "status": "pilot8_verified_WSI_wrapper_not_accuracy_validated",
+      "enabled": true,
+      "agent_enabled": true,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS",
+        "SIL",
+        "TRI"
+      ],
+      "agent_stains": [
+        "HE",
+        "PAS"
+      ],
+      "input_forms": [
+        "patch",
+        "wsi"
+      ],
+      "target": "whole_glomerular_unit",
+      "scale_status": "源MPP→1.0 μm/px工作格；1024窗/512步长；非实测训练MPP",
+      "limitations": [
+        "六架构共享数据谱系；现代mmseg预处理与首轮SMP不同；硬化未独立分类；SIL/TRI小样本，仅研究调用；其余四架构WSI精度未验收"
+      ],
+      "training_sources": "七中心自建人肾活检158例；TMA87/mimickers71；train79/val26/test53；Cologne/Turin/Milan/Weill-Cornell/Mainz/Maastricht/Budapest",
+      "training_data_access": "源码和权重公开；完整训练图像及病例划分未核到公开入口，暂按非公开自建队列登记",
+      "training_overlap_status": "{\"Zenodo4299694\": \"所查材料未披露为训练来源；不是无重叠证明\", \"NEPTUNE_test20\": \"所查材料未披露为训练来源；不是无重叠证明\", \"HuBMAP_kidney8\": \"所查材料未披露为训练来源；不是无重叠证明\", \"hospital40\": \"所查材料未披露为训练来源；不是无重叠证明\", \"HuBMAP_HPA2022_PAS_pilot3\": \"精确训练成员表未知；所选VAN图块训练/患者重叠未排除，不当独立留出证明\", \"Athena_PAS_ROI3_20261107\": \"精确训练成员未知；3个提供ROI来自1张JPH1.svs；与训练患者/WSI重叠未排除；gloms人工来源未审定\"}",
+      "code_license": "GPL-3.0 (NePathTK author code)",
+      "weight_license": "Apache-2.0 (author HF card)"
+    },
+    {
+      "adapter": "nepath",
+      "model_id": "deeplabv3plus",
+      "aliases": [
+        "deeplabv3plus"
+      ],
+      "python": "/home/chenliangyu/miniconda3/envs/omni_seg/bin/python",
+      "source_dir": "/home/chenliangyu/project/new_agent/nepathtk_tools_20261105",
+      "checkpoint": "/home/chenliangyu/project/new_agent/nepathtk_tools_20261105/weights/deeplabv3plus_resnet34_d4.pt",
+      "checkpoint_sha256": "0c12f5aa3c6f13544ede7fe59a39926c0d14ea0dd1d604dfeee112800b380a1d",
+      "patch": 1024,
+      "stride": 512,
+      "target_mpp": 1.0,
+      "requires_mpp": true,
+      "timeout_seconds": 10800,
+      "extra_paths": [
+        "/home/chenliangyu/project/new_agent/tool_expansion_20261105/deps"
+      ],
+      "io_python": "/home/chenliangyu/miniconda3/envs/omni_seg/bin/python",
+      "id": "nepath_deeplabv3plus",
+      "name": "NePath deeplabv3plus",
+      "protocol": "d4 AAG四类；概率均值→argmax→class1；无TTA；原坐标nearest",
+      "status": "pilot8_verified_WSI_wrapper_not_accuracy_validated",
+      "enabled": true,
+      "agent_enabled": true,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS",
+        "SIL",
+        "TRI"
+      ],
+      "agent_stains": [
+        "HE",
+        "PAS"
+      ],
+      "input_forms": [
+        "patch",
+        "wsi"
+      ],
+      "target": "whole_glomerular_unit",
+      "scale_status": "源MPP→1.0 μm/px工作格；1024窗/512步长；非实测训练MPP",
+      "limitations": [
+        "六架构共享数据谱系；现代mmseg预处理与首轮SMP不同；硬化未独立分类；SIL/TRI小样本，仅研究调用；其余四架构WSI精度未验收"
+      ],
+      "training_sources": "七中心自建人肾活检158例；TMA87/mimickers71；train79/val26/test53；Cologne/Turin/Milan/Weill-Cornell/Mainz/Maastricht/Budapest",
+      "training_data_access": "源码和权重公开；完整训练图像及病例划分未核到公开入口，暂按非公开自建队列登记",
+      "training_overlap_status": "{\"Zenodo4299694\": \"所查材料未披露为训练来源；不是无重叠证明\", \"NEPTUNE_test20\": \"所查材料未披露为训练来源；不是无重叠证明\", \"HuBMAP_kidney8\": \"所查材料未披露为训练来源；不是无重叠证明\", \"hospital40\": \"所查材料未披露为训练来源；不是无重叠证明\", \"HuBMAP_HPA2022_PAS_pilot3\": \"精确训练成员表未知；所选VAN图块训练/患者重叠未排除，不当独立留出证明\", \"Athena_PAS_ROI3_20261107\": \"精确训练成员未知；3个提供ROI来自1张JPH1.svs；与训练患者/WSI重叠未排除；gloms人工来源未审定\"}",
+      "code_license": "GPL-3.0 (NePathTK author code)",
+      "weight_license": "Apache-2.0 (author HF card)"
+    },
+    {
+      "adapter": "nepath",
+      "model_id": "segformer_b5",
+      "aliases": [
+        "segformer_b5"
+      ],
+      "python": "/home/chenliangyu/miniconda3/envs/segformer/bin/python",
+      "source_dir": "/home/chenliangyu/project/new_agent/nepathtk_tools_20261105",
+      "checkpoint": "/home/chenliangyu/project/new_agent/nepathtk_tools_20261105/weights/segformer_b5.pth",
+      "checkpoint_sha256": "1fb44517a8d0136d97a71c0ea76bd6ab9db6597444e8b2e4da568d9cd705e53b",
+      "patch": 1024,
+      "stride": 512,
+      "target_mpp": 1.0,
+      "requires_mpp": true,
+      "timeout_seconds": 10800,
+      "extra_paths": [
+        "/home/chenliangyu/project/new_agent/strong_glomerulus_networks_20261105/deps"
+      ],
+      "config": "/home/chenliangyu/project/new_agent/nepathtk_tools_20261105/configs/segformer_mit-b5_8xb2-160k_kidney_1024x1024_d4.py",
+      "config_sha256": "f5c60bc65dd024da416fa8fd9d19f793c9910abf050522881a5a980165d6114e",
+      "io_python": "/home/chenliangyu/miniconda3/envs/omni_seg/bin/python",
+      "multiclass_export": true,
+      "semantic_class_names": [
+        "background",
+        "glomerulus",
+        "artery",
+        "arteriole"
+      ],
+      "id": "nepath_segformer_b5",
+      "name": "NePath segformer_b5",
+      "protocol": "d4 AAG四类；概率均值→argmax→class1；无TTA；原坐标nearest",
+      "status": "full126_verified",
+      "enabled": true,
+      "agent_enabled": true,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS",
+        "SIL",
+        "TRI"
+      ],
+      "agent_stains": [
+        "HE",
+        "PAS"
+      ],
+      "input_forms": [
+        "patch",
+        "wsi"
+      ],
+      "target": "whole_glomerular_unit",
+      "scale_status": "源MPP→1.0 μm/px工作格；1024窗/512步长；非实测训练MPP",
+      "limitations": [
+        "六架构共享数据谱系；现代mmseg预处理与首轮SMP不同；硬化未独立分类；SIL/TRI小样本，仅研究调用；其余四架构WSI精度未验收"
+      ],
+      "training_sources": "七中心自建人肾活检158例；TMA87/mimickers71；train79/val26/test53；Cologne/Turin/Milan/Weill-Cornell/Mainz/Maastricht/Budapest",
+      "training_data_access": "源码和权重公开；完整训练图像及病例划分未核到公开入口，暂按非公开自建队列登记",
+      "training_overlap_status": "{\"Zenodo4299694\": \"所查材料未披露为训练来源；不是无重叠证明\", \"NEPTUNE_test20\": \"所查材料未披露为训练来源；不是无重叠证明\", \"HuBMAP_kidney8\": \"所查材料未披露为训练来源；不是无重叠证明\", \"hospital40\": \"所查材料未披露为训练来源；不是无重叠证明\", \"HuBMAP_HPA2022_PAS_pilot3\": \"精确训练成员表未知；所选VAN图块训练/患者重叠未排除，不当独立留出证明\", \"Athena_PAS_ROI3_20261107\": \"精确训练成员未知；3个提供ROI来自1张JPH1.svs；与训练患者/WSI重叠未排除；gloms人工来源未审定\"}",
+      "code_license": "GPL-3.0 (NePathTK author code)",
+      "weight_license": "Apache-2.0 (author HF card)"
+    },
+    {
+      "adapter": "nepath",
+      "model_id": "mask2former_swint",
+      "aliases": [
+        "mask2former_swint"
+      ],
+      "python": "/home/chenliangyu/miniconda3/envs/segformer/bin/python",
+      "source_dir": "/home/chenliangyu/project/new_agent/nepathtk_tools_20261105",
+      "checkpoint": "/home/chenliangyu/project/new_agent/nepathtk_tools_20261105/weights/mask2former_swint.pth",
+      "checkpoint_sha256": "b4ba7fbb1927e7ac6ca1924586bb5ac10d7bd06668524d6752f22dcdc7e24902",
+      "patch": 1024,
+      "stride": 512,
+      "target_mpp": 1.0,
+      "requires_mpp": true,
+      "timeout_seconds": 10800,
+      "extra_paths": [
+        "/home/chenliangyu/project/new_agent/strong_glomerulus_networks_20261105/deps"
+      ],
+      "config": "/home/chenliangyu/project/new_agent/nepathtk_tools_20261105/configs/mask2former_swin-t_8xb2-160k_kidney-1024x1024_d4.py",
+      "config_sha256": "3c258ff08bfcdd2d3816706b8018d1ac3f553afb5929ea6ba6a89db205fca9b0",
+      "io_python": "/home/chenliangyu/miniconda3/envs/omni_seg/bin/python",
+      "id": "nepath_mask2former_swint",
+      "name": "NePath mask2former_swint",
+      "protocol": "d4 AAG四类；概率均值→argmax→class1；无TTA；原坐标nearest",
+      "status": "pilot8_verified_WSI_wrapper_not_accuracy_validated",
+      "enabled": true,
+      "agent_enabled": true,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS",
+        "SIL",
+        "TRI"
+      ],
+      "agent_stains": [
+        "HE",
+        "PAS"
+      ],
+      "input_forms": [
+        "patch",
+        "wsi"
+      ],
+      "target": "whole_glomerular_unit",
+      "scale_status": "源MPP→1.0 μm/px工作格；1024窗/512步长；非实测训练MPP",
+      "limitations": [
+        "六架构共享数据谱系；现代mmseg预处理与首轮SMP不同；硬化未独立分类；SIL/TRI小样本，仅研究调用；其余四架构WSI精度未验收"
+      ],
+      "training_sources": "七中心自建人肾活检158例；TMA87/mimickers71；train79/val26/test53；Cologne/Turin/Milan/Weill-Cornell/Mainz/Maastricht/Budapest",
+      "training_data_access": "源码和权重公开；完整训练图像及病例划分未核到公开入口，暂按非公开自建队列登记",
+      "training_overlap_status": "{\"Zenodo4299694\": \"所查材料未披露为训练来源；不是无重叠证明\", \"NEPTUNE_test20\": \"所查材料未披露为训练来源；不是无重叠证明\", \"HuBMAP_kidney8\": \"所查材料未披露为训练来源；不是无重叠证明\", \"hospital40\": \"所查材料未披露为训练来源；不是无重叠证明\", \"HuBMAP_HPA2022_PAS_pilot3\": \"精确训练成员表未知；所选VAN图块训练/患者重叠未排除，不当独立留出证明\", \"Athena_PAS_ROI3_20261107\": \"精确训练成员未知；3个提供ROI来自1张JPH1.svs；与训练患者/WSI重叠未排除；gloms人工来源未审定\"}",
+      "code_license": "GPL-3.0 (NePathTK author code)",
+      "weight_license": "Apache-2.0 (author HF card)"
+    },
+    {
+      "adapter": "nepath",
+      "model_id": "segnext_mscant",
+      "aliases": [
+        "segnext_mscant"
+      ],
+      "python": "/home/chenliangyu/miniconda3/envs/segformer/bin/python",
+      "source_dir": "/home/chenliangyu/project/new_agent/nepathtk_tools_20261105",
+      "checkpoint": "/home/chenliangyu/project/new_agent/nepathtk_tools_20261105/weights/segnext_mscant.pth",
+      "checkpoint_sha256": "bb5a8a5939930a984fd03b9372bd7405ad0b6e63d60a6f165cf2aaf21212ccef",
+      "patch": 1024,
+      "stride": 512,
+      "target_mpp": 1.0,
+      "requires_mpp": true,
+      "timeout_seconds": 10800,
+      "extra_paths": [
+        "/home/chenliangyu/project/new_agent/strong_glomerulus_networks_20261105/deps"
+      ],
+      "config": "/home/chenliangyu/project/new_agent/nepathtk_tools_20261105/configs/segnext_mscan-t_1xb16-adamw-160k_kidney-1024x1024_d4.py",
+      "config_sha256": "0bed81d2748e516a117f995d2320ca3a98983c2ad76cb93743c146f5d127a51b",
+      "io_python": "/home/chenliangyu/miniconda3/envs/omni_seg/bin/python",
+      "id": "nepath_segnext_mscant",
+      "name": "NePath segnext_mscant",
+      "protocol": "d4 AAG四类；概率均值→argmax→class1；无TTA；原坐标nearest",
+      "status": "full126_verified",
+      "enabled": true,
+      "agent_enabled": true,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS",
+        "SIL",
+        "TRI"
+      ],
+      "agent_stains": [
+        "HE",
+        "PAS"
+      ],
+      "input_forms": [
+        "patch",
+        "wsi"
+      ],
+      "target": "whole_glomerular_unit",
+      "scale_status": "源MPP→1.0 μm/px工作格；1024窗/512步长；非实测训练MPP",
+      "limitations": [
+        "六架构共享数据谱系；现代mmseg预处理与首轮SMP不同；硬化未独立分类；推理NMF rand_init=True，顺序/续跑影响输出，单tile复现审计通过；SIL/TRI小样本，仅研究调用；其余四架构WSI精度未验收"
+      ],
+      "training_sources": "七中心自建人肾活检158例；TMA87/mimickers71；train79/val26/test53；Cologne/Turin/Milan/Weill-Cornell/Mainz/Maastricht/Budapest",
+      "training_data_access": "源码和权重公开；完整训练图像及病例划分未核到公开入口，暂按非公开自建队列登记",
+      "training_overlap_status": "{\"Zenodo4299694\": \"所查材料未披露为训练来源；不是无重叠证明\", \"NEPTUNE_test20\": \"所查材料未披露为训练来源；不是无重叠证明\", \"HuBMAP_kidney8\": \"所查材料未披露为训练来源；不是无重叠证明\", \"hospital40\": \"所查材料未披露为训练来源；不是无重叠证明\", \"HuBMAP_HPA2022_PAS_pilot3\": \"精确训练成员表未知；所选VAN图块训练/患者重叠未排除，不当独立留出证明\", \"Athena_PAS_ROI3_20261107\": \"精确训练成员未知；3个提供ROI来自1张JPH1.svs；与训练患者/WSI重叠未排除；gloms人工来源未审定\"}",
+      "code_license": "GPL-3.0 (NePathTK author code)",
+      "weight_license": "Apache-2.0 (author HF card)"
+    },
+    {
+      "adapter": "qupath",
+      "python": "/home/chenliangyu/miniconda3/envs/omni_seg/bin/python",
+      "source_dir": "/home/chenliangyu/project/new_agent/tool_expansion_20261105",
+      "checkpoint": "/home/chenliangyu/project/new_agent/tool_expansion_20261105/vendor/Code_to_Michael/checkpoint/best_metric_model_segmentation2d_array.pth",
+      "checkpoint_sha256": "36e2216c5939e3463ad9fb224228b05f7d40cebc26900303087c2b5305e7d781",
+      "requires_mpp": true,
+      "required_native_mpp": 0.5,
+      "extra_paths": [
+        "/home/chenliangyu/project/new_agent/tool_expansion_20261105/deps"
+      ],
+      "id": "qupath_monai",
+      "name": "qupath_monai",
+      "protocol": "2048窗→512 nearest；ScaleIntensity；空间转置还原；sigmoid概率均值≥0.5",
+      "status": "research_only_pilot8_scale_unknown",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "whole_glomerular_unit",
+      "scale_status": "仅保持已测0.5原生工作格；训练MPP未知；不适配未知倍率",
+      "limitations": [
+        "患者级重叠未排除"
+      ],
+      "training_sources": "该zip具体checkpoint的训练数据名称/病例划分未知",
+      "training_data_access": "未知，不等同于已确认私有",
+      "training_overlap_status": "{\"Zenodo4299694\": \"未知；缺精确训练成员\", \"NEPTUNE_test20\": \"未知；缺精确训练成员\", \"HuBMAP_kidney8\": \"未知；缺精确训练成员\", \"hospital40\": \"未知；缺精确训练成员\", \"HuBMAP_HPA2022_PAS_pilot3\": \"精确训练成员表未知；所选VAN图块训练/患者重叠未排除，不当独立留出证明\"}",
+      "code_license": "MIT",
+      "weight_license": "未单独声明"
+    },
+    {
+      "adapter": "likiseg",
+      "python": "/home/chenliangyu/miniconda3/envs/omni_seg/bin/python",
+      "source_dir": "/home/chenliangyu/project/new_agent/tool_expansion_20261105",
+      "checkpoint": "/home/chenliangyu/project/new_agent/tool_expansion_20261105/vendor/LiKiSeg/Dataset333_MECA_HE_SR_glu_light/nnUNetTrainer__nnUNetPlans__2d/fold_0/checkpoint_final.pth",
+      "checkpoint_sha256": "b82b46e1f5089d4a9b3faaf408438b26ab14c46a76b464535141bf88fa0b28e0",
+      "requires_mpp": true,
+      "required_native_mpp": 0.5,
+      "extra_paths": [
+        "/home/chenliangyu/project/new_agent/tool_expansion_20261105/deps_nnunet"
+      ],
+      "model_folder": "/home/chenliangyu/project/new_agent/tool_expansion_20261105/vendor/LiKiSeg/Dataset333_MECA_HE_SR_glu_light/nnUNetTrainer__nnUNetPlans__2d",
+      "environment": {
+        "nnUNet_compile": "false"
+      },
+      "id": "likiseg333_light",
+      "name": "likiseg333_light",
+      "protocol": "512滑窗；Gaussian；per-image ZScore；fold0；无镜像TTA；class2为球",
+      "status": "research_only_pilot8_scale_unknown",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human",
+        "mouse"
+      ],
+      "stains": [
+        "HE",
+        "PAS",
+        "MECA32",
+        "SIRIUSRED"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "whole_glomerular_unit",
+      "scale_status": "仅保持已测0.5原生工作格；训练MPP未知；不适配未知倍率",
+      "limitations": [
+        "患者级重叠未排除；独立原图脚本重放也有12/15743528像素漂移；GPU数值非位级稳定，工程验收以差异比例≤1e-5且mask一致性Dice≥.9999为界"
+      ],
+      "training_sources": "鼠肾QP_MECA32_HE_SR，HE/MECA32/SiriusRed；dataset.json numTraining=87条目，非患者数",
+      "training_data_access": "权重Zenodo公开；完整原始训练集及患者划分未核到公开包",
+      "training_overlap_status": "{\"Zenodo4299694\": \"所查材料未披露为训练来源；不是无重叠证明\", \"NEPTUNE_test20\": \"所查材料未披露为训练来源；不是无重叠证明\", \"HuBMAP_kidney8\": \"所查材料未披露为训练来源；不是无重叠证明\", \"hospital40\": \"所查材料未披露为训练来源；不是无重叠证明\", \"HuBMAP_HPA2022_PAS_pilot3\": \"精确训练成员表未知；所选VAN图块训练/患者重叠未排除，不当独立留出证明\"}",
+      "code_license": "GPL-3.0",
+      "weight_license": "CC-BY-4.0"
+    },
+    {
+      "adapter": "object_evidence",
+      "model_kind": "hats_cap_probe",
+      "python": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/candidate_classifier_20261108/venv/bin/python",
+      "checkpoint": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/domain_tools_execution_20261109/weights/EfficientSAM_dynamichead_logits_HATs_15class.pth",
+      "source_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/domain_tools_execution_20261109/vendor/HATs",
+      "output_semantics": "foreground probability + proposed local mask + TTA evidence; review only",
+      "timeout_seconds": 7200,
+      "id": "hats_efficientsam",
+      "name": "hats_efficientsam",
+      "protocol": "CAP task7 token0 experimental1024um FOV->512; four flip TTA; no edits",
+      "status": "research_probe_scale_token_unresolved",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS",
+        "SIL",
+        "TRI"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "whole_glomerular_unit",
+      "scale_status": "paper CAP 2um/px nominal; experimental1024um->512; source0.5 assumed not measured; scale token0 mapping unknown",
+      "limitations": [
+        "与Omni/PrPSeg共享谱系；权重独立许可和具体发布模型未核；无硬化头; scale token mapping unknown; token0 is an experimental probe, not author protocol reproduction; probabilities are not calibrated identity; no automatic edits"
+      ],
+      "training_sources": "NEPTUNE/KI125患者459WSI1751ROI＋HuBMAP2023血管5WSI＋自建肾切除PAS138WSI（细胞17WSI为子集）；论文患者级6:1:3",
+      "training_data_access": "混合公开来源与未核到完整公开包的自建数据；精确训练manifest未获得",
+      "training_overlap_status": "{\"Zenodo4299694\": \"所查材料未披露为训练来源；不是无重叠证明\", \"NEPTUNE_test20\": \"确认同来源；具体训练患者/WSI重叠未排除\", \"HuBMAP_kidney8\": \"确认训练含HuBMAP2023血管数据5WSI；与2021肾小球8WSI的供者/切片重叠未知\", \"hospital40\": \"所查材料未披露为训练来源；不是无重叠证明\"}",
+      "code_license": "GPL-2.0 author repository; see saved license",
+      "weight_license": "未核"
+    },
+    {
+      "id": "prpseg",
+      "name": "prpseg",
+      "protocol": "task_id＋scale_id",
+      "status": "loads_but_task_protocol_unresolved",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "待核"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "whole_glomerular_unit",
+      "scale_status": "需按任务/尺度表配对",
+      "limitations": [
+        "患者级重叠未排除"
+      ],
+      "training_sources": "本轮只确认HATs仓库包含PrPSeg分支；具体发布checkpoint的训练集合未核清，不从HATs自动继承",
+      "training_data_access": "训练集与具体权重配对未知",
+      "training_overlap_status": "{\"Zenodo4299694\": \"未知；缺精确训练成员\", \"NEPTUNE_test20\": \"同谱系提示可能使用KI；具体发布checkpoint训练来源尚未核实，不能确认为同来源\", \"HuBMAP_kidney8\": \"未知；缺精确训练成员\", \"hospital40\": \"未知；缺精确训练成员\"}",
+      "code_license": "未核",
+      "weight_license": "未核"
+    },
+    {
+      "id": "mori_seg_paused",
+      "name": "mori_seg_paused",
+      "protocol": "类别CAP；不需点/框，生产图像索引不能含GT",
+      "status": "paused_by_user",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "待核"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "whole_glomerular_unit",
+      "scale_status": "CAP10×；PTC40×；原文未给出可通用于所有扫描仪的实测MPP",
+      "limitations": [
+        "KPMP标签明确non-globally-sclerotic glomeruli；不能承诺全局硬化检出"
+      ],
+      "training_sources": "KI/Jayapandian的NEPTUNE数据；8:2 train/val；KPMP仅外评（385 PAS WSI中66完整标注WSI），不参与训练",
+      "training_data_access": "KI有公开发布来源；患者级开放/8:2具体划分和checkpoint成员未核",
+      "training_overlap_status": "{\"Zenodo4299694\": \"所查材料未披露为训练来源；不是无重叠证明\", \"NEPTUNE_test20\": \"确认同来源；具体训练患者/WSI重叠未排除\", \"HuBMAP_kidney8\": \"所查材料未披露为训练来源；不是无重叠证明\", \"hospital40\": \"所查材料未披露为训练来源；不是无重叠证明\"}",
+      "code_license": "未核",
+      "weight_license": "未核"
+    },
+    {
+      "id": "hula_unpaired",
+      "name": "hula_unpaired",
+      "protocol": "需配置/权重配对",
+      "status": "not_inference_accepted",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "待核"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "whole_glomerular_unit",
+      "scale_status": "物理MPP未知",
+      "limitations": [
+        "HF卡Apache-2.0；上传年份不是论文年份"
+      ],
+      "training_sources": "配置指向HULA_compartment（Glomerulus/Arteriole/Artery）；不能由配置证明每个pth实际训练集",
+      "training_data_access": "训练原图、发布论文、划分未知",
+      "training_overlap_status": "{\"Zenodo4299694\": \"未知；缺精确训练成员\", \"NEPTUNE_test20\": \"未知；缺精确训练成员\", \"HuBMAP_kidney8\": \"未知；缺精确训练成员\", \"hospital40\": \"未知；缺精确训练成员\"}",
+      "code_license": "未核",
+      "weight_license": "未核"
+    },
+    {
+      "adapter": "mescnn",
+      "python": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/sclerosis_focus_20261114/specialist_venv/bin/python",
+      "checkpoint": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/sclerosis_focus_20261114/specialist_assets/mescnn_cascade_r50_internal_model_final.pth",
+      "checkpoint_sha256": "007181ac33b5a4a0e6f13d5d6dfef9ee06a45fa0e8d33494ff7c885f98d812d4",
+      "source_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/sclerosis_focus_20261114/specialist_assets/MESCnn-284e83781ae8e83a1362d896c2ea11fa95f82a9e",
+      "requires_mpp": true,
+      "timeout_seconds": 7200,
+      "id": "mescnn_cascade_r50",
+      "name": "mescnn_cascade_r50",
+      "protocol": "选择准确的训练划分版本；无点/框",
+      "status": "research_prepared10x80_tested_no_sclerosis_rescue_negative_gain",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "whole_glomerular_unit",
+      "scale_status": "作者tile默认10x；本轮SVS AppMag20/40原生4096窗缩至2048/1024；原生MPP留档；精确作者物理尺度未知",
+      "limitations": [
+        "all-training明确合并作者train/test/extval，不能用其在作者外测上称独立验证；硬化分类与发现漏球分开；单球类实例mask，Oxford分类不证明硬化检出；all-training合并作者外测；小球面积过滤需审计"
+      ],
+      "training_sources": "IgA临床队列，完整训练来源/开放性待核；有internal-validation/external-validation/all-training版本",
+      "training_data_access": "公开模型与demo；完整临床训练数据未核清",
+      "training_overlap_status": "{\"Zenodo4299694\": \"未知；缺精确训练成员\", \"NEPTUNE_test20\": \"未知；缺精确训练成员\", \"HuBMAP_kidney8\": \"未知；缺精确训练成员\", \"hospital40\": \"未知；缺精确训练成员\"}",
+      "code_license": "GPL-3.0（作者仓库）；Detectron2 Apache-2.0",
+      "weight_license": "未核"
+    },
+    {
+      "id": "mescnn_mask_r101",
+      "name": "mescnn_mask_r101",
+      "protocol": "选择准确的训练划分版本；无点/框",
+      "status": "not_inference_accepted",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "待核"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "whole_glomerular_unit",
+      "scale_status": "作者tile默认10x；源4096窗/2048步长；具体MPP未知，Detectron2 resize/回映待图像联验",
+      "limitations": [
+        "all-training明确合并作者train/test/extval，不能用其在作者外测上称独立验证；硬化分类与发现漏球分开；单球类实例mask，Oxford分类不证明硬化检出；all-training合并作者外测；小球面积过滤需审计"
+      ],
+      "training_sources": "IgA临床队列，完整训练来源/开放性待核；有internal-validation/external-validation/all-training版本",
+      "training_data_access": "公开模型与demo；完整临床训练数据未核清",
+      "training_overlap_status": "{\"Zenodo4299694\": \"未知；缺精确训练成员\", \"NEPTUNE_test20\": \"未知；缺精确训练成员\", \"HuBMAP_kidney8\": \"未知；缺精确训练成员\", \"hospital40\": \"未知；缺精确训练成员\"}",
+      "code_license": "未核",
+      "weight_license": "未核"
+    },
+    {
+      "id": "glo_gs_head_component",
+      "name": "glo_gs_head_component",
+      "protocol": "候选中心256μm→512原生RGB/255；15个共享模型数字任务响应；不修改原融合、不视为独立专家",
+      "status": "component_not_standalone_tool",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "待核"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "whole_glomerular_unit",
+      "scale_status": "任务/物种/尺度按已核实版本映射",
+      "limitations": [
+        "原GS task2命名缺逐项原始语义确认，本轮只以数字通道评价；共享模型，不是独立验收；单个头病理结构正确性未验证"
+      ],
+      "training_sources": "KPMP＋人/鼠人工标注；部分VUMC私有；368WSI/23529patch（KPMP6586patch）",
+      "training_data_access": "公开来源＋私有混合；训练manifest未知",
+      "training_overlap_status": "{\"Zenodo4299694\": \"所查材料未披露为训练来源；不是无重叠证明\", \"NEPTUNE_test20\": \"所查材料未披露为训练来源；不是无重叠证明\", \"HuBMAP_kidney8\": \"KPMP为训练来源，但不是HuBMAP同义词；供者/切片关系未知\", \"hospital40\": \"所查材料未披露为训练来源；不是无重叠证明\"}",
+      "code_license": "未核",
+      "weight_license": "未核"
+    },
+    {
+      "id": "glo_circlenet5_component",
+      "name": "glo_circlenet5_component",
+      "protocol": "无GT候选框",
+      "status": "component_not_standalone_tool",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "待核"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "whole_glomerular_unit",
+      "scale_status": "按定位器物理尺度工具卡",
+      "limitations": [
+        "不能使用v2分割头训练来源描述这5个权重"
+      ],
+      "training_sources": "继承原Glo定位器；现用5checkpoint精确训练队列未知",
+      "training_data_access": "未知",
+      "training_overlap_status": "{\"Zenodo4299694\": \"未知；缺精确训练成员\", \"NEPTUNE_test20\": \"未知；缺精确训练成员\", \"HuBMAP_kidney8\": \"未知；缺精确训练成员\", \"hospital40\": \"未知；缺精确训练成员\"}",
+      "code_license": "未核",
+      "weight_license": "未核"
+    },
+    {
+      "id": "sarder_multicompartment",
+      "name": "sarder_multicompartment",
+      "protocol": "正常/全局硬化独立类",
+      "status": "not_inference_accepted",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "待核"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "whole_glomerular_unit",
+      "scale_status": "论文训练1200/预测2048窗、预测10%重叠，无resize；具体训练MPP未知",
+      "limitations": [
+        "患者级重叠未排除"
+      ],
+      "training_sources": "论文190WSI/子WSI，含DN/LN/移植/参考肾，PAS及少量HE/SIL/TRI；精确checkpoint成员未知",
+      "training_data_access": "未知",
+      "training_overlap_status": "{\"Zenodo4299694\": \"未知；缺精确训练成员\", \"NEPTUNE_test20\": \"未知；缺精确训练成员\", \"HuBMAP_kidney8\": \"未知；缺精确训练成员\", \"hospital40\": \"未知；缺精确训练成员\"}",
+      "code_license": "未核",
+      "weight_license": "未核"
+    },
+    {
+      "id": "omni_cap_matrix_original",
+      "name": "OmniCAP 原大表配方",
+      "protocol": "原大表variant及portable_mask_path冻结配方",
+      "status": "frozen_recipe_reference_only",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS",
+        "SIL",
+        "TRI"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "whole_glomerular_unit",
+      "scale_status": "CAP5×/标称2 μm/px，按工具卡适配",
+      "limitations": [
+        "来源复用既有training_provenance_ledger.json"
+      ],
+      "training_sources": "NEPTUNE/Jayapandian KI；125患者/459WSI/1751ROI，原论文患者级6:1:3",
+      "training_data_access": "有公开KI发布来源，精确checkpoint训练manifest未知",
+      "training_overlap_status": "{\"Zenodo4299694\": \"所查材料未披露为训练来源；不是无重叠证明\", \"NEPTUNE_test20\": \"确认同来源；具体训练患者/WSI重叠未排除\", \"HuBMAP_kidney8\": \"所查材料未披露为训练来源；不是无重叠证明\", \"hospital40\": \"所查材料未披露为训练来源；不是无重叠证明\"}",
+      "code_license": "未核",
+      "weight_license": "未核"
+    },
+    {
+      "id": "omni_outer_unanimity_frozen",
+      "name": "Omni 外层全票冻结配方",
+      "protocol": "外层全票；仅复用冻结结果，未作为通用新任务执行器",
+      "status": "frozen_recipe_reference_only",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS",
+        "SIL",
+        "TRI"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "whole_glomerular_unit",
+      "scale_status": "CAP5×/标称2 μm/px，按工具卡适配",
+      "limitations": [
+        "来源复用既有training_provenance_ledger.json"
+      ],
+      "training_sources": "NEPTUNE/Jayapandian KI；125患者/459WSI/1751ROI，原论文患者级6:1:3",
+      "training_data_access": "有公开KI发布来源，精确checkpoint训练manifest未知",
+      "training_overlap_status": "{\"Zenodo4299694\": \"所查材料未披露为训练来源；不是无重叠证明\", \"NEPTUNE_test20\": \"确认同来源；具体训练患者/WSI重叠未排除\", \"HuBMAP_kidney8\": \"所查材料未披露为训练来源；不是无重叠证明\", \"hospital40\": \"所查材料未披露为训练来源；不是无重叠证明\"}",
+      "code_license": "未核",
+      "weight_license": "未核"
+    },
+    {
+      "id": "glo2_self_matrix_frozen",
+      "name": "Glo 自身定位大表冻结配方",
+      "protocol": "大表recipe=glo2_self；追溯variant=glo2_self05等；保持五定位内部融合不变",
+      "status": "frozen_recipe_reference_only",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS",
+        "SIL",
+        "TRI"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch",
+        "wsi"
+      ],
+      "target": "whole_glomerular_unit",
+      "scale_status": "按来源冻结协议；WSI虚拟0.5裁球网格；不同于原始MPP分档接口",
+      "limitations": [
+        "冻结成绩引用行；未作为通用任务接口；不同来源的具体尺度/裁图以逐图variant和收据为准"
+      ],
+      "training_sources": "KPMP＋人/鼠人工标注；部分VUMC私有；368WSI/23529patch（KPMP6586patch）",
+      "training_data_access": "公开来源＋私有混合；训练manifest未知",
+      "training_overlap_status": "{\"Zenodo4299694\": \"所查材料未披露为训练来源；不是无重叠证明\", \"NEPTUNE_test20\": \"所查材料未披露为训练来源；不是无重叠证明\", \"HuBMAP_kidney8\": \"KPMP为训练来源，但不是HuBMAP同义词；供者/切片关系未知\", \"hospital40\": \"所查材料未披露为训练来源；不是无重叠证明\"}",
+      "code_license": "未核",
+      "weight_license": "未核"
+    },
+    {
+      "id": "glo2_wsi_virtual05",
+      "protocol_id": "glo2_single",
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS",
+        "SIL",
+        "TRI"
+      ],
+      "species_stains": {
+        "human": [
+          "HE",
+          "PAS",
+          "SIL",
+          "TRI"
+        ]
+      },
+      "target": "whole_glomerular_unit",
+      "input_forms": [
+        "wsi"
+      ],
+      "python": "/home/chenliangyu/miniconda3/envs/omni_seg/bin/python",
+      "source_dir": "/home/chenliangyu/project/new_agent/tools_network/Glo-In-One_v2_runtime_20261101/Glo-In-One_v2",
+      "checkpoint": "/home/chenliangyu/project/new_agent/tools_network/Glo-In-One_v2_runtime_20261101/Glo-In-One_v2/Segmentation_v2/weights/Glo_v2_segmentation_model.pth",
+      "detector_checkpoints": [
+        "/home/chenliangyu/project/new_agent/tools_network/Glo-In-One_v2_runtime_20261101/Glo-In-One_v2/Detection_v2/author_ensemble/model1_best.pth",
+        "/home/chenliangyu/project/new_agent/tools_network/Glo-In-One_v2_runtime_20261101/Glo-In-One_v2/Detection_v2/author_ensemble/model2_best.pth",
+        "/home/chenliangyu/project/new_agent/tools_network/Glo-In-One_v2_runtime_20261101/Glo-In-One_v2/Detection_v2/author_ensemble/model3_best.pth",
+        "/home/chenliangyu/project/new_agent/tools_network/Glo-In-One_v2_runtime_20261101/Glo-In-One_v2/Detection_v2/author_ensemble/model4_best.pth",
+        "/home/chenliangyu/project/new_agent/tools_network/Glo-In-One_v2_runtime_20261101/Glo-In-One_v2/Detection_v2/author_ensemble/model5_best.pth"
+      ],
+      "status": "audited_existing_adapter_unified_WSI_acceptance",
+      "dataset_support": [
+        "neptune2021:8 reused development patches; nominal MPP; 2 per stain HE/PAS/SIL/TRI",
+        "hospital:1 labeled HE ROI missed; 1 different complete HE WSI execution only",
+        "glo2_author_demo:1 complete PAS WSI execution only; no GT"
+      ],
+      "protocol": "复用已冻结NativeReader＋glo2；WSI crop_size=round(256/source_mpp)；无需外部定位",
+      "target_mpp": null,
+      "scale_status": "原图MPP检测；虚拟0.5裁球网格，约256μm视野→512；保留内部融合",
+      "detector_mpp": 4.040058449074074,
+      "detector_mean_bgr": [
+        0.408,
+        0.447,
+        0.47
+      ],
+      "detector_std_bgr": [
+        0.289,
+        0.274,
+        0.278
+      ],
+      "segmentation_task": 10,
+      "segmentation_scale_id": 0,
+      "max_detection_tiles": 2000,
+      "max_glomeruli": 5000,
+      "max_seconds": 3600,
+      "precondition": "RGB patch with current pixel MPP; or WSI with measured isotropic OpenSlide MPP; complete context may be clipped and is reported",
+      "limitations": [
+        "同一Glo权重的另一裁球配方，不计独立模型来源；虚拟尺度未证明对所有设备最优；Agent仅HE/PAS"
+      ],
+      "source_url": "https://github.com/hrlblab/Glo-In-One_v2",
+      "asset_receipt": "glo2_integration_20261101/author_container_recovery.json",
+      "adapter": "glo_matrix",
+      "checkpoint_sha256": "c7a042638cd44fa44533e6ab621cc19b4bf60cfcf620fda9e8e12cbd5ae7d3b5",
+      "detector_checkpoint_sha256": {
+        "/home/chenliangyu/project/new_agent/tools_network/Glo-In-One_v2_runtime_20261101/Glo-In-One_v2/Detection_v2/author_ensemble/model1_best.pth": "bbdc0a2d6d04eda4fbf7c76041ac980169d8f33e5c8e02c81414b5e78e176003",
+        "/home/chenliangyu/project/new_agent/tools_network/Glo-In-One_v2_runtime_20261101/Glo-In-One_v2/Detection_v2/author_ensemble/model2_best.pth": "8b543447c1b927d62dff61886a6978e03368a98ed55c3c4bc24111dea9a7286e",
+        "/home/chenliangyu/project/new_agent/tools_network/Glo-In-One_v2_runtime_20261101/Glo-In-One_v2/Detection_v2/author_ensemble/model3_best.pth": "f64310f76ed03e607ba4439b35ad732fb1f702fd35b5d15317e6c324516930ca",
+        "/home/chenliangyu/project/new_agent/tools_network/Glo-In-One_v2_runtime_20261101/Glo-In-One_v2/Detection_v2/author_ensemble/model4_best.pth": "17b931cb0c731ad5ab22b639b975bd0dc187631c1050a01adf3b641e7f617fe2",
+        "/home/chenliangyu/project/new_agent/tools_network/Glo-In-One_v2_runtime_20261101/Glo-In-One_v2/Detection_v2/author_ensemble/model5_best.pth": "e2e112becdfb3f5ccfa6c490ebab94bdb3d8306a1368941962f65a1895814765"
+      },
+      "requires_mpp": true,
+      "matrix_adapter": "/home/chenliangyu/project/new_agent/zenodo_hubmap_matrix_20261101_v2/adapters.py",
+      "name": "Glo WSI虚拟0.5裁球配方",
+      "enabled": true,
+      "agent_enabled": true,
+      "agent_stains": [
+        "HE",
+        "PAS"
+      ],
+      "training_sources": "KPMP＋人/鼠人工标注；部分VUMC私有；368WSI/23529patch（KPMP6586patch）",
+      "training_data_access": "公开来源＋私有混合；训练manifest未知",
+      "training_overlap_status": "{\"Zenodo4299694\": \"所查材料未披露为训练来源；不是无重叠证明\", \"NEPTUNE_test20\": \"所查材料未披露为训练来源；不是无重叠证明\", \"HuBMAP_kidney8\": \"KPMP为训练来源，但不是HuBMAP同义词；供者/切片关系未知\", \"hospital40\": \"所查材料未披露为训练来源；不是无重叠证明\"}",
+      "code_license": "未核",
+      "weight_license": "未核"
+    },
+    {
+      "adapter": "candidate_view",
+      "python": "C:/Users/chenl/miniconda3/envs/sam/python.exe",
+      "source_dir": "C:\\Users\\chenl\\Desktop\\课题创建中\\glomerulus_tools",
+      "required_assets": [
+        "C:\\Users\\chenl\\Desktop\\课题创建中\\glomerulus_tools\\candidate_views.py",
+        "C:\\Users\\chenl\\Desktop\\课题创建中\\glomerulus_tools\\visual_reader.py"
+      ],
+      "entrypoint": "python -m glomerulus_tools crop",
+      "model": "none",
+      "id": "candidate_crop_v1",
+      "name": "候选原图/精确支持轮廓/上下文/原生细节",
+      "protocol": "visual_specialist_v1_identity_only",
+      "status": "research_prototype_not_accuracy_validated",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "candidate_bundle"
+      ],
+      "target": "candidate_identity_reading",
+      "scale_status": "保留源像素；MPP沿用输入依据，不自动测量",
+      "limitations": [
+        "身份不等于轮廓正确；同模型另设角色不是独立验证器；HE/PAS限定；研究入口需--research"
+      ],
+      "training_sources": "裁图无需训练；视觉模型训练来源与病理成员未知",
+      "training_data_access": "API模型无精确训练成员清单",
+      "training_overlap_status": "未知；不得当作独立无重叠病理验证",
+      "code_license": "project local code",
+      "weight_license": "API terms; model weights unavailable"
+    },
+    {
+      "adapter": "visual_reader",
+      "python": "C:/Users/chenl/miniconda3/envs/sam/python.exe",
+      "source_dir": "C:\\Users\\chenl\\Desktop\\课题创建中\\glomerulus_tools",
+      "required_assets": [
+        "C:\\Users\\chenl\\Desktop\\课题创建中\\glomerulus_tools\\candidate_views.py",
+        "C:\\Users\\chenl\\Desktop\\课题创建中\\glomerulus_tools\\visual_reader.py",
+        "C:\\Users\\chenl\\Desktop\\课题创建中\\glomerulus_tools\\vlm_jpeg.py"
+      ],
+      "entrypoint": "python -m glomerulus_tools review",
+      "model": "qwen3.8-flash",
+      "id": "visual_reader_v1",
+      "name": "专职候选读图Agent（研究原型）",
+      "protocol": "visual_specialist_v1_identity_only",
+      "status": "research_prototype_not_accuracy_validated",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "candidate_bundle"
+      ],
+      "target": "candidate_identity_reading",
+      "scale_status": "保留源像素；MPP沿用输入依据，不自动测量",
+      "limitations": [
+        "身份不等于轮廓正确；同模型另设角色不是独立验证器；HE/PAS限定；研究入口需--research"
+      ],
+      "training_sources": "裁图无需训练；视觉模型训练来源与病理成员未知",
+      "training_data_access": "API模型无精确训练成员清单",
+      "training_overlap_status": "未知；不得当作独立无重叠病理验证",
+      "code_license": "project local code",
+      "weight_license": "API terms; model weights unavailable"
+    },
+    {
+      "adapter": "candidate_classifier",
+      "model_kind": "glo5",
+      "output_schema": "glomerulus_candidate_classification_v1",
+      "python": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/candidate_classifier_20261108/venv/bin/python",
+      "checkpoint": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/candidate_classifier_20261108/assets/glo5/classifier_model.pth.tar",
+      "checkpoint_sha256": "f27ab0b702c42091301cd96f6a8f5de18e948b5df78abd6d05b121b4ce00ac36",
+      "model_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/candidate_classifier_20261108/assets/glo5",
+      "source_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/candidate_classifier_20261108/classification",
+      "timeout_seconds": 3600,
+      "model_mpp": null,
+      "physical_fov_um": null,
+      "input_pixels": [
+        224,
+        224
+      ],
+      "entrypoint": "python -m glomerulus_tools classify",
+      "author_training_scale": {
+        "source_mpp": 0.25,
+        "source_crop_pixels": [
+          512,
+          512
+        ],
+        "physical_fov_um": [
+          128,
+          128
+        ],
+        "training_pixels": [
+          256,
+          256
+        ],
+        "released_inference_pixels": [
+          224,
+          224
+        ],
+        "evidence": "arxiv2202.00087 SectionV.A; released author classifier code",
+        "strict_training_fov_reproduced": false
+      },
+      "id": "glo5_pas_identity",
+      "name": "Glo-In-One original five-class BiT",
+      "protocol": "candidate_identity_v1_fixed_no_finetune",
+      "status": "research_executable_identity_not_expert_validated",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "PAS"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "candidate_batch"
+      ],
+      "target": "candidate_identity",
+      "scale_status": "paper source0.25um/px;512px crop=128um then256px; released inference224px; this recipe uses variable candidate bbox+50 nativepx",
+      "limitations": [
+        "research only; proxy labels not expert identity; score uncalibrated; identity never authorizes mask edit; unknown patient overlap; training128um FOV newly verified after predictions; current variable crop is a deployment-recipe test, not strict training-FOV reproduction; no HE claim; B_ONLY means no SegFormer pixels in union component,not GT absence; proxy is support GT fraction>=10%,not IoU0.5; possible missing GT/neighbor glomeruli; see diagnostic report"
+      ],
+      "training_sources": "Lu JMI2022 DOI10.1117/1.jmi.9.1.014005: human PAS;11462 glomeruli+10619 pathologist-reviewed CircleNet hard negatives; released checkpoint exact fold/membership unknown",
+      "training_data_access": "public weights; exact training membership unknown",
+      "training_overlap_status": "unknown; exposed Zenodo development cohort",
+      "code_license": "Apache-2.0",
+      "weight_license": "Apache-2.0 source; checkpoint separate license unknown"
+    },
+    {
+      "adapter": "candidate_classifier",
+      "model_kind": "plip",
+      "output_schema": "glomerulus_candidate_classification_v1",
+      "python": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/candidate_classifier_20261108/venv/bin/python",
+      "checkpoint": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/candidate_classifier_20261108/assets/plip/pytorch_model.bin",
+      "checkpoint_sha256": "98a7f8d2a1f4a8fc8f6dedb3a16ff7efbe02a7ef67c93904c80bca9767c69630",
+      "model_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/candidate_classifier_20261108/assets/plip",
+      "source_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/candidate_classifier_20261108/assets/plip",
+      "timeout_seconds": 3600,
+      "model_mpp": null,
+      "physical_fov_um": null,
+      "input_pixels": [
+        224,
+        224
+      ],
+      "entrypoint": "python -m glomerulus_tools classify",
+      "id": "plip_candidate_identity",
+      "name": "PLIP zero-shot candidate identity",
+      "protocol": "candidate_identity_v1_fixed_no_finetune",
+      "status": "research_executable_identity_not_expert_validated",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "candidate_batch"
+      ],
+      "target": "candidate_identity",
+      "scale_status": "model MPP and physical FOV unknown;224pixel input; candidate-dependent source crop",
+      "limitations": [
+        "research only; proxy labels not expert identity; score uncalibrated; identity never authorizes mask edit; unknown patient overlap; B_ONLY means no SegFormer pixels in union component,not GT absence; proxy is support GT fraction>=10%,not IoU0.5; possible missing GT/neighbor glomeruli; see diagnostic report"
+      ],
+      "training_sources": "OpenPath208414 pathology image-caption pairs from medical Twitter; exact training image/patient membership unknown",
+      "training_data_access": "public weights; exact training membership unknown",
+      "training_overlap_status": "unknown; exposed Zenodo development cohort",
+      "code_license": "see archived author sources",
+      "weight_license": "model card research terms; separate weight license not specified"
+    },
+    {
+      "adapter": "candidate_classifier",
+      "model_kind": "biomedclip",
+      "output_schema": "glomerulus_candidate_classification_v1",
+      "python": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/candidate_classifier_20261108/venv/bin/python",
+      "checkpoint": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/candidate_classifier_20261108/assets/biomedclip/open_clip_pytorch_model.bin",
+      "checkpoint_sha256": "52cc993c5c5ff962bd0c60931874bc001e7e9b41666a385530f4a036294576be",
+      "model_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/candidate_classifier_20261108/assets/biomedclip",
+      "source_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/candidate_classifier_20261108/assets/biomedclip",
+      "timeout_seconds": 3600,
+      "model_mpp": null,
+      "physical_fov_um": null,
+      "input_pixels": [
+        224,
+        224
+      ],
+      "entrypoint": "python -m glomerulus_tools classify",
+      "id": "biomedclip_candidate_identity",
+      "name": "BiomedCLIP zero-shot candidate identity",
+      "protocol": "candidate_identity_v1_fixed_no_finetune",
+      "status": "research_executable_identity_not_expert_validated",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "candidate_batch"
+      ],
+      "target": "candidate_identity",
+      "scale_status": "model MPP and physical FOV unknown;224pixel input; candidate-dependent source crop",
+      "limitations": [
+        "research only; proxy labels not expert identity; score uncalibrated; identity never authorizes mask edit; unknown patient overlap; B_ONLY means no SegFormer pixels in union component,not GT absence; proxy is support GT fraction>=10%,not IoU0.5; possible missing GT/neighbor glomeruli; see diagnostic report"
+      ],
+      "training_sources": "PMC-15M15million image-text pairs from4.4million scientific articles; exact training membership unknown",
+      "training_data_access": "public weights; exact training membership unknown",
+      "training_overlap_status": "unknown; exposed Zenodo development cohort",
+      "code_license": "see archived author sources",
+      "weight_license": "MIT model card and LICENSE.md"
+    },
+    {
+      "adapter": "candidate_classifier",
+      "model_kind": "quilt",
+      "output_schema": "glomerulus_candidate_classification_v1",
+      "python": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/candidate_classifier_20261108/venv/bin/python",
+      "checkpoint": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/candidate_classifier_20261108/assets/quilt/open_clip_pytorch_model.bin",
+      "checkpoint_sha256": "e88815d05f50493a54fc2bab7ccf54075d24339d7b217e6f173c0c158ace92e7",
+      "model_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/candidate_classifier_20261108/assets/quilt",
+      "source_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/candidate_classifier_20261108/assets/quilt",
+      "timeout_seconds": 3600,
+      "model_mpp": null,
+      "physical_fov_um": null,
+      "input_pixels": [
+        224,
+        224
+      ],
+      "entrypoint": "python -m glomerulus_tools classify",
+      "id": "quiltnet_candidate_identity",
+      "name": "QuiltNet-B-32 zero-shot candidate identity",
+      "protocol": "candidate_identity_v1_fixed_no_finetune",
+      "status": "research_executable_identity_not_expert_validated",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "candidate_batch"
+      ],
+      "target": "candidate_identity",
+      "scale_status": "model MPP and physical FOV unknown;224pixel input; candidate-dependent source crop",
+      "limitations": [
+        "research only; proxy labels not expert identity; score uncalibrated; identity never authorizes mask edit; unknown patient overlap; B_ONLY means no SegFormer pixels in union component,not GT absence; proxy is support GT fraction>=10%,not IoU0.5; possible missing GT/neighbor glomeruli; see diagnostic report"
+      ],
+      "training_sources": "Quilt-1M educational histopathology videos and image-caption sources; exact training membership unknown",
+      "training_data_access": "public weights; exact training membership unknown",
+      "training_overlap_status": "unknown; exposed Zenodo development cohort",
+      "code_license": "see archived author sources",
+      "weight_license": "MIT model card; dataset has separate research terms"
+    },
+    {
+      "adapter": "unimplemented",
+      "author_repository": "https://github.com/jiangnansss/Code-for-GloPath",
+      "publication": "https://doi.org/10.1002/advs.202520580",
+      "weight_access": "official Drive preliminary pretraining weight link verified; not downloaded; final/downstream weights on request",
+      "output_semantics": "glomerular_feature_extraction",
+      "project_tested_stains": [],
+      "identity_tool_eligibility": "not_qualified_no_paired_glomerulus_non_glomerulus_head",
+      "id": "glopath_preliminary_backbone",
+      "name": "GloPath preliminary backbone",
+      "protocol": "unimplemented_author_weight_candidate",
+      "status": "parked_no_paired_glomerulus_identity_head",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS",
+        "SIL",
+        "TRI"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "candidate_crop"
+      ],
+      "target": "glomerular_feature_extraction",
+      "scale_status": "physical MPP/FOV unknown; multiscale pretraining; paper architecture not automatically same as preliminary release",
+      "limitations": [
+        "No verified non-glomerulus head or negatives; lesion recognition is not identity; paper and public version differ; no project SIL/TRI inference; no accuracy certification"
+      ],
+      "training_sources": "Advanced Science2026;1017879 localized glomeruli;H&E/PAS/MT/PASM;14,049 slides in Methods, specimens in abstract; units differ",
+      "training_data_access": "see author source; exact patient membership unknown",
+      "training_overlap_status": "unknown; no independence claim",
+      "code_license": "unknown",
+      "weight_license": "author states academic research; exact public checkpoint license unknown"
+    },
+    {
+      "adapter": "unimplemented",
+      "author_repository": "https://github.com/mahmoodlab/CONCH",
+      "publication": "https://doi.org/10.1038/s41591-024-02856-4",
+      "weight_access": "official HF gated auto; anonymous checkpoint/card returned401; authorization not obtained",
+      "output_semantics": "vision_language_features",
+      "project_tested_stains": [],
+      "identity_tool_eligibility": "not_qualified_no_paired_glomerulus_non_glomerulus_head",
+      "id": "conch_identity_candidate",
+      "name": "CONCH gated vision-language",
+      "protocol": "unimplemented_author_weight_candidate",
+      "status": "parked_no_paired_glomerulus_identity_head",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "待核"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "candidate_crop"
+      ],
+      "target": "vision_language_features",
+      "scale_status": "unknown; no magnification-to-MPP inference",
+      "limitations": [
+        "No authorized weights in this session; zero-shot identity recipe not implemented; non-HE potential is not renal stain certification; no project SIL/TRI inference; no accuracy certification"
+      ],
+      "training_sources": "Nature Medicine2024;1.17M pathology image-caption pairs; exact renal/PAS/PASM training membership unknown",
+      "training_data_access": "see author source; exact patient membership unknown",
+      "training_overlap_status": "unknown; no independence claim",
+      "code_license": "unknown",
+      "weight_license": "unknown"
+    },
+    {
+      "adapter": "unimplemented",
+      "author_repository": "https://github.com/mahmoodlab/UNI",
+      "publication": "https://doi.org/10.1038/s41591-024-02857-3",
+      "weight_access": "official HF gated; no authorized weights obtained",
+      "output_semantics": "pathology_feature_extraction",
+      "project_tested_stains": [],
+      "identity_tool_eligibility": "not_qualified_no_paired_glomerulus_non_glomerulus_head",
+      "id": "uni_identity_backbone",
+      "name": "UNI gated backbone",
+      "protocol": "unimplemented_author_weight_candidate",
+      "status": "parked_no_paired_glomerulus_identity_head",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "candidate_crop"
+      ],
+      "target": "pathology_feature_extraction",
+      "scale_status": "224px author use; physical MPP/FOV unknown",
+      "limitations": [
+        "Feature extractor; needs trained identity head and true non-glomerulus labels; no project SIL/TRI inference; no accuracy certification"
+      ],
+      "training_sources": "Nature Medicine2024;Mass-100K H&E; exact renal patient membership unknown",
+      "training_data_access": "see author source; exact patient membership unknown",
+      "training_overlap_status": "unknown; no independence claim",
+      "code_license": "unknown",
+      "weight_license": "unknown"
+    },
+    {
+      "adapter": "unimplemented",
+      "author_repository": "https://github.com/mahmoodlab/UNI",
+      "publication": "https://huggingface.co/MahmoodLab/UNI2-h",
+      "weight_access": "official HF MahmoodLab/UNI2-h gated; no authorized weights obtained",
+      "output_semantics": "pathology_feature_extraction",
+      "project_tested_stains": [],
+      "identity_tool_eligibility": "not_qualified_no_paired_glomerulus_non_glomerulus_head",
+      "id": "uni2_identity_backbone",
+      "name": "UNI2-h gated backbone",
+      "protocol": "unimplemented_author_weight_candidate",
+      "status": "parked_no_paired_glomerulus_identity_head",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "IHC"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "candidate_crop"
+      ],
+      "target": "pathology_feature_extraction",
+      "scale_status": "224px author use; physical MPP/FOV unknown",
+      "limitations": [
+        "Feature extractor; no identity head; UNI2024 publication does not by itself validate UNI2 version; no project SIL/TRI inference; no accuracy certification"
+      ],
+      "training_sources": "official UNI2 model card: H&E and IHC; exact renal/stain membership unknown",
+      "training_data_access": "see author source; exact patient membership unknown",
+      "training_overlap_status": "unknown; no independence claim",
+      "code_license": "unknown",
+      "weight_license": "unknown"
+    },
+    {
+      "adapter": "unimplemented",
+      "author_repository": "https://huggingface.co/owkin/phikon",
+      "publication": "https://arxiv.org/abs/2309.07778",
+      "weight_access": "public HF owkin/phikon weights listed; not downloaded",
+      "output_semantics": "pathology_feature_extraction",
+      "project_tested_stains": [],
+      "identity_tool_eligibility": "not_qualified_no_paired_glomerulus_non_glomerulus_head",
+      "id": "phikon_identity_backbone",
+      "name": "Phikon public backbone",
+      "protocol": "unimplemented_author_weight_candidate",
+      "status": "parked_no_paired_glomerulus_identity_head",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "candidate_crop"
+      ],
+      "target": "pathology_feature_extraction",
+      "scale_status": "224px; physical MPP/FOV unknown",
+      "limitations": [
+        "Feature extractor without glomerulus/non-glomerulus head; no project SIL/TRI inference; no accuracy certification"
+      ],
+      "training_sources": "official Owkin card:40M TCGA histology tiles; exact renal patient membership unknown",
+      "training_data_access": "see author source; exact patient membership unknown",
+      "training_overlap_status": "unknown; no independence claim",
+      "code_license": "unknown",
+      "weight_license": "see official noncommercial model license; not blanket MIT"
+    },
+    {
+      "adapter": "unimplemented",
+      "author_repository": "https://huggingface.co/owkin/phikon-v2",
+      "publication": "https://huggingface.co/owkin/phikon-v2",
+      "weight_access": "public HF owkin/phikon-v2 checkpoint listed; not downloaded",
+      "output_semantics": "pathology_feature_extraction",
+      "project_tested_stains": [],
+      "identity_tool_eligibility": "not_qualified_no_paired_glomerulus_non_glomerulus_head",
+      "id": "phikon2_identity_backbone",
+      "name": "Phikon-v2 public backbone",
+      "protocol": "unimplemented_author_weight_candidate",
+      "status": "parked_no_paired_glomerulus_identity_head",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "candidate_crop"
+      ],
+      "target": "pathology_feature_extraction",
+      "scale_status": "224px; physical MPP/FOV unknown",
+      "limitations": [
+        "Feature extractor without identity head; distinct version from Phikon; no project SIL/TRI inference; no accuracy certification"
+      ],
+      "training_sources": "official Owkin Phikon-v2 model card; pathology SSL; exact renal membership unknown",
+      "training_data_access": "see author source; exact patient membership unknown",
+      "training_overlap_status": "unknown; no independence claim",
+      "code_license": "unknown",
+      "weight_license": "see version-specific author model license"
+    },
+    {
+      "adapter": "unimplemented",
+      "author_repository": "https://github.com/prov-gigapath/prov-gigapath",
+      "publication": "https://doi.org/10.1038/s41586-024-07441-w",
+      "weight_access": "official HF gated; anonymous401; no authorized checkpoint obtained",
+      "output_semantics": "pathology_feature_extraction",
+      "project_tested_stains": [],
+      "identity_tool_eligibility": "not_qualified_no_paired_glomerulus_non_glomerulus_head",
+      "id": "gigapath_identity_backbone",
+      "name": "Prov-GigaPath gated backbone",
+      "protocol": "unimplemented_author_weight_candidate",
+      "status": "parked_no_paired_glomerulus_identity_head",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "candidate_crop"
+      ],
+      "target": "pathology_feature_extraction",
+      "scale_status": "tile224px; physical MPP/FOV and crop protocol require paired author verification",
+      "limitations": [
+        "Feature extractor; slide context model not a candidate identity classifier; no project SIL/TRI inference; no accuracy certification"
+      ],
+      "training_sources": "Nature2024;Providence whole-slide pathology pretraining; exact members unavailable",
+      "training_data_access": "see author source; exact patient membership unknown",
+      "training_overlap_status": "unknown; no independence claim",
+      "code_license": "unknown",
+      "weight_license": "unknown"
+    },
+    {
+      "adapter": "unimplemented",
+      "author_repository": "https://huggingface.co/paige-ai/Virchow2",
+      "publication": "https://huggingface.co/paige-ai/Virchow2",
+      "weight_access": "HF paige-ai/Virchow2 gated auto; no authorized weights obtained",
+      "output_semantics": "pathology_feature_extraction",
+      "project_tested_stains": [],
+      "identity_tool_eligibility": "not_qualified_no_paired_glomerulus_non_glomerulus_head",
+      "id": "virchow2_identity_backbone",
+      "name": "Virchow2 gated backbone",
+      "protocol": "unimplemented_author_weight_candidate",
+      "status": "parked_no_paired_glomerulus_identity_head",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "IHC"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "candidate_crop"
+      ],
+      "target": "pathology_feature_extraction",
+      "scale_status": "224px author example; physical MPP/FOV unknown",
+      "limitations": [
+        "Feature extractor without identity head; not PAS/PASM validation; no project SIL/TRI inference; no accuracy certification"
+      ],
+      "training_sources": "official Paige Virchow2 card; H&E/IHC; exact renal training members unknown",
+      "training_data_access": "see author source; exact patient membership unknown",
+      "training_overlap_status": "unknown; no independence claim",
+      "code_license": "unknown",
+      "weight_license": "gated author license; not public unrestricted"
+    },
+    {
+      "adapter": "unimplemented",
+      "author_repository": "https://github.com/lilab-stanford/MUSK",
+      "publication": "https://doi.org/10.1038/s41586-024-08378-w",
+      "weight_access": "HF xiangjx/musk gated manual; no authorized weights obtained",
+      "output_semantics": "vision_language_features",
+      "project_tested_stains": [],
+      "identity_tool_eligibility": "not_qualified_no_paired_glomerulus_non_glomerulus_head",
+      "id": "musk_identity_candidate",
+      "name": "MUSK gated vision-language",
+      "protocol": "unimplemented_author_weight_candidate",
+      "status": "parked_no_paired_glomerulus_identity_head",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "待核"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "candidate_crop"
+      ],
+      "target": "vision_language_features",
+      "scale_status": "unknown; no magnification-to-MPP inference",
+      "limitations": [
+        "Weight access blocked; zero-shot renal identity not verified; no project SIL/TRI inference; no accuracy certification"
+      ],
+      "training_sources": "Nature2025;50M pathology images and1B text tokens; exact renal/stain members unknown",
+      "training_data_access": "see author source; exact patient membership unknown",
+      "training_overlap_status": "unknown; no independence claim",
+      "code_license": "unknown",
+      "weight_license": "unknown"
+    },
+    {
+      "adapter": "unimplemented",
+      "author_repository": "https://github.com/israelMateos/qupath-extension-gncnn",
+      "publication": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11719282/",
+      "weight_access": "public HF israelMateos/GNCnn checkpoint files verified; author code downloaded; not run",
+      "output_semantics": "glomerular_disease_classification",
+      "project_tested_stains": [],
+      "id": "gncnn_disease_classifier",
+      "name": "GNCnn disease classifiers",
+      "protocol": "unimplemented_author_weight_candidate",
+      "status": "research_candidate_blocked",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "PAS"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "candidate_crop"
+      ],
+      "target": "glomerular_disease_classification",
+      "scale_status": "unknown; no magnification-to-MPP inference",
+      "limitations": [
+        "Classifiers assume detected glomeruli; no non-glomerulus output; detection pipeline is separate; no project SIL/TRI inference; no accuracy certification"
+      ],
+      "training_sources": "author paper2025 PMC11719282;23477 annotated PAS glomeruli;4 institutions; exact members unknown",
+      "training_data_access": "see author source; exact patient membership unknown",
+      "training_overlap_status": "unknown; no independence claim",
+      "code_license": "GPL-3.0 source",
+      "weight_license": "checkpoint separate license unknown"
+    },
+    {
+      "adapter": "unimplemented",
+      "author_repository": "https://github.com/Nicolik/MESCnn",
+      "publication": "https://doi.org/10.1016/j.cmpb.2023.107814",
+      "weight_access": "author code and detection weights found; classification checkpoint pairing unverified",
+      "output_semantics": "glomerular_lesion_classification",
+      "project_tested_stains": [],
+      "id": "mescnn_lesion_classifier",
+      "name": "MESCnn lesion classifier component",
+      "protocol": "unimplemented_author_weight_candidate",
+      "status": "research_candidate_blocked",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "待核"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "candidate_crop"
+      ],
+      "target": "glomerular_lesion_classification",
+      "scale_status": "unknown; no magnification-to-MPP inference",
+      "limitations": [
+        "Existing catalog detection rows are not this classifier; Oxford lesion labels do not establish identity negatives; no project SIL/TRI inference; no accuracy certification"
+      ],
+      "training_sources": "CMPB2023 Oxford/IgA nephropathy lesion study; exact checkpoint members unknown",
+      "training_data_access": "see author source; exact patient membership unknown",
+      "training_overlap_status": "unknown; no independence claim",
+      "code_license": "unknown",
+      "weight_license": "unknown"
+    },
+    {
+      "adapter": "unimplemented",
+      "author_repository": "https://doi.org/10.1016/j.compmedimag.2024.102375",
+      "publication": "https://doi.org/10.1016/j.compmedimag.2024.102375",
+      "weight_access": "paper abstract verified; author task checkpoint not located/paired",
+      "output_semantics": "glomerular_morphology_classification",
+      "project_tested_stains": [],
+      "id": "juang2024_classifier_candidate",
+      "name": "Juang2024 glomerular morphology candidate",
+      "protocol": "unimplemented_author_weight_candidate",
+      "status": "research_candidate_blocked",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "candidate_crop"
+      ],
+      "target": "glomerular_morphology_classification",
+      "scale_status": "unknown; no magnification-to-MPP inference",
+      "limitations": [
+        "No verified reusable task checkpoint/non-glomerulus head; not executed; no project SIL/TRI inference; no accuracy certification"
+      ],
+      "training_sources": "CMIG2024 H&E/PAS study; exact training membership unknown",
+      "training_data_access": "see author source; exact patient membership unknown",
+      "training_overlap_status": "unknown; no independence claim",
+      "code_license": "unknown",
+      "weight_license": "unknown"
+    },
+    {
+      "adapter": "unimplemented",
+      "author_repository": "https://github.com/hrlblab/GloFinder",
+      "publication": "https://doi.org/10.1016/j.jpi.2025.100433",
+      "project_tested": false,
+      "accuracy_verified": false,
+      "id": "glofinder_wcf_candidate",
+      "name": "GloFinder WCF CircleNet",
+      "protocol": "author_candidate_not_implemented",
+      "status": "literature_candidate_assets_protocol_unpaired",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human",
+        "mouse"
+      ],
+      "stains": [
+        "PAS",
+        "HE",
+        "SIL",
+        "TRI",
+        "CONGORED"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch",
+        "wsi"
+      ],
+      "target": "glomerular_detection",
+      "scale_status": "required physical MPP/FOV unknown; no magnification conversion; protocol qualification pending",
+      "limitations": [
+        "same CircleNet research family as Glo; independence/checkpoint overlap unknown; training stains not project-validated support; mouse PAS paper testing is not human multistain validation"
+      ],
+      "training_sources": "author paper:~160000 glomeruli;>140000PAS;human and diseased rodent;other HE/Silver/Trichrome/CongoRed training;15mouse PAS WSI/2051glom testing",
+      "training_data_access": "official master README and paper reviewed; downloadable components mentioned but exact checkpoint-to-recipe mapping not verified",
+      "training_overlap_status": "unknown; no independent project validation",
+      "code_license": "unknown",
+      "weight_license": "unknown; separate task checkpoint terms not verified"
+    },
+    {
+      "adapter": "object_evidence",
+      "model_kind": "osaka_detection",
+      "python": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/domain_tools_execution_20261109/venv/bin/python",
+      "checkpoint": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/domain_tools_execution_20261109/osaka_Hosp02_baseline_1.pt",
+      "source_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/domain_tools_execution_20261109/",
+      "checkpoint_sha256": "6904983a9c39231303d9ce370ae3f78d143dd34214733e5ce9fca3c516c5a5ea",
+      "native_crop_side": 5440,
+      "timeout_seconds": 7200,
+      "id": "osaka_pas_yolo_domain_candidate",
+      "name": "Osaka PAS rare-lesion detector",
+      "protocol": "PAS author baseline hospital02 seed1; all4 glomerular types eligible; candidate box IoU>=.1 evidence",
+      "status": "research_author_checkpoint_executable",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "PAS"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "candidate_crop"
+      ],
+      "target": "glomerular_lesion_detection",
+      "scale_status": "training MPP unknown;author WSI /8 then680->640;trial5440 native pixels->680->640;source0.5 working assumption",
+      "limitations": [
+        "not generic identity classifier; class mapping and Hosp02 baseline seed1 checkpoint verified;training MPP pending;PAS only;CycleGAN can alter morphology;no automatic adaptation authorized by registration; four outputs are all glomerular categories, not four independent identity judges; no HE; training scale unknown; score uncalibrated; no automatic mask edits"
+      ],
+      "training_sources": "author Hosp02_Baseline_YOLOv8l_1;exact training patients unknown;paper22 hospitals does not imply each checkpoint pooled22",
+      "training_data_access": "author public Drive task weights and notebooks; exact training members unknown",
+      "training_overlap_status": "unknown; no independent project validation",
+      "code_license": "unknown",
+      "weight_license": "unknown; separate task checkpoint terms not verified"
+    },
+    {
+      "adapter": "unimplemented",
+      "author_repository": "https://github.com/matjesg/deepflash2",
+      "publication": "https://doi.org/10.1038/s41467-023-36960-9",
+      "project_tested": false,
+      "accuracy_verified": false,
+      "id": "deepflash2_quality_framework",
+      "name": "deepflash2 quality framework",
+      "protocol": "author_candidate_not_implemented",
+      "status": "literature_candidate_assets_protocol_unpaired",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "待核"
+      ],
+      "stains": [
+        "待核"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch",
+        "wsi"
+      ],
+      "target": "segmentation_quality_review",
+      "scale_status": "required physical MPP/FOV unknown; no magnification conversion; protocol qualification pending",
+      "limitations": [
+        "framework not pretrained glomerulus truth validator;needs actual probability outputs;confident shared errors possible;QA accuracy not verified"
+      ],
+      "training_sources": "general microscopy framework;author README links HuBMAP kidney challenge solution;not a supplied renal identity head",
+      "training_data_access": "official master README HTTP200;paper code/reproduction and sample models linked;renal checkpoint/recipe not paired",
+      "training_overlap_status": "unknown; no independent project validation",
+      "code_license": "unknown",
+      "weight_license": "unknown; separate task checkpoint terms not verified"
+    },
+    {
+      "adapter": "unimplemented",
+      "author_repository": "https://doi.org/10.1371/journal.pone.0321096",
+      "publication": "https://doi.org/10.1371/journal.pone.0321096",
+      "project_tested": false,
+      "accuracy_verified": false,
+      "id": "glomsam_if_candidate",
+      "name": "GlomSAM IF segmentation",
+      "protocol": "author_candidate_not_implemented",
+      "status": "literature_candidate_assets_protocol_unpaired",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "IF"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch",
+        "wsi"
+      ],
+      "target": "glomerular_segmentation",
+      "scale_status": "required physical MPP/FOV unknown; no magnification conversion; protocol qualification pending",
+      "limitations": [
+        "IF modality not brightfieldHE/PAS/SIL/TRI;not applicable to current304brightfield candidates;genericSAM availability does not establish author task weights"
+      ],
+      "training_sources": "PLOSONE2025;human frozen kidney immunofluorescence IgA/IgG/IgM/C3/C1q/Kappa/Lambda;exact members unknown",
+      "training_data_access": "paper fulltext/publisher reviewed;author task source and checkpoint not verified",
+      "training_overlap_status": "unknown; no independent project validation",
+      "code_license": "unknown",
+      "weight_license": "unknown; separate task checkpoint terms not verified"
+    },
+    {
+      "adapter": "object_evidence",
+      "model_kind": "gncnn_detection",
+      "python": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/candidate_classifier_20261108/venv/bin/python",
+      "checkpoint": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/domain_tools_execution_20261109/gncnn_model_final_cuda.ts",
+      "source_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/domain_tools_execution_20261109/",
+      "checkpoint_sha256": "185bfbcb3040a71a579db9e11ac53209d2703ef7d2ddb92fafc5a4de463bfa34",
+      "native_crop_side": 4096,
+      "timeout_seconds": 7200,
+      "input_recipe": "author_qupath4096_resize800",
+      "save_input_previews": true,
+      "id": "gncnn_detection_evidence",
+      "name": "GNCnn dedicated glomerulus detector evidence",
+      "protocol": "author_qupath4096_resize800;candidate-conditioned PAS;boxIoU>=.1 evidence;sourceMPP uncalibrated",
+      "status": "input_audit_pending_no_new_inference_by_user",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "PAS"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "candidate_crop"
+      ],
+      "target": "object_detection_evidence",
+      "scale_status": "training MPP unknown;author Java tile4096/downsample1->800;source0.5 is working assumption;previous2048->512->800 was mismatched",
+      "limitations": [
+        "PAS only;training membership/MPP unknown;MESCnn same family not independent duplication;absence of detection not proof of non-glomerulus;candidate-conditioned test is not independent whole-image search; prior2048->512->800 results are superseded for this active recipe;white padding/JPEG path and physical MPP still not exact author WSI reproduction"
+      ],
+      "training_sources": "MESCnn-derived detector;GNCnn external-validation release; exact detector training membership unknown",
+      "training_data_access": "author source public; exact training manifest unknown",
+      "training_overlap_status": "unknown; no independent validation claim",
+      "code_license": "GPL-3.0 author code",
+      "weight_license": "separate checkpoint license unknown"
+    },
+    {
+      "adapter": "mask_refinement",
+      "engine": "cascade_psp",
+      "python": "/home/chenliangyu/miniconda3/envs/sam/bin/python",
+      "checkpoint": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/problem_to_repair_20261111/assets/cascade/model",
+      "checkpoint_sha256": "60826ace3385961cdf8608abbdf1234cd22379303b97edf96f18d67bba769cfa",
+      "source_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/problem_to_repair_20261111/assets/vendor",
+      "extra_paths": [
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/problem_to_repair_20261111/assets/vendor"
+      ],
+      "cuda_memory_fraction": 0.08,
+      "timeout_seconds": 10800,
+      "fast": true,
+      "L": 512,
+      "id": "cascade_psp_global_l512",
+      "name": "cascade_psp_global_l512",
+      "protocol": "global; target-only replacement; other original local foreground retained",
+      "status": "research_only_pilot_net_decrease",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "predicted_local_glomerular_unit_proposal",
+      "scale_status": "Natural-image model has no tissue MPP; retains source pixel coordinates; source MPP recorded per task",
+      "limitations": [
+        "Exposed GT-stratified cohort; no independent holdout/patient audit; exact training overlap unknown; GT definition unresolved; one source blank-tile case; no GT-free acceptance/Agent efficacy; window matching only"
+      ],
+      "training_sources": "Natural-image mask datasets; not a verified kidney specialist",
+      "training_data_access": "Published model; exact checkpoint members unknown",
+      "training_overlap_status": "Kidney patient and exact pretraining overlap unknown",
+      "code_license": "MIT",
+      "weight_license": "Separate checkpoint license not established; public author release"
+    },
+    {
+      "adapter": "mask_refinement",
+      "engine": "cascade_psp",
+      "python": "/home/chenliangyu/miniconda3/envs/sam/bin/python",
+      "checkpoint": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/problem_to_repair_20261111/assets/cascade/model",
+      "checkpoint_sha256": "60826ace3385961cdf8608abbdf1234cd22379303b97edf96f18d67bba769cfa",
+      "source_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/problem_to_repair_20261111/assets/vendor",
+      "extra_paths": [
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/problem_to_repair_20261111/assets/vendor"
+      ],
+      "cuda_memory_fraction": 0.08,
+      "timeout_seconds": 10800,
+      "fast": false,
+      "L": 512,
+      "id": "cascade_psp_local_l512",
+      "name": "cascade_psp_local_l512",
+      "protocol": "local; target-only replacement; other original local foreground retained",
+      "status": "research_only_pilot_net_decrease",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "predicted_local_glomerular_unit_proposal",
+      "scale_status": "Natural-image model has no tissue MPP; retains source pixel coordinates; source MPP recorded per task",
+      "limitations": [
+        "Exposed GT-stratified cohort; no independent holdout/patient audit; exact training overlap unknown; GT definition unresolved; one source blank-tile case; no GT-free acceptance/Agent efficacy; window matching only"
+      ],
+      "training_sources": "Natural-image mask datasets; not a verified kidney specialist",
+      "training_data_access": "Published model; exact checkpoint members unknown",
+      "training_overlap_status": "Kidney patient and exact pretraining overlap unknown",
+      "code_license": "MIT",
+      "weight_license": "Separate checkpoint license not established; public author release"
+    },
+    {
+      "adapter": "mask_refinement",
+      "engine": "sam",
+      "python": "/home/chenliangyu/miniconda3/envs/sam/bin/python",
+      "checkpoint": "/home/chenliangyu/project/segment-anything/checkpoints/sam_vit_b_01ec64.pth",
+      "checkpoint_sha256": "ec2df62732614e57411cdcf32a23ffdf28910380d03139ee0f4fcbe91eb8c912",
+      "source_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/problem_to_repair_20261111/assets/vendor",
+      "extra_paths": [
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/problem_to_repair_20261111/assets/vendor",
+        "/home/chenliangyu/project/segment-anything"
+      ],
+      "cuda_memory_fraction": 0.08,
+      "timeout_seconds": 10800,
+      "prompt": "box",
+      "id": "sam_vitb_predbox_fp16",
+      "name": "sam_vitb_predbox_fp16",
+      "protocol": "box; target-only replacement; other original local foreground retained",
+      "status": "research_only_pilot_net_decrease",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "predicted_local_glomerular_unit_proposal",
+      "scale_status": "Natural-image model has no tissue MPP; retains source pixel coordinates; source MPP recorded per task",
+      "limitations": [
+        "Exposed GT-stratified cohort; no independent holdout/patient audit; exact training overlap unknown; GT definition unresolved; one source blank-tile case; no GT-free acceptance/Agent efficacy; window matching only"
+      ],
+      "training_sources": "Natural-image mask datasets; not a verified kidney specialist",
+      "training_data_access": "Published model; exact checkpoint members unknown",
+      "training_overlap_status": "Kidney patient and exact pretraining overlap unknown",
+      "code_license": "Apache-2.0",
+      "weight_license": "Separate checkpoint license not established; public author release"
+    },
+    {
+      "adapter": "mask_refinement",
+      "engine": "sam",
+      "python": "/home/chenliangyu/miniconda3/envs/sam/bin/python",
+      "checkpoint": "/home/chenliangyu/project/segment-anything/checkpoints/sam_vit_b_01ec64.pth",
+      "checkpoint_sha256": "ec2df62732614e57411cdcf32a23ffdf28910380d03139ee0f4fcbe91eb8c912",
+      "source_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/problem_to_repair_20261111/assets/vendor",
+      "extra_paths": [
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/problem_to_repair_20261111/assets/vendor",
+        "/home/chenliangyu/project/segment-anything"
+      ],
+      "cuda_memory_fraction": 0.08,
+      "timeout_seconds": 10800,
+      "prompt": "box_mask",
+      "id": "sam_vitb_predbox_mask_fp16",
+      "name": "sam_vitb_predbox_mask_fp16",
+      "protocol": "box_mask; target-only replacement; other original local foreground retained",
+      "status": "research_only_pilot_tiny_unconfirmed_gain",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "predicted_local_glomerular_unit_proposal",
+      "scale_status": "Natural-image model has no tissue MPP; retains source pixel coordinates; source MPP recorded per task",
+      "limitations": [
+        "Exposed GT-stratified cohort; no independent holdout/patient audit; exact training overlap unknown; GT definition unresolved; one source blank-tile case; no GT-free acceptance/Agent efficacy; window matching only"
+      ],
+      "training_sources": "Natural-image mask datasets; not a verified kidney specialist",
+      "training_data_access": "Published model; exact checkpoint members unknown",
+      "training_overlap_status": "Kidney patient and exact pretraining overlap unknown",
+      "code_license": "Apache-2.0",
+      "weight_license": "Separate checkpoint license not established; public author release"
+    },
+    {
+      "adapter": "mask_refinement",
+      "engine": "sam_hq",
+      "python": "/home/chenliangyu/miniconda3/envs/sam/bin/python",
+      "checkpoint": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/problem_to_repair_20261111/assets/sam_hq_vit_b.pth",
+      "checkpoint_sha256": "14a9d662cd6f5a9c2dba6d40ab0058d88d287e4a18fd6fdc6ad5fb1a3fdeaa57",
+      "source_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/problem_to_repair_20261111/assets/vendor",
+      "extra_paths": [
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/problem_to_repair_20261111/assets/vendor"
+      ],
+      "cuda_memory_fraction": 0.08,
+      "timeout_seconds": 10800,
+      "prompt": "box",
+      "id": "samhq_vitb_predbox_fp16",
+      "name": "samhq_vitb_predbox_fp16",
+      "protocol": "box; target-only replacement; other original local foreground retained",
+      "status": "research_only_pilot_net_decrease",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "predicted_local_glomerular_unit_proposal",
+      "scale_status": "Natural-image model has no tissue MPP; retains source pixel coordinates; source MPP recorded per task",
+      "limitations": [
+        "Exposed GT-stratified cohort; no independent holdout/patient audit; exact training overlap unknown; GT definition unresolved; one source blank-tile case; no GT-free acceptance/Agent efficacy; window matching only"
+      ],
+      "training_sources": "Natural-image mask datasets; not a verified kidney specialist",
+      "training_data_access": "Published model; exact checkpoint members unknown",
+      "training_overlap_status": "Kidney patient and exact pretraining overlap unknown",
+      "code_license": "Apache-2.0",
+      "weight_license": "Separate checkpoint license not established; public author release"
+    },
+    {
+      "adapter": "mask_refinement",
+      "engine": "sam_hq",
+      "python": "/home/chenliangyu/miniconda3/envs/sam/bin/python",
+      "checkpoint": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/problem_to_repair_20261111/assets/sam_hq_vit_b.pth",
+      "checkpoint_sha256": "14a9d662cd6f5a9c2dba6d40ab0058d88d287e4a18fd6fdc6ad5fb1a3fdeaa57",
+      "source_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/problem_to_repair_20261111/assets/vendor",
+      "extra_paths": [
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/problem_to_repair_20261111/assets/vendor"
+      ],
+      "cuda_memory_fraction": 0.08,
+      "timeout_seconds": 10800,
+      "prompt": "box_mask",
+      "id": "samhq_vitb_predbox_mask_fp16",
+      "name": "samhq_vitb_predbox_mask_fp16",
+      "protocol": "box_mask; target-only replacement; other original local foreground retained",
+      "status": "research_only_pilot_tiny_unconfirmed_gain",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "predicted_local_glomerular_unit_proposal",
+      "scale_status": "Natural-image model has no tissue MPP; retains source pixel coordinates; source MPP recorded per task",
+      "limitations": [
+        "Exposed GT-stratified cohort; no independent holdout/patient audit; exact training overlap unknown; GT definition unresolved; one source blank-tile case; no GT-free acceptance/Agent efficacy; window matching only"
+      ],
+      "training_sources": "Natural-image mask datasets; not a verified kidney specialist",
+      "training_data_access": "Published model; exact checkpoint members unknown",
+      "training_overlap_status": "Kidney patient and exact pretraining overlap unknown",
+      "code_license": "Apache-2.0",
+      "weight_license": "Separate checkpoint license not established; public author release"
+    },
+    {
+      "kind": "candidate",
+      "adapter": "unimplemented",
+      "checkpoint": "",
+      "source_dir": "",
+      "asset_status": "official_release_listed_partial_historical_download_only",
+      "id": "skinet_mest_main_candidate",
+      "name": "Skinet-MEST-C 主网络候选",
+      "protocol": "cortex→mest_main；皮质依赖未改变；mest_glom是后续球内病变任务",
+      "status": "research_candidate_not_inference_accepted",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "待核"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch",
+        "WSI"
+      ],
+      "target": "non_sclerotic_and_globally_sclerotic_glomerulus_instances",
+      "scale_status": "roi1024/overlap0.33；训练MPP未知",
+      "limitations": [
+        "染色/MPP/边界定义/训练成员未明；未取得任务资产；非TF1原版Skinet"
+      ],
+      "training_sources": "肾组织MEST-C；对应2021release染色/训练量/患者未知，不能套2023论文最终模型",
+      "training_data_access": "作者论文/仓库来源；完整训练数据及精确checkpoint成员未知",
+      "training_overlap_status": "未知；公开数据来源差异不证明患者无重叠",
+      "code_license": "MIT（已读LICENSE）",
+      "weight_license": "未核独立权重许可"
+    },
+    {
+      "kind": "candidate",
+      "adapter": "unimplemented",
+      "checkpoint": "",
+      "source_dir": "",
+      "asset_status": "author_pretrained_drive_links_content_unverified",
+      "id": "jiang2021_wsi_instance_candidate",
+      "name": "Jiang2021 多染色WSI实例分割候选",
+      "protocol": "author WSI model (separate from snapshot); task checkpoint retrieval pending",
+      "status": "research_candidate_not_inference_accepted",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "PAS",
+        "SIL",
+        "TRI"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch",
+        "WSI"
+      ],
+      "target": "normal_global_sclerosis_other_lesion_instances",
+      "scale_status": "论文40x扫描→2048窗/1536步长；config resize1024 keep_ratio；可移用MPP待核",
+      "limitations": [
+        "HE未进入论文三染色图像；重病变/小无囊硬化球仍难检；硬化mask mIoU.623不是本项目成绩"
+      ],
+      "training_sources": "北京大学人民医院多疾病活检；WSI组148患者348WSI/8665球；train118患者296WSI，精确checkpoint成员未知",
+      "training_data_access": "作者论文/仓库来源；完整训练数据及精确checkpoint成员未知",
+      "training_overlap_status": "未知；公开数据来源差异不证明患者无重叠",
+      "code_license": "仓库及vendored MMDetection许可范围待逐项核实",
+      "weight_license": "未核独立权重许可"
+    },
+    {
+      "kind": "candidate",
+      "adapter": "unimplemented",
+      "checkpoint": "",
+      "source_dir": "",
+      "asset_status": "public_metadata_historical_401",
+      "id": "frozen_donor_gs_unet_candidate",
+      "name": "供肾冷冻HE 硬化5x U-Net候选",
+      "protocol": "author frozen-section GS branch; source adaptation unverified",
+      "status": "research_candidate_not_inference_accepted",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch",
+        "WSI"
+      ],
+      "target": "globally_sclerotic_glomerulus",
+      "scale_status": "作者硬化5x/非硬化2.5x分支，输入256；扫描仪MPP/映射未验收",
+      "limitations": [
+        "冷冻HE→石蜡HE/PAS域差；不能单独覆盖非硬化球；公开元数据不等于匿名下载权限"
+      ],
+      "training_sources": "供肾H&E冷冻切片；具体checkpoint训练病例未知",
+      "training_data_access": "作者论文/仓库来源；完整训练数据及精确checkpoint成员未知",
+      "training_overlap_status": "未知；公开数据来源差异不证明患者无重叠",
+      "code_license": "待核",
+      "weight_license": "未核独立权重许可"
+    },
+    {
+      "kind": "candidate",
+      "adapter": "unimplemented",
+      "checkpoint": "",
+      "source_dir": "",
+      "asset_status": "task_lora_head_bank_not_found_in_checked_tree_releases",
+      "id": "gloreflex_correction_candidate",
+      "name": "GloReflex 经验驱动分割纠错候选",
+      "protocol": "trained discard/refine/accept pipeline; not generic SAM fixed prompting",
+      "status": "research_candidate_not_inference_accepted",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "待核"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch",
+        "WSI"
+      ],
+      "target": "glomerulus_identity_mask_quality_refinement_gain_and_correction",
+      "scale_status": "1.5x当前框自适应视野/MPP来自WSI元数据；本项目输入未验收",
+      "limitations": [
+        "只有通用SAM资产不能执行任务闭环；zero-shot指跨检测器迁移；未核正式论文或收益，不编造精度"
+      ],
+      "training_sources": "须有标注训练经验/LoRA/状态头/readout；公开代码未提供完整训练成员/任务资产",
+      "training_data_access": "作者论文/仓库来源；完整训练数据及精确checkpoint成员未知",
+      "training_overlap_status": "未知；公开数据来源差异不证明患者无重叠",
+      "code_license": "BSD-3-Clause（已读LICENSE）",
+      "weight_license": "未核独立权重许可"
+    },
+    {
+      "kind": "candidate",
+      "adapter": "unimplemented",
+      "checkpoint": "",
+      "source_dir": "",
+      "asset_status": "base_reuses_generic_SAM_checkpoint_modified_api_not_accepted",
+      "id": "samrefiner_base_candidate",
+      "name": "SAMRefiner 基础版自动提示修复候选",
+      "protocol": "author sam_refiner(image_path,[init_mask],sam); base only, not ++ IoU adaptation",
+      "status": "research_candidate_not_inference_accepted",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "待核"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "predicted_local_glomerular_unit_mask_refinement_proposal",
+      "scale_status": "通用自然图像模型无组织训练MPP；本项目裁片/物理尺度未验收",
+      "limitations": [
+        "无肾病理验证；预测IoU不是实际质量/保留裁判；依赖初始mask；复杂结构可失败；++需要额外训练"
+      ],
+      "training_sources": "沿用SAM通用预训练；本方法基础版无需新增训练；精确checkpoint训练成员未知",
+      "training_data_access": "作者公开自然图像来源；任务二进制状态见verification；精确checkpoint成员未知",
+      "training_overlap_status": "未知；训练成员未核，来源不同不能替代独立验证",
+      "code_license": "MIT（作者仓库；已读）",
+      "weight_license": "未核独立checkpoint许可；使用时另核基础模型与发布条款"
+    },
+    {
+      "kind": "candidate",
+      "adapter": "unimplemented",
+      "checkpoint": "",
+      "source_dir": "",
+      "asset_status": "official_HR_Drive_link_listed_binary_retrieval_timed_out",
+      "id": "segrefiner_hr_candidate",
+      "name": "SegRefiner HR 离散扩散修复候选",
+      "protocol": "author HR pretrained global-local semantic refinement; img+coarse_masks inference without GT",
+      "status": "paused_missing_weights_per_user_20261112",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "待核"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "predicted_local_glomerular_unit_mask_refinement_proposal",
+      "scale_status": "通用自然图像模型无组织训练MPP；本项目裁片/物理尺度未验收",
+      "limitations": [
+        "二进制下载/SHA未验收；自然图像到病理域差；面积阈值误删风险；转移概率非身份/质量判据；非CascadePSP"
+      ],
+      "training_sources": "HR:ThinObject-5K+DIS-5K；LR另为LVIS；精确checkpoint训练成员未知",
+      "training_data_access": "作者公开自然图像来源；任务二进制状态见verification；精确checkpoint成员未知",
+      "training_overlap_status": "未知；训练成员未核，来源不同不能替代独立验证",
+      "code_license": "Apache-2.0（仓库LICENSE；已读）",
+      "weight_license": "未核独立checkpoint许可；使用时另核基础模型与发布条款"
+    },
+    {
+      "kind": "candidate",
+      "adapter": "unimplemented",
+      "checkpoint": "",
+      "source_dir": "",
+      "asset_status": "official_93MB_OneDrive_link_probe_404_no_binary",
+      "id": "crm_refinement_candidate",
+      "name": "CRM 连续高分辨率掩膜修复候选",
+      "protocol": "continuous coordinate refinement, multi-resolution; GT-free adapter not implemented",
+      "status": "paused_missing_weights_per_user_20261112",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "待核"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "predicted_local_glomerular_unit_mask_refinement_proposal",
+      "scale_status": "通用自然图像模型无组织训练MPP；本项目裁片/物理尺度未验收",
+      "limitations": [
+        "权重访问未解决；原评测入口强制打开GT，须改无GT接口；非病理验证；多对象成本与域差未知"
+      ],
+      "training_sources": "MSRA-10K+DUT-OMRON+ECSSD+FSS-1000；精确checkpoint训练成员未知",
+      "training_data_access": "作者公开自然图像来源；任务二进制状态见verification；精确checkpoint成员未知",
+      "training_overlap_status": "未知；训练成员未核，来源不同不能替代独立验证",
+      "code_license": "CC BY-NC 4.0（子目录LICENSE；已读）",
+      "weight_license": "未核独立checkpoint许可；使用时另核基础模型与发布条款"
+    },
+    {
+      "adapter": "mask_refinement",
+      "engine": "sam_refiner",
+      "python": "/home/chenliangyu/miniconda3/envs/sam/bin/python",
+      "checkpoint": "/home/chenliangyu/project/segment-anything/checkpoints/sam_vit_b_01ec64.pth",
+      "checkpoint_sha256": "ec2df62732614e57411cdcf32a23ffdf28910380d03139ee0f4fcbe91eb8c912",
+      "source_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/samrefiner_20261112/author_source",
+      "extra_paths": [
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/samrefiner_20261112/author_source/segment-anything",
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/samrefiner_20261112/memory_overlay",
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/samrefiner_20261112/author_source",
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/samrefiner_20261112/vendor",
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/problem_to_repair_20261111/assets/vendor"
+      ],
+      "cuda_memory_fraction": 0.4,
+      "timeout_seconds": 7200,
+      "iterations": 5,
+      "box_margin": 0.1,
+      "gamma": 4.0,
+      "mask_strength": 15,
+      "use_samhq": false,
+      "author_commit": "4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "memory_optimization": "inplace normalization and row32 similarity; numerical equivalence checked separately",
+      "id": "samrefiner_vitb_paper_fp16",
+      "name": "SAMRefiner SAM ViT-B 论文提示配方",
+      "protocol": "distance positive/negative points + context elastic box margin0.1 + Gaussian mask gamma4 strength15; 5 iterations; FP16; query-chunk256",
+      "status": "research_tested_severe_partial_action_only_no_safe_global_gain",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "predicted_local_glomerular_unit_proposal",
+      "scale_status": "Natural-image model has no tissue MPP; retains source pixel coordinates; source MPP recorded per task",
+      "limitations": [
+        "非球身份验证器；未验证自动接受；自然图像预训练域差；开发队列非独立留出；ViT-B/FP16不是论文主表ViT-H精确复现；普通欠覆盖/多分/好对照组平均下降；GT分组收益不等于Agent可无GT选出；原图C003白块异常保留"
+      ],
+      "training_sources": "基础SAM/HQ-SAM通用权重；SAMRefiner基础方法无需新增训练；精确训练成员未知",
+      "training_data_access": "Published model; exact checkpoint members unknown",
+      "training_overlap_status": "Kidney patient and exact pretraining overlap unknown",
+      "code_license": "SAMRefiner MIT；SAM/HQ-SAM独立Apache-2.0",
+      "weight_license": "Separate checkpoint license not established; public author release"
+    },
+    {
+      "adapter": "mask_refinement",
+      "engine": "sam_refiner",
+      "python": "/home/chenliangyu/miniconda3/envs/sam/bin/python",
+      "checkpoint": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/problem_to_repair_20261111/assets/sam_hq_vit_b.pth",
+      "checkpoint_sha256": "14a9d662cd6f5a9c2dba6d40ab0058d88d287e4a18fd6fdc6ad5fb1a3fdeaa57",
+      "source_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/samrefiner_20261112/author_source",
+      "extra_paths": [
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/samrefiner_20261112/author_source/sam-hq",
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/samrefiner_20261112/memory_overlay",
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/samrefiner_20261112/author_source",
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/samrefiner_20261112/vendor",
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/problem_to_repair_20261111/assets/vendor"
+      ],
+      "cuda_memory_fraction": 0.4,
+      "timeout_seconds": 7200,
+      "iterations": 5,
+      "box_margin": 0.1,
+      "gamma": 4.0,
+      "mask_strength": 15,
+      "use_samhq": true,
+      "author_commit": "4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "memory_optimization": "inplace normalization and row32 similarity; numerical equivalence checked separately",
+      "id": "samrefiner_hqvitb_paper_fp16",
+      "name": "SAMRefiner HQ-SAM ViT-B 论文提示配方",
+      "protocol": "distance positive/negative points + context elastic box margin0.1 + Gaussian mask gamma4 strength15; 5 iterations; FP16; query-chunk256",
+      "status": "research_tested_severe_partial_action_only_no_safe_global_gain",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "predicted_local_glomerular_unit_proposal",
+      "scale_status": "Natural-image model has no tissue MPP; retains source pixel coordinates; source MPP recorded per task",
+      "limitations": [
+        "非球身份验证器；未验证自动接受；自然图像预训练域差；开发队列非独立留出；ViT-B/FP16不是论文主表ViT-H精确复现；普通欠覆盖/多分/好对照组平均下降；GT分组收益不等于Agent可无GT选出；原图C003白块异常保留"
+      ],
+      "training_sources": "基础SAM/HQ-SAM通用权重；SAMRefiner基础方法无需新增训练；精确训练成员未知",
+      "training_data_access": "Published model; exact checkpoint members unknown",
+      "training_overlap_status": "Kidney patient and exact pretraining overlap unknown",
+      "code_license": "SAMRefiner MIT；SAM/HQ-SAM独立Apache-2.0",
+      "weight_license": "Separate checkpoint license not established; public author release"
+    },
+    {
+      "adapter": "mask_refinement",
+      "engine": "ritm",
+      "python": "/home/chenliangyu/miniconda3/envs/sam/bin/python",
+      "checkpoint": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/new_method_search_20261112/ritm_assets/coco_lvis_h32_itermask.pth",
+      "checkpoint_sha256": "cc4d55e44c23c6fbed7f2ed3d9dc1fb7f4f08d8cd1642d4f38824c89f3dc44f1",
+      "source_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/new_method_search_20261112/ritm_assets/source",
+      "extra_paths": [
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/new_method_search_20261112/ritm_assets/source",
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/new_method_search_20261112/vendor"
+      ],
+      "source_receipt": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/new_method_search_20261112/ritm_assets/receipt.json",
+      "max_size": 800,
+      "cuda_memory_fraction": 0.4,
+      "timeout_seconds": 7200,
+      "id": "ritm_hrnet32_external_mask_point1",
+      "name": "RITM HRNet32 外部mask单点纠错",
+      "protocol": "deepest coarse-mask interior positive point; external mask; NoBRS; no ZoomIn; max800; FP32; flip TTA",
+      "status": "research_pilot_complete_no_automatic_net_gain",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "predicted_local_glomerular_unit_proposal",
+      "scale_status": "natural-image model; max side800; no histology training MPP",
+      "limitations": [
+        "COCO+LVIS interactive network, no glomerulus identity head; reliable error clicks required; all-case automatic interior-point policy showed no net gain; GT-stratified exposed56-window cohort; multi-glomerulus target conflicts and replacement harm; training members/histology MPP unknown"
+      ],
+      "training_sources": "COCO+LVIS natural images; not a supervised glomerulus model",
+      "training_data_access": "public training datasets; precise checkpoint members unknown",
+      "training_overlap_status": "Exact image/member overlap unknown; pathology domain out of training scope",
+      "code_license": "MIT",
+      "weight_license": "author explicit separate weight license not located; maintained distribution via public release"
+    }
+  ],
+  "default_tools": {
+    "mouse": "capybara_kpis",
+    "human": "nepath_segformer_b5"
+  },
+  "maintenance": "Edit catalog.csv only; generated registry and tables must not be hand-edited"
+}

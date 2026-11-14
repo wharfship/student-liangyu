@@ -1,0 +1,11 @@
+{
+  "source_url": "https://hf-mirror.com/MESCnn/MESCnn/resolve/a38cc99aa5fea432743fdeaf5f3f4113b2057aa4/detection/logs/cascade_mask_rcnn_R_50_FPN_1x/internal-validation/output/model_final.pth?download=true",
+  "expected_bytes": 573457459,
+  "expected_sha256": "007181ac33b5a4a0e6f13d5d6dfef9ee06a45fa0e8d33494ff7c885f98d812d4",
+  "http_status": 200,
+  "status": "downloaded_and_verified",
+  "actual_bytes": 573457459,
+  "actual_sha256": "007181ac33b5a4a0e6f13d5d6dfef9ee06a45fa0e8d33494ff7c885f98d812d4",
+  "path": "assets/mescnn_cascade_r50_internal_model_final.pth",
+  "seconds": 21.122921200003475
+}

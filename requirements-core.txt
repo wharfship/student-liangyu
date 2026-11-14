@@ -1,0 +1,7 @@
+numpy
+opencv-python-headless
+Pillow
+scipy
+tifffile
+xlsxwriter
+pytest

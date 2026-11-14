@@ -1,0 +1,234 @@
+{
+  "repo": "linyq2117/SAMRefiner",
+  "commit": "4bb7f95738c7a2e805f189210fb09e02a2197557",
+  "files": [
+    {
+      "path": "LICENSE",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/LICENSE?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "a1c87be20a2911e1e8118a760273407712beac872f3860d112ddcb8ba63c0da1",
+      "bytes": 1066
+    },
+    {
+      "path": "sam-hq/LICENSE",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/sam-hq/LICENSE?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "bytes": 11357
+    },
+    {
+      "path": "sam-hq/segment_anything/__init__.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/sam-hq/segment_anything/__init__.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "9ce11508e49e2390fbaee599153473787eb267f7a1bae07c91d1afd175722bda",
+      "bytes": 487
+    },
+    {
+      "path": "sam-hq/segment_anything/automatic_mask_generator.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/sam-hq/segment_anything/automatic_mask_generator.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "877cc34f5ed55d8eceac9efbf1a432313e34eb8eabc9537bae05aa77b93bcc6e",
+      "bytes": 15354
+    },
+    {
+      "path": "sam-hq/segment_anything/build_sam.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/sam-hq/segment_anything/build_sam.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "e3c254fd9123ac01cbdf6caf6d67978ca215397ebce9a63e75bc0ca3f7a1cf49",
+      "bytes": 5502
+    },
+    {
+      "path": "sam-hq/segment_anything/build_sam_baseline.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/sam-hq/segment_anything/build_sam_baseline.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "96b20e537a76ec1281a6d305b6ba722d72175982a1af38efe541de4f6383c751",
+      "bytes": 4702
+    },
+    {
+      "path": "sam-hq/segment_anything/modeling/__init__.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/sam-hq/segment_anything/modeling/__init__.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "bcceda10c3ac65d2a2249620b8abca08dad41dd1f538e66d5a1977c58a1c59ac",
+      "bytes": 462
+    },
+    {
+      "path": "sam-hq/segment_anything/modeling/common.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/sam-hq/segment_anything/modeling/common.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "59a53bfa5d0a4d446df7f2bb57d2e95808b130601592b934600fb663d256ce17",
+      "bytes": 1479
+    },
+    {
+      "path": "sam-hq/segment_anything/modeling/image_encoder.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/sam-hq/segment_anything/modeling/image_encoder.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "4e363b929ef5099e4ca63fef376ee569930a438c10a9c96044594f83b970da38",
+      "bytes": 14549
+    },
+    {
+      "path": "sam-hq/segment_anything/modeling/mask_decoder.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/sam-hq/segment_anything/modeling/mask_decoder.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "64d955ea491c58893c3bab671f33b9d8f9fa750f3f84bbebc952acea70b416e8",
+      "bytes": 6685
+    },
+    {
+      "path": "sam-hq/segment_anything/modeling/mask_decoder_hq.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/sam-hq/segment_anything/modeling/mask_decoder_hq.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "0a94dd931d905803ed15f8492d1f1fdf359553ae364d3d677be87bc342327013",
+      "bytes": 9784
+    },
+    {
+      "path": "sam-hq/segment_anything/modeling/prompt_encoder.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/sam-hq/segment_anything/modeling/prompt_encoder.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "bd8f2f5903f0647f55c21c608bcbb334eec2901ebe76aa41061b1c513df4a06f",
+      "bytes": 8594
+    },
+    {
+      "path": "sam-hq/segment_anything/modeling/sam.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/sam-hq/segment_anything/modeling/sam.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "b52e260346c8d4c15174844eadbb08d882654606abd1239ad6e12e8adc40e05a",
+      "bytes": 11744
+    },
+    {
+      "path": "sam-hq/segment_anything/modeling/tiny_vit_sam.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/sam-hq/segment_anything/modeling/tiny_vit_sam.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "f06a5a3bb7078d6cd3b6af8f89d7f82fbcaf194cd642cefeaa642173dbf03585",
+      "bytes": 25091
+    },
+    {
+      "path": "sam-hq/segment_anything/modeling/transformer.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/sam-hq/segment_anything/modeling/transformer.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "566a8f6db8b608398de939548bd0f485b21752fda2bdda36900e6444ef938d11",
+      "bytes": 8397
+    },
+    {
+      "path": "sam-hq/segment_anything/predictor.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/sam-hq/segment_anything/predictor.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "d2660684f385dc28da5a08b002347479459e1dbd58d758a3e006d7d0847fa93f",
+      "bytes": 11935
+    },
+    {
+      "path": "sam-hq/segment_anything/utils/__init__.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/sam-hq/segment_anything/utils/__init__.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "34bd8069c54764e7b8d73a78905dbe6467140a2f73170875128f6ca4d8cdd0aa",
+      "bytes": 197
+    },
+    {
+      "path": "sam-hq/segment_anything/utils/amg.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/sam-hq/segment_anything/utils/amg.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "5c10f8dd63facb642ff090f61426b35b3c6c3a07e72839595cb04d74828b1d39",
+      "bytes": 12712
+    },
+    {
+      "path": "sam-hq/segment_anything/utils/onnx.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/sam-hq/segment_anything/utils/onnx.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "e8030733c8fa08b611b9f3799766764b0375e4acb7d0eb6770c600077b28c5ca",
+      "bytes": 6233
+    },
+    {
+      "path": "sam-hq/segment_anything/utils/transforms.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/sam-hq/segment_anything/utils/transforms.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "26a649f2bca8a4a24b4d56617487a9a54c4279e559b2b813c9de38f58a60107c",
+      "bytes": 3972
+    },
+    {
+      "path": "sam_refiner.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/sam_refiner.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "b467d8e3e3c2fc395466a293635774cb821c5ffebdb39c4e5d64ac93c49dd3ad",
+      "bytes": 7898
+    },
+    {
+      "path": "segment-anything/LICENSE",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/segment-anything/LICENSE?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "bytes": 11357
+    },
+    {
+      "path": "segment-anything/segment_anything/__init__.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/segment-anything/segment_anything/__init__.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "c8d8eb649610b2d51f138481a89617a3dcb61106465121dcb1c2f23affc84c30",
+      "bytes": 427
+    },
+    {
+      "path": "segment-anything/segment_anything/automatic_mask_generator.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/segment-anything/segment_anything/automatic_mask_generator.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "71c698d2b6cbf5a62eafa5f12106fdf3bff676102adf1aed2287df3b3990b4e0",
+      "bytes": 15148
+    },
+    {
+      "path": "segment-anything/segment_anything/build_sam.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/segment-anything/segment_anything/build_sam.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "77bc4faf728118625ddd184dc4e6375bd1b5c636fc66fb429f9fc5276f331cc5",
+      "bytes": 2941
+    },
+    {
+      "path": "segment-anything/segment_anything/modeling/__init__.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/segment-anything/segment_anything/modeling/__init__.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "47f6363b86c0bfaa7a6abf723975136d17fae4a5f002d2814a5cce8834d18980",
+      "bytes": 385
+    },
+    {
+      "path": "segment-anything/segment_anything/modeling/common.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/segment-anything/segment_anything/modeling/common.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "59a53bfa5d0a4d446df7f2bb57d2e95808b130601592b934600fb663d256ce17",
+      "bytes": 1479
+    },
+    {
+      "path": "segment-anything/segment_anything/modeling/image_encoder.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/segment-anything/segment_anything/modeling/image_encoder.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "1665ada2902722c9a8cd566c840e324d623ef2b12f7d9ae9f38b24aed0e39886",
+      "bytes": 14420
+    },
+    {
+      "path": "segment-anything/segment_anything/modeling/mask_decoder.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/segment-anything/segment_anything/modeling/mask_decoder.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "6a2455e990515c67a061187c92c236b879b189f21ef6ebfce1627cae9a6b2f93",
+      "bytes": 6615
+    },
+    {
+      "path": "segment-anything/segment_anything/modeling/prompt_encoder.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/segment-anything/segment_anything/modeling/prompt_encoder.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "bd8f2f5903f0647f55c21c608bcbb334eec2901ebe76aa41061b1c513df4a06f",
+      "bytes": 8594
+    },
+    {
+      "path": "segment-anything/segment_anything/modeling/sam.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/segment-anything/segment_anything/modeling/sam.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "588d294a48bbd4ce5c5f4f560fa862aee0a8325a8dadda4e7d848a9f23d27946",
+      "bytes": 11173
+    },
+    {
+      "path": "segment-anything/segment_anything/modeling/transformer.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/segment-anything/segment_anything/modeling/transformer.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "566a8f6db8b608398de939548bd0f485b21752fda2bdda36900e6444ef938d11",
+      "bytes": 8397
+    },
+    {
+      "path": "segment-anything/segment_anything/predictor.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/segment-anything/segment_anything/predictor.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "ab66c29ac0b5b204d23997ef49d8a2476f71b596ce97e35efbf116cfc2118fce",
+      "bytes": 11649
+    },
+    {
+      "path": "segment-anything/segment_anything/utils/__init__.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/segment-anything/segment_anything/utils/__init__.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "34bd8069c54764e7b8d73a78905dbe6467140a2f73170875128f6ca4d8cdd0aa",
+      "bytes": 197
+    },
+    {
+      "path": "segment-anything/segment_anything/utils/amg.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/segment-anything/segment_anything/utils/amg.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "5c10f8dd63facb642ff090f61426b35b3c6c3a07e72839595cb04d74828b1d39",
+      "bytes": 12712
+    },
+    {
+      "path": "segment-anything/segment_anything/utils/onnx.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/segment-anything/segment_anything/utils/onnx.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "b4410ac1dc9a7bb3a09827520fa08454f9b397608775e2fe4ebfb7c8dbb02666",
+      "bytes": 5812
+    },
+    {
+      "path": "segment-anything/segment_anything/utils/transforms.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/segment-anything/segment_anything/utils/transforms.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "26a649f2bca8a4a24b4d56617487a9a54c4279e559b2b813c9de38f58a60107c",
+      "bytes": 3972
+    },
+    {
+      "path": "utils.py",
+      "url": "https://api.github.com/repos/linyq2117/SAMRefiner/contents/utils.py?ref=4bb7f95738c7a2e805f189210fb09e02a2197557",
+      "sha256": "0d0c8e4b257935968c39f4223993b5b7de1868a4a7d886092c6a0074131299ef",
+      "bytes": 10949
+    }
+  ]
+}

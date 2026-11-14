@@ -1,0 +1,32 @@
+[
+  {
+    "cohort": "sclerosis",
+    "n": 40,
+    "mean_baseline": 0.8421060558217957,
+    "mean_best": 0.8496758364830101,
+    "mean_delta": 0.007569780661214762,
+    "improved001": 12,
+    "best_counts": {
+      "SAMRefiner": 6,
+      "MESCnn": 9,
+      "RITM": 11,
+      "keep_segformer": 14
+    },
+    "scope": "GT-informed per-target bound only; no neighbor safety; no simultaneous WSI policy"
+  },
+  {
+    "cohort": "normal_control",
+    "n": 40,
+    "mean_baseline": 0.9141571985587336,
+    "mean_best": 0.9347880515547811,
+    "mean_delta": 0.02063085299604746,
+    "improved001": 14,
+    "best_counts": {
+      "RITM": 8,
+      "SAMRefiner": 10,
+      "MESCnn": 11,
+      "keep_segformer": 11
+    },
+    "scope": "GT-informed per-target bound only; no neighbor safety; no simultaneous WSI policy"
+  }
+]

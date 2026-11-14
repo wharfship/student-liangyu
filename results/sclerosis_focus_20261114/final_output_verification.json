@@ -1,0 +1,14 @@
+{
+  "refiner_masks": 154,
+  "refiner_smoke_cases_exact": 3,
+  "specialist_masks": 80,
+  "specialist_smoke_cases_exact": 2,
+  "seam_masks": 24,
+  "jpeg_references_verified": 424,
+  "cohort_counts": {
+    "sclerosis": 40,
+    "normal_control": 40
+  },
+  "baseline_target_Dice_shared_geometry_equal": true,
+  "production_tests": "37 passed; glomerulus_tools/tests"
+}
