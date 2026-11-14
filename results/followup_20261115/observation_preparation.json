@@ -1,0 +1,9 @@
+{
+  "packages": 77,
+  "views_per_case": 7,
+  "total_named_JPEG": 539,
+  "no_model_calls": true,
+  "GT_not_read_by_view_renderer": true,
+  "seconds": 125.16923850000603,
+  "missing_cases": "3 complete omissions cannot be discovered by this candidate-based observation mechanism"
+}

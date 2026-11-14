@@ -2,9 +2,11 @@
 
 `catalog.csv`是唯一手工表；`runtime_registry.json`和Excel由`python -m glomerulus_tools.build`生成。此目录由原工作区主表导出，之后只在确定的新工作仓库维护一处主表，禁止双向独立修改。
 
-32个历史enabled条目不代表本快照附带32套源码、环境和权重。首批整理SegFormer、MESCnn、SAMRefiner、RITM，其他工具保留登记和边界，资产缺失时入口拒绝执行。精确训练成员未知保持未知。下载、可执行和精度验证是不同状态。
+34个历史enabled条目（含输入配方）不代表本快照附带相应数量的独立网络源码、环境和权重。首批整理SegFormer、MESCnn、SAMRefiner、RITM，其他工具保留登记和边界，资产缺失时入口拒绝执行。精确训练成员未知保持未知。下载、可执行和精度验证是不同状态。
 
 运行、环境及放置见[项目README](../README.md)、[数据与资产](../docs/DATA_AND_ASSETS.md)、[当前结果](../docs/RESULTS.md)。新推理通过`python -m glomerulus_tools`，离线GT不进入推理任务；VLM图像仅JPEG副本。
+
+11月15日两个MESCnn输入配方已完成80+80实测，未改善硬化平均分割；Skinet完整资产取得但TF导入阻塞，仍禁用。详见[后续结果](../docs/FOLLOWUP_20261115.md)与实验源码。
 
 ## 登记表（自动生成）
 <!-- TABLE_START -->
@@ -68,7 +70,7 @@
 |sam_vitb_predbox_mask_fp16|sam_vitb_predbox_mask_fp16|human · HE/PAS|yes/no|Natural-image model has no tissue MPP; retains source pixel coordinates; source MPP recorded per task|20261111:56/56 native masks; 336 model input/output SHA records verified across six recipes; completed exit0; research only；GT-stratified development56 windows/25source images: macroDice0.86126460→0.86142917; delta+0.00016457; good-control targetDice harm>0.01 0/16; window-ID rescued/lost@.5 1/0; not global instance safety or Agent benefit; source-tile sensitivity in report|
 |samhq_vitb_predbox_fp16|samhq_vitb_predbox_fp16|human · HE/PAS|yes/no|Natural-image model has no tissue MPP; retains source pixel coordinates; source MPP recorded per task|20261111:56/56 native masks; 336 model input/output SHA records verified across six recipes; completed exit0; research only；GT-stratified development56 windows/25source images: macroDice0.86126460→0.86000140; delta-0.00126320; good-control targetDice harm>0.01 7/16; window-ID rescued/lost@.5 3/0; not global instance safety or Agent benefit; source-tile sensitivity in report|
 |samhq_vitb_predbox_mask_fp16|samhq_vitb_predbox_mask_fp16|human · HE/PAS|yes/no|Natural-image model has no tissue MPP; retains source pixel coordinates; source MPP recorded per task|20261111:56/56 native masks; 336 model input/output SHA records verified across six recipes; completed exit0; research only；GT-stratified development56 windows/25source images: macroDice0.86126460→0.86136311; delta+0.00009851; good-control targetDice harm>0.01 0/16; window-ID rescued/lost@.5 1/0; not global instance safety or Agent benefit; source-tile sensitivity in report|
-|skinet_mest_main_candidate|Skinet-MEST-C 主网络候选|human · 待核|no/no|roi1024/overlap0.33；训练MPP未知|20261111官方release三ZIP/安装指南/TF加载器/主类序核实；历史仅36MiB partial，未完整取得/加载/推理；本项目未推理，无精度/互补/Agent收益证据|
+|skinet_mest_main_candidate|Skinet-MEST-C 主网络候选|human · 待核|no/no|roi1024/overlap0.33；训练MPP未知|20261115完整主网络+皮质SavedModel取得，ZIP字节与release一致、SHA留档、label_map证实3nsg/4pac；TF2.15.1隔离安装成功但导入SIGILL(-4)，VM未暴露AVX，未运行模型；无本轮分割精度结果；不是模型失败。普通/硬化与完整皮质链待兼容GPU环境验收|
 |jiang2021_wsi_instance_candidate|Jiang2021 多染色WSI实例分割候选|human · PAS/SIL/TRI|no/no|论文40x扫描→2048窗/1536步长；config resize1024 keep_ratio；可移用MPP待核|20261111读取官方论文PDF/配置/README，官方列两项预训练链接；Drive超时，未取得二进制名称/大小/SHA，未加载推理；本项目未推理，无精度/互补/Agent收益证据|
 |frozen_donor_gs_unet_candidate|供肾冷冻HE 硬化5x U-Net候选|human · HE|no/no|作者硬化5x/非硬化2.5x分支，输入256；扫描仪MPP/映射未验收|历史DSA下载401；20261111公开列表核gs-scl5x.pth 322358121B/sha512；未下载/加载/推理，论文全文本轮未取得；本项目未推理，无精度/互补/Agent收益证据|
 |gloreflex_correction_candidate|GloReflex 经验驱动分割纠错候选|human · 待核|no/no|1.5x当前框自适应视野/MPP来自WSI元数据；本项目输入未验收|20261111官方README/完整tree/推理与bank代码核实，未找到发布的任务LoRA/状态头/经验库；未训练/推理；本项目未推理，无精度/互补/Agent收益证据|
@@ -78,4 +80,6 @@
 |samrefiner_vitb_paper_fp16|SAMRefiner SAM ViT-B 论文提示配方|human · HE/PAS|yes/no|Natural-image model has no tissue MPP; retains source pixel coordinates; source MPP recorded per task|20261112真实FastGeodis/官方修改版接口；smoke3+full56退出0；112份尺寸/拼接、336输入SHA、6份smoke一致；Agent禁用；开发56窗/25源图宏Dice0.86126460→0.86162736，Δ+0.00036276；区间跨0；严重残缺12目标均值Δ+0.21380、提升>0.01为10/12；好对照误伤8/16；非完整系统/独立泛化证据；20261114全40硬化(37可调用+3保留遗漏)目标Dice0.842106→0.824927，Δ-0.017179，5改善/21恶化>0.01；40普通Δ-0.010081，11/16；不支持硬化专项自动替换|
 |samrefiner_hqvitb_paper_fp16|SAMRefiner HQ-SAM ViT-B 论文提示配方|human · HE/PAS|yes/no|Natural-image model has no tissue MPP; retains source pixel coordinates; source MPP recorded per task|20261112真实FastGeodis/官方修改版接口；smoke3+full56退出0；112份尺寸/拼接、336输入SHA、6份smoke一致；Agent禁用；开发56窗/25源图宏Dice0.86126460→0.86065457，Δ-0.00061004；区间跨0；严重残缺12目标均值Δ+0.15171、提升>0.01为10/12；好对照误伤5/16；非完整系统/独立泛化证据|
 |ritm_hrnet32_external_mask_point1|RITM HRNet32 外部mask单点纠错|human · HE/PAS|yes/no|natural-image model; max side800; no histology training MPP|strict checkpoint load; 280 native-size binary/composed outputs; 840 input SHA checks; 59 source SHA checks; 3 smoke/full identical; 6 GT/prompt fields rejected；56 windows/25 exposed developmental source images; noGT macroDice 0.86126460->0.86121993 delta -0.00004467 CI[-0.00025029,+0.00015755]; good-control harm1/16; GT scene-aligned3click reference delta+0.00255619 CI crosses0, NOT Agent gain；20261114全40硬化(37可调用+3保留遗漏)目标Dice0.842106→0.841164，Δ-0.000942，2改善/4恶化>0.01；40普通Δ+0.000286，5/0；非可靠净收益|
+|mescnn_cascade_r50_pyramid_png|MESCnn R50 作者金字塔 png|human · HE/PAS|yes/no|作者tile默认10x；本轮SVS AppMag20/40原生4096窗缩至2048/1024；原生MPP留档；精确作者物理尺度未知|20261115真实80/80输出，严格权重加载；输入SHA/尺寸/实例并集检查；执行快照与远程21文件SHA一致；exit0；同40硬化目标Dice0.676892 vs SegFormer0.842106，改善/恶化>0.01=7/20；普通40 Dice0.717101，匹配31/40；三例GT定位遗漏参考均未救回；非完整WSI/NMS|
+|mescnn_cascade_r50_pyramid_jpeg|MESCnn R50 作者金字塔 jpeg|human · HE/PAS|yes/no|作者tile默认10x；本轮SVS AppMag20/40原生4096窗缩至2048/1024；原生MPP留档；精确作者物理尺度未知|20261115真实80/80输出，严格权重加载；输入SHA/尺寸/实例并集检查；执行快照与远程21文件SHA一致；exit0；同40硬化目标Dice0.676851 vs SegFormer0.842106，改善/恶化>0.01=6/20；普通40 Dice0.717119，匹配31/40；三例GT定位遗漏参考均未救回；非完整WSI/NMS|
 <!-- TABLE_END -->

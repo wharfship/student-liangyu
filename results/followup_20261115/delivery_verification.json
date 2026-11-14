@@ -1,0 +1,71 @@
+{
+  "status": "passed",
+  "html_assets": [
+    {
+      "page": "人工复核.html",
+      "images": 160,
+      "links": 162,
+      "all_targets_exist": true,
+      "JPEG_valid": true
+    },
+    {
+      "page": "三例遗漏与旧工具.html",
+      "images": 6,
+      "links": 0,
+      "all_targets_exist": true,
+      "JPEG_valid": true
+    },
+    {
+      "page": "金字塔配对.html",
+      "images": 320,
+      "links": 321,
+      "all_targets_exist": true,
+      "JPEG_valid": true
+    },
+    {
+      "page": "无GT观察样例.html",
+      "images": 539,
+      "links": 0,
+      "all_targets_exist": true,
+      "JPEG_valid": true
+    }
+  ],
+  "browser": [
+    {
+      "page": "人工复核.html",
+      "javascript_errors": [],
+      "first_image_rendered": true
+    },
+    {
+      "page": "三例遗漏与旧工具.html",
+      "javascript_errors": [],
+      "first_image_rendered": true
+    },
+    {
+      "page": "金字塔配对.html",
+      "javascript_errors": [],
+      "first_image_rendered": true
+    },
+    {
+      "page": "无GT观察样例.html",
+      "javascript_errors": [],
+      "first_image_rendered": true
+    }
+  ],
+  "observation_packages": 77,
+  "named_JPEG_SHA_verified": 539,
+  "invalid_decision_cases_rejected": [
+    "unknown_id",
+    "duplicate_id",
+    "extra_GT_field",
+    "invalid_decision",
+    "unknown_view",
+    "duplicate_view",
+    "over_budget",
+    "missing_record",
+    "empty_reason"
+  ],
+  "no_VLM_calls": true,
+  "no_GT_sent": true,
+  "scope": "contracts and evidence integrity, not segmentation accuracy or policy efficacy"
+}

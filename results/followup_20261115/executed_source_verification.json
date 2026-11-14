@@ -1,0 +1,82 @@
+{
+  "host": "netxge",
+  "user": "chenliangyu",
+  "files": {
+    "glomerulus_tools/__init__.py": "f042733ee49c5de240a9e424811ca8bf950db11a1e93d26cd6a5e08649257939",
+    "glomerulus_tools/__main__.py": "146dcf3020536ed1f797c59a48df4cf8b4c55176076a96bf770c2a8718bc0ffa",
+    "glomerulus_tools/adapters.py": "42226ea2b61d4127b74c1edd7412b5c417bb95c91623e536ad2936e437739a67",
+    "glomerulus_tools/bootstrap_catalog.py": "bae439e1add8aed69b20b144fca775a4f91adee55590c002a8f1e86cd7ff5fef",
+    "glomerulus_tools/build.py": "bf2adc065950edc4b88003fac5bfa8283f080454951fffad8533a176cb3934fd",
+    "glomerulus_tools/candidate_views.py": "d603ae1ee9d9f243bc898fdfa7750ba2d4e2fcc1e986507c5a16c07214ea6789",
+    "glomerulus_tools/catalog.csv": "a6828491cef562bd631cf3c6d332f9ec0abd3e29c13754b9a6a1125fd9961d4f",
+    "glomerulus_tools/catalog.py": "ec9d90dcb52d693d212c17fbf3e20665012291972acb2d21b3128768bc942877",
+    "glomerulus_tools/chunked_sam_attention.py": "8d5bdcafba9522617cd353110864013a9d953b3c8a9b4f949482b8bd62531097",
+    "glomerulus_tools/classification.py": "f800b7794c3c2dc3c14ef59ffab52189b33a131496337e8aed0e8503dd1f1314",
+    "glomerulus_tools/contract.py": "f935bfc48b67964083b223b4bd28607a81687e2260b4053ccdb67b863ea56215",
+    "glomerulus_tools/mask_refinement.py": "4255b0f651642ce552940ee57c289d91e90e9c32cee60bbae56aa8e2af2e71f5",
+    "glomerulus_tools/mescnn.py": "8d130d854e6fc58c1a65c56305f7727fb5c2a30bc1776a7b5b817b5bf1722b97",
+    "glomerulus_tools/multiclass.py": "9a96390f6a84120e66195da05740e6059b7cf98a578955374396593d424ea327",
+    "glomerulus_tools/object_evidence.py": "bfe97ac7b1d8c97e3215bfe3bf98399fc7d578dc08b2d65fa2e7f1231953414d",
+    "glomerulus_tools/prepare_wsi.py": "a0e6c2cdd20cf8699109bf2e28a6119c64ffc4040db3e8cbe82245a50f57ad6c",
+    "glomerulus_tools/ritm_refinement.py": "d61bf2d9fd33eaeb09e063d8ac85baf4780bac39007b896c7bbf7a2a84e2a9e7",
+    "glomerulus_tools/runtime_registry.json": "ed8a30f4744608c7b90edf05301e1b58ce6d8b62edc497d50c804201f81ac50e",
+    "glomerulus_tools/visual_reader.py": "7e26fc4fc76f325b39c1a22e1f7904fbef2f1e3195aa35bd78ffb6f38cefbd70",
+    "glomerulus_tools/vlm_jpeg.py": "468fa27601eb504a3eef1271470a303910bc2adb0a6bf2f9caeb0ca1cf71f584",
+    "manifest.json": "beb5c60419412d2990f91ca62320502b9daf0b4626a65cdfc79fee8582a59e7d"
+  },
+  "runs": [
+    {
+      "mode": "PNG",
+      "command": [
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/sclerosis_focus_20261114/specialist_venv/bin/python",
+        "-u",
+        "-m",
+        "glomerulus_tools",
+        "run",
+        "--tool",
+        "mescnn_cascade_r50_pyramid_png",
+        "--task",
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/followup_20261115/pyramid_PNG_NO_GT.json",
+        "--output",
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/followup_20261115/pyramid_results_PNG",
+        "--research"
+      ],
+      "cwd": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/followup_20261115/execution_snapshot",
+      "gpu": 4,
+      "resource": "0, 2717, 0\n1, 2717, 0\n2, 2717, 0\n3, 2719, 0\n4, 24126, 0\n5, 24126, 0\n",
+      "start": 1794675871.282326,
+      "pid": 3056817,
+      "exit_code": 0,
+      "end": 1794676072.0239463,
+      "process_exists_now": false
+    },
+    {
+      "mode": "JPG",
+      "command": [
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/sclerosis_focus_20261114/specialist_venv/bin/python",
+        "-u",
+        "-m",
+        "glomerulus_tools",
+        "run",
+        "--tool",
+        "mescnn_cascade_r50_pyramid_jpeg",
+        "--task",
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/followup_20261115/pyramid_JPG_NO_GT.json",
+        "--output",
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/followup_20261115/pyramid_results_JPG",
+        "--research"
+      ],
+      "cwd": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/followup_20261115/execution_snapshot",
+      "gpu": 4,
+      "resource": "0, 2717, 0\n1, 2717, 0\n2, 2717, 0\n3, 2719, 0\n4, 24126, 0\n5, 24126, 0\n",
+      "start": 1794676072.024365,
+      "pid": 3069162,
+      "exit_code": 0,
+      "end": 1794676261.8726954,
+      "process_exists_now": false
+    }
+  ],
+  "gpu": "0, 21410, 0\n1, 21410, 0\n2, 21410, 0\n3, 21408, 0\n4, 1, 0\n5, 1, 0\n",
+  "claims": "read-only verification; PIDs could be reused; no process termination",
+  "local_snapshot_equal_remote": true
+}

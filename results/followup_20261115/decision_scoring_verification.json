@@ -1,0 +1,106 @@
+{
+  "status": "passed",
+  "fixed_references": [
+    {
+      "policy": "keep",
+      "summary": [
+        {
+          "cohort": "ALL",
+          "n": 77,
+          "accepted": 0,
+          "review": 0,
+          "mean_target_delta": 0.0,
+          "accepted_beneficial": 0,
+          "accepted_harmful": 0,
+          "beneficial_proposals": 7,
+          "harmful_proposals": 4,
+          "accepted_beneficial_precision": null,
+          "harmful_acceptance_rate": 0.0,
+          "requested_view_images": 0,
+          "cohort_scope": "77 located targets; excludes3 complete omissions; exposed development"
+        },
+        {
+          "cohort": "sclerosis",
+          "n": 37,
+          "accepted": 0,
+          "review": 0,
+          "mean_target_delta": 0.0,
+          "accepted_beneficial": 0,
+          "accepted_harmful": 0,
+          "beneficial_proposals": 2,
+          "harmful_proposals": 4,
+          "accepted_beneficial_precision": null,
+          "harmful_acceptance_rate": 0.0,
+          "requested_view_images": 0,
+          "cohort_scope": "77 located targets; excludes3 complete omissions; exposed development"
+        },
+        {
+          "cohort": "normal_control",
+          "n": 40,
+          "accepted": 0,
+          "review": 0,
+          "mean_target_delta": 0.0,
+          "accepted_beneficial": 0,
+          "accepted_harmful": 0,
+          "beneficial_proposals": 5,
+          "harmful_proposals": 0,
+          "accepted_beneficial_precision": null,
+          "harmful_acceptance_rate": null,
+          "requested_view_images": 0,
+          "cohort_scope": "77 located targets; excludes3 complete omissions; exposed development"
+        }
+      ]
+    },
+    {
+      "policy": "accept",
+      "summary": [
+        {
+          "cohort": "ALL",
+          "n": 77,
+          "accepted": 77,
+          "review": 0,
+          "mean_target_delta": -0.0003410670530360439,
+          "accepted_beneficial": 7,
+          "accepted_harmful": 4,
+          "beneficial_proposals": 7,
+          "harmful_proposals": 4,
+          "accepted_beneficial_precision": 0.09090909090909091,
+          "harmful_acceptance_rate": 1.0,
+          "requested_view_images": 0,
+          "cohort_scope": "77 located targets; excludes3 complete omissions; exposed development"
+        },
+        {
+          "cohort": "sclerosis",
+          "n": 37,
+          "accepted": 37,
+          "review": 0,
+          "mean_target_delta": -0.0010188049050425898,
+          "accepted_beneficial": 2,
+          "accepted_harmful": 4,
+          "beneficial_proposals": 2,
+          "harmful_proposals": 4,
+          "accepted_beneficial_precision": 0.05405405405405406,
+          "harmful_acceptance_rate": 1.0,
+          "requested_view_images": 0,
+          "cohort_scope": "77 located targets; excludes3 complete omissions; exposed development"
+        },
+        {
+          "cohort": "normal_control",
+          "n": 40,
+          "accepted": 40,
+          "review": 0,
+          "mean_target_delta": 0.00028584046007001094,
+          "accepted_beneficial": 5,
+          "accepted_harmful": 0,
+          "beneficial_proposals": 5,
+          "harmful_proposals": 0,
+          "accepted_beneficial_precision": 0.125,
+          "harmful_acceptance_rate": null,
+          "requested_view_images": 0,
+          "cohort_scope": "77 located targets; excludes3 complete omissions; exposed development"
+        }
+      ]
+    }
+  ],
+  "actual_VLM_or_Agent_run": false
+}

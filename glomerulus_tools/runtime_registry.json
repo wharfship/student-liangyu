@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "catalog_sha256": "5d0ddb0c51ea68052bc8b4fc38ee268956924554f95b07e98297be4bee3f99cd",
+  "catalog_sha256": "056686bda713329b9074741e4949ac097e726867f36baa93bc400ecbb6ae5e08",
   "tools": [
     {
       "id": "omni_full",
@@ -2486,7 +2486,7 @@
       "id": "skinet_mest_main_candidate",
       "name": "Skinet-MEST-C 主网络候选",
       "protocol": "cortex→mest_main；皮质依赖未改变；mest_glom是后续球内病变任务",
-      "status": "research_candidate_not_inference_accepted",
+      "status": "task_assets_complete_tf_import_blocked_no_avx",
       "enabled": false,
       "agent_enabled": false,
       "species": [
@@ -2858,6 +2858,78 @@
       "training_overlap_status": "Exact image/member overlap unknown; pathology domain out of training scope",
       "code_license": "MIT",
       "weight_license": "author explicit separate weight license not located; maintained distribution via public release"
+    },
+    {
+      "adapter": "mescnn",
+      "python": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/sclerosis_focus_20261114/specialist_venv/bin/python",
+      "checkpoint": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/sclerosis_focus_20261114/specialist_assets/mescnn_cascade_r50_internal_model_final.pth",
+      "checkpoint_sha256": "007181ac33b5a4a0e6f13d5d6dfef9ee06a45fa0e8d33494ff7c885f98d812d4",
+      "source_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/sclerosis_focus_20261114/specialist_assets/MESCnn-284e83781ae8e83a1362d896c2ea11fa95f82a9e",
+      "requires_mpp": true,
+      "timeout_seconds": 7200,
+      "id": "mescnn_cascade_r50_pyramid_png",
+      "name": "MESCnn R50 作者金字塔 png",
+      "protocol": "internal-validation; author nearest10x level within10%; png; score0.5; raw mask",
+      "status": "research_paired80_scored_no_sclerosis_net_gain",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "whole_glomerular_unit",
+      "scale_status": "作者tile默认10x；本轮SVS AppMag20/40原生4096窗缩至2048/1024；原生MPP留档；精确作者物理尺度未知",
+      "limitations": [
+        "all-training明确合并作者train/test/extval，不能用其在作者外测上称独立验证；硬化分类与发现漏球分开；单球类实例mask，Oxford分类不证明硬化检出；all-training合并作者外测；小球面积过滤需审计"
+      ],
+      "training_sources": "IgA临床队列，完整训练来源/开放性待核；有internal-validation/external-validation/all-training版本",
+      "training_data_access": "公开模型与demo；完整临床训练数据未核清",
+      "training_overlap_status": "{\"Zenodo4299694\": \"未知；缺精确训练成员\", \"NEPTUNE_test20\": \"未知；缺精确训练成员\", \"HuBMAP_kidney8\": \"未知；缺精确训练成员\", \"hospital40\": \"未知；缺精确训练成员\"}",
+      "code_license": "GPL-3.0（作者仓库）；Detectron2 Apache-2.0",
+      "weight_license": "未核"
+    },
+    {
+      "adapter": "mescnn",
+      "python": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/sclerosis_focus_20261114/specialist_venv/bin/python",
+      "checkpoint": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/sclerosis_focus_20261114/specialist_assets/mescnn_cascade_r50_internal_model_final.pth",
+      "checkpoint_sha256": "007181ac33b5a4a0e6f13d5d6dfef9ee06a45fa0e8d33494ff7c885f98d812d4",
+      "source_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/sclerosis_focus_20261114/specialist_assets/MESCnn-284e83781ae8e83a1362d896c2ea11fa95f82a9e",
+      "requires_mpp": true,
+      "timeout_seconds": 7200,
+      "id": "mescnn_cascade_r50_pyramid_jpeg",
+      "name": "MESCnn R50 作者金字塔 jpeg",
+      "protocol": "internal-validation; author nearest10x level within10%; jpeg; score0.5; raw mask",
+      "status": "research_paired80_scored_no_sclerosis_net_gain",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "whole_glomerular_unit",
+      "scale_status": "作者tile默认10x；本轮SVS AppMag20/40原生4096窗缩至2048/1024；原生MPP留档；精确作者物理尺度未知",
+      "limitations": [
+        "all-training明确合并作者train/test/extval，不能用其在作者外测上称独立验证；硬化分类与发现漏球分开；单球类实例mask，Oxford分类不证明硬化检出；all-training合并作者外测；小球面积过滤需审计"
+      ],
+      "training_sources": "IgA临床队列，完整训练来源/开放性待核；有internal-validation/external-validation/all-training版本",
+      "training_data_access": "公开模型与demo；完整临床训练数据未核清",
+      "training_overlap_status": "{\"Zenodo4299694\": \"未知；缺精确训练成员\", \"NEPTUNE_test20\": \"未知；缺精确训练成员\", \"HuBMAP_kidney8\": \"未知；缺精确训练成员\", \"hospital40\": \"未知；缺精确训练成员\"}",
+      "code_license": "GPL-3.0（作者仓库）；Detectron2 Apache-2.0",
+      "weight_license": "未核"
     }
   ],
   "default_tools": {

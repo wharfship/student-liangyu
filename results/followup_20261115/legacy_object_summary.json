@@ -1,0 +1,122 @@
+[
+  {
+    "model": "glo_self",
+    "cohort": "sclerosis",
+    "n": 40,
+    "baseline_matched": 37,
+    "other_matched": 19,
+    "rescued": 0,
+    "harmed": 18,
+    "true_omission_rescued": 0
+  },
+  {
+    "model": "glo_self",
+    "cohort": "normal_control",
+    "n": 40,
+    "baseline_matched": 40,
+    "other_matched": 25,
+    "rescued": 0,
+    "harmed": 15,
+    "true_omission_rescued": 0
+  },
+  {
+    "model": "ki2021",
+    "cohort": "sclerosis",
+    "n": 5,
+    "baseline_matched": 4,
+    "other_matched": 1,
+    "rescued": 0,
+    "harmed": 3,
+    "true_omission_rescued": 0
+  },
+  {
+    "model": "ki2021",
+    "cohort": "normal_control",
+    "n": 5,
+    "baseline_matched": 5,
+    "other_matched": 3,
+    "rescued": 0,
+    "harmed": 2,
+    "true_omission_rescued": 0
+  },
+  {
+    "model": "omni_cap",
+    "cohort": "sclerosis",
+    "n": 40,
+    "baseline_matched": 37,
+    "other_matched": 2,
+    "rescued": 0,
+    "harmed": 35,
+    "true_omission_rescued": 0
+  },
+  {
+    "model": "omni_cap",
+    "cohort": "normal_control",
+    "n": 40,
+    "baseline_matched": 40,
+    "other_matched": 31,
+    "rescued": 0,
+    "harmed": 9,
+    "true_omission_rescued": 0
+  },
+  {
+    "model": "omni_unanimity",
+    "cohort": "sclerosis",
+    "n": 40,
+    "baseline_matched": 37,
+    "other_matched": 1,
+    "rescued": 0,
+    "harmed": 36,
+    "true_omission_rescued": 0
+  },
+  {
+    "model": "omni_unanimity",
+    "cohort": "normal_control",
+    "n": 40,
+    "baseline_matched": 40,
+    "other_matched": 32,
+    "rescued": 0,
+    "harmed": 8,
+    "true_omission_rescued": 0
+  },
+  {
+    "model": "segnext_mscant",
+    "cohort": "sclerosis",
+    "n": 40,
+    "baseline_matched": 37,
+    "other_matched": 36,
+    "rescued": 1,
+    "harmed": 2,
+    "true_omission_rescued": 1
+  },
+  {
+    "model": "segnext_mscant",
+    "cohort": "normal_control",
+    "n": 40,
+    "baseline_matched": 40,
+    "other_matched": 38,
+    "rescued": 0,
+    "harmed": 2,
+    "true_omission_rescued": 0
+  },
+  {
+    "model": "tokyo_omni",
+    "cohort": "sclerosis",
+    "n": 5,
+    "baseline_matched": 4,
+    "other_matched": 0,
+    "rescued": 0,
+    "harmed": 4,
+    "true_omission_rescued": 0
+  },
+  {
+    "model": "tokyo_omni",
+    "cohort": "normal_control",
+    "n": 5,
+    "baseline_matched": 5,
+    "other_matched": 5,
+    "rescued": 0,
+    "harmed": 0,
+    "true_omission_rescued": 0
+  }
+]

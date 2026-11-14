@@ -1,0 +1,32 @@
+[
+  {
+    "url": "https://github.com/SkinetTeam/Skinet-MEST-C/releases/download/v1.0/skinet_cortex.zip",
+    "path": "assets/skinet_cortex.zip",
+    "expected_bytes": 224336060,
+    "http_status": 200,
+    "status": "downloaded",
+    "bytes": 224336060,
+    "sha256": "ac05078cfe6feb28d0bad027836112b1dc26707c12bdb5f607a227053a14b47b",
+    "seconds": 20.03028100001393
+  },
+  {
+    "url": "https://github.com/SkinetTeam/Skinet-MEST-C/releases/download/v1.0/skinet_mest_main.zip",
+    "path": "assets/skinet_mest_main.zip",
+    "expected_bytes": 226293887,
+    "http_status": 200,
+    "status": "downloaded",
+    "bytes": 226293887,
+    "sha256": "accf3155cedd3aaf3f4d3d2fc5dce479102a52ec1e000351b5cdd8fed497a2bf",
+    "seconds": 20.67511429998558
+  },
+  {
+    "url": "https://codeload.github.com/SkinetTeam/Skinet-MEST-C/zip/refs/heads/main",
+    "path": "assets/skinet_source.zip",
+    "expected_bytes": null,
+    "http_status": 200,
+    "status": "downloaded",
+    "bytes": 181464,
+    "sha256": "276c405aa79a5f2afd151b46beabeeab7cdeb777df4c98306f493a7042ee0d80",
+    "seconds": 1.7115686000033747
+  }
+]

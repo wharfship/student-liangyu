@@ -2,7 +2,7 @@
 
 面向强分割模型残余错误的、由证据驱动的动态肾小球分割Agent研究。
 
-**当前为2026-11-14本地整理快照，尚未上传。** SegFormer-B5为强基线；首先核实硬化球漏检、范围错误与组织混淆，证明补救工具有用，再比较专用方案、固定规则和动态Agent。现有新工具尚无硬化净收益，不能据工程跑通宣称Agent有效。
+**当前为2026-11-15本地整理快照，尚未上传。** SegFormer-B5为强基线；首先核实硬化球漏检、范围错误与组织混淆，证明补救工具有用，再比较专用方案、固定规则和动态Agent。现有新工具尚无硬化净收益，不能据工程跑通宣称Agent有效。
 
 ## 环境与最小运行
 
@@ -37,8 +37,10 @@ CUDA_VISIBLE_DEVICES=0 python -m glomerulus_tools run --tool nepath_segformer_b5
 - `results/`：分组结果、协议、验证和源码SHA；不含病例逐行结果或医院图册。
 - `provenance/`：来源commit、下载校验与导出文件清单；`third_party/`：许可说明。
 
-32个enabled记录不等于本仓库附带32个可用网络。首批资产整理覆盖SegFormer、MESCnn、SAMRefiner和RITM；其他历史适配器可能依赖尚未移植的旧ops模块。缺失会拒绝执行，不能把可执行状态等同于精度。
+34个enabled记录（包含同一模型的不同输入配方）不表示本仓库附带相应数量的独立可用网络。首批资产整理覆盖SegFormer、MESCnn、SAMRefiner和RITM；其他历史适配器可能依赖尚未移植的旧ops模块。缺失会拒绝执行，不能把可执行状态等同于精度。
 
 [当前结果与负结果](docs/RESULTS.md) · [下一阶段实验](docs/NEXT_EXPERIMENTS.md) · [数据/权重放置](docs/DATA_AND_ASSETS.md) · [版本对应与局限](docs/REPRODUCIBILITY.md)
 
 尚未完成：完整可移植模型环境自动安装、医院数据外发授权、全部旧Agent依赖打包、可靠专用补救动作、无GT验收、动态观察消融和独立患者留出测试。VISTA仅作为主动观察设计参考，未宣称复现。原创代码公开许可待确定，第三方许可各自适用。
+
+11月15日新增：MESCnn真实10×金字塔PNG/JPEG各80次仍无硬化净收益；旧SegNeXt有一例真实补漏但候选成本高；Skinet完整资产取得、TF导入受平台指令集阻塞；无GT观察资产和评分合同已备，未运行VLM。[后续结果与下一步](docs/FOLLOWUP_20261115.md)。

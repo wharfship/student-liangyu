@@ -1,0 +1,30 @@
+{
+  "process_wall_seconds": 390.589950799942,
+  "rows": [
+    {
+      "cohort": "sclerosis",
+      "mode": "PNG",
+      "mean_JPEG_vs_PNG": null,
+      "inference_seconds": 6.223284093197435
+    },
+    {
+      "cohort": "sclerosis",
+      "mode": "JPG",
+      "mean_JPEG_vs_PNG": -4.049669341353868e-05,
+      "inference_seconds": 5.657018032390624
+    },
+    {
+      "cohort": "normal_control",
+      "mode": "PNG",
+      "mean_JPEG_vs_PNG": null,
+      "inference_seconds": 4.75684366049245
+    },
+    {
+      "cohort": "normal_control",
+      "mode": "JPG",
+      "mean_JPEG_vs_PNG": 1.7857828236794715e-05,
+      "inference_seconds": 5.039550915360451
+    }
+  ],
+  "paid_API_requests": 0
+}

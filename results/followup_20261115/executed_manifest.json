@@ -1,0 +1,22 @@
+{
+  "adapters.py": "42226ea2b61d4127b74c1edd7412b5c417bb95c91623e536ad2936e437739a67",
+  "bootstrap_catalog.py": "bae439e1add8aed69b20b144fca775a4f91adee55590c002a8f1e86cd7ff5fef",
+  "build.py": "bf2adc065950edc4b88003fac5bfa8283f080454951fffad8533a176cb3934fd",
+  "candidate_views.py": "d603ae1ee9d9f243bc898fdfa7750ba2d4e2fcc1e986507c5a16c07214ea6789",
+  "catalog.csv": "a6828491cef562bd631cf3c6d332f9ec0abd3e29c13754b9a6a1125fd9961d4f",
+  "catalog.py": "ec9d90dcb52d693d212c17fbf3e20665012291972acb2d21b3128768bc942877",
+  "chunked_sam_attention.py": "8d5bdcafba9522617cd353110864013a9d953b3c8a9b4f949482b8bd62531097",
+  "classification.py": "f800b7794c3c2dc3c14ef59ffab52189b33a131496337e8aed0e8503dd1f1314",
+  "contract.py": "f935bfc48b67964083b223b4bd28607a81687e2260b4053ccdb67b863ea56215",
+  "mask_refinement.py": "4255b0f651642ce552940ee57c289d91e90e9c32cee60bbae56aa8e2af2e71f5",
+  "mescnn.py": "8d130d854e6fc58c1a65c56305f7727fb5c2a30bc1776a7b5b817b5bf1722b97",
+  "multiclass.py": "9a96390f6a84120e66195da05740e6059b7cf98a578955374396593d424ea327",
+  "object_evidence.py": "bfe97ac7b1d8c97e3215bfe3bf98399fc7d578dc08b2d65fa2e7f1231953414d",
+  "prepare_wsi.py": "a0e6c2cdd20cf8699109bf2e28a6119c64ffc4040db3e8cbe82245a50f57ad6c",
+  "ritm_refinement.py": "d61bf2d9fd33eaeb09e063d8ac85baf4780bac39007b896c7bbf7a2a84e2a9e7",
+  "runtime_registry.json": "ed8a30f4744608c7b90edf05301e1b58ce6d8b62edc497d50c804201f81ac50e",
+  "visual_reader.py": "7e26fc4fc76f325b39c1a22e1f7904fbef2f1e3195aa35bd78ffb6f38cefbd70",
+  "vlm_jpeg.py": "468fa27601eb504a3eef1271470a303910bc2adb0a6bf2f9caeb0ca1cf71f584",
+  "__init__.py": "f042733ee49c5de240a9e424811ca8bf950db11a1e93d26cd6a5e08649257939",
+  "__main__.py": "146dcf3020536ed1f797c59a48df4cf8b4c55176076a96bf770c2a8718bc0ffa"
+}

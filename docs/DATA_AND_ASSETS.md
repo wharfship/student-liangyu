@@ -22,3 +22,6 @@ RITM使用provenance/ritm_source_receipt.json内固定源码文件SHA。原归�
 复制configs/execution_paths.example.json为本地配置，填实际绝对路径，使用scripts/configure_assets.py写回catalog.execution_json并build。SAM/RITM还需配置其python/source_dir/checkpoint/extra_paths和RITM source_receipt。该助手不会改checkpoint_sha256、网络配方或Agent开放状态。模型未完整移植前`list`中的missing_assets为真实限制。
 
 公开NEPTUNE/HuBMAP等历史数据来源以catalog evidence追溯，本快照未附历史数据清单，不声称可直接复算其分数。训练成员和训练/测试重叠未知处保持未知。
+
+
+Skinet完整皮质与MEST主网络SavedModel来自 https://github.com/SkinetTeam/Skinet-MEST-C/releases/tag/v1.0 ，分别下载skinet_cortex.zip和skinet_mest_main.zip，放assets/并按作者方式解压（包含saved_model.pb/variables/label_map.pbtxt）。下载身份SHA在provenance/skinet_asset_receipts.json；发布页字节数核对一致，无作者另行哈希证据。此时完整权重已取得，不需重复下载。隔离TF2.15.1安装成功但服务器VM未暴露AVX，导入SIGILL，尚无模型结果；必须在兼容GPU平台先验收，不能把安装freeze当已验证可移植环境。训练MPP/染色/成员未知。

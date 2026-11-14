@@ -1,0 +1,11 @@
+{
+  "before": "a6828491cef562bd631cf3c6d332f9ec0abd3e29c13754b9a6a1125fd9961d4f",
+  "after": "056686bda713329b9074741e4949ac097e726867f36baa93bc400ecbb6ae5e08",
+  "changed": [
+    "mescnn_cascade_r50_pyramid_png",
+    "mescnn_cascade_r50_pyramid_jpeg"
+  ],
+  "agent_enabled_changed": false,
+  "default_changed": false,
+  "accuracy_scope": "paired80 reference windows only"
+}

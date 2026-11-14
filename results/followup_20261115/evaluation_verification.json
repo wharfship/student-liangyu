@@ -1,0 +1,14 @@
+{
+  "cases": 80,
+  "recipes": 2,
+  "outputs": 160,
+  "input_SHA_equal": true,
+  "instance_union_binary_equal": true,
+  "GT_inference": false,
+  "all_author_level_checks_pass": true,
+  "target_comparison": "best predicted instance by offline target IoU; not online selection or global matching",
+  "same_native_reference_box": true,
+  "rounding": "native4096 / rounded factor2 or4; actual pyramid dimension ratios recorded; subpixel differences not removed",
+  "full_WSI_search": false,
+  "three_GT_centered_references_not_deployment": true
+}
