@@ -1,0 +1,60 @@
+{
+  "status": "passed",
+  "batches": [
+    {
+      "folder": "nuclei_hospital16",
+      "samples": 16,
+      "input_SHA": true,
+      "GT_inference": false
+    },
+    {
+      "folder": "nuclei_TNBC8",
+      "samples": 8,
+      "input_SHA": true,
+      "GT_inference": false
+    },
+    {
+      "folder": "features77",
+      "samples": 77,
+      "input_SHA": true,
+      "GT_inference": false
+    },
+    {
+      "folder": "tissue24",
+      "samples": 24,
+      "input_SHA": true,
+      "GT_inference": false
+    },
+    {
+      "folder": "artifact24",
+      "samples": 24,
+      "input_SHA": true,
+      "GT_inference": false
+    }
+  ],
+  "samples": 149,
+  "repeatability": [
+    {
+      "tool": "instanseg_brightfield_nuclei_v011",
+      "sample_id": "P004",
+      "byte_equal": true
+    },
+    {
+      "tool": "dinov2_vits14_features",
+      "sample_id": "P001",
+      "byte_equal": true
+    },
+    {
+      "tool": "grandqc_tissue_mpp10",
+      "sample_id": "P004",
+      "byte_equal": true
+    },
+    {
+      "tool": "grandqc_artifact_mpp15",
+      "sample_id": "P004",
+      "byte_equal": true
+    }
+  ],
+  "GT_only_offline": true,
+  "reference_model_prediction_not_GT": true
+}

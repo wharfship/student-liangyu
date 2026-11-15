@@ -1,0 +1,50 @@
+{
+  "fixed_FOV_um": 224,
+  "summaries": [
+    {
+      "model": "DINOv2",
+      "stain": "ALL",
+      "n": 77,
+      "top1_same_class": 0.8181818181818182,
+      "top5_same_class_precision": 0.7870129870129869
+    },
+    {
+      "model": "DINOv2",
+      "stain": "HE",
+      "n": 68,
+      "top1_same_class": 0.8382352941176471,
+      "top5_same_class_precision": 0.8088235294117646
+    },
+    {
+      "model": "DINOv2",
+      "stain": "PAS",
+      "n": 9,
+      "top1_same_class": 0.6666666666666666,
+      "top5_same_class_precision": 0.6222222222222222
+    },
+    {
+      "model": "RGB_histogram",
+      "stain": "ALL",
+      "n": 77,
+      "top1_same_class": 0.5454545454545454,
+      "top5_same_class_precision": 0.5740259740259739
+    },
+    {
+      "model": "RGB_histogram",
+      "stain": "HE",
+      "n": 68,
+      "top1_same_class": 0.5588235294117647,
+      "top5_same_class_precision": 0.5911764705882353
+    },
+    {
+      "model": "RGB_histogram",
+      "stain": "PAS",
+      "n": 9,
+      "top1_same_class": 0.4444444444444444,
+      "top5_same_class_precision": 0.4444444444444444
+    }
+  ],
+  "GT_only_offline": true,
+  "training_not_performed": true,
+  "independent_test": false
+}

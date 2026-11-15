@@ -2,7 +2,7 @@
 
 `catalog.csv`是唯一手工表；`runtime_registry.json`和Excel由`python -m glomerulus_tools.build`生成。此目录由原工作区主表导出，之后只在确定的新工作仓库维护一处主表，禁止双向独立修改。
 
-34个历史enabled条目（含输入配方）不代表本快照附带相应数量的独立网络源码、环境和权重。首批整理SegFormer、MESCnn、SAMRefiner、RITM，其他工具保留登记和边界，资产缺失时入口拒绝执行。精确训练成员未知保持未知。下载、可执行和精度验证是不同状态。
+38个研究enabled条目（含配方与非分割工具）不代表本快照附带相应数量的独立网络源码、环境和权重。首批整理SegFormer、MESCnn、SAMRefiner、RITM，其他工具保留登记和边界，资产缺失时入口拒绝执行。精确训练成员未知保持未知。下载、可执行和精度验证是不同状态。
 
 运行、环境及放置见[项目README](../README.md)、[数据与资产](../docs/DATA_AND_ASSETS.md)、[当前结果](../docs/RESULTS.md)。新推理通过`python -m glomerulus_tools`，离线GT不进入推理任务；VLM图像仅JPEG副本。
 
@@ -82,4 +82,10 @@
 |ritm_hrnet32_external_mask_point1|RITM HRNet32 外部mask单点纠错|human · HE/PAS|yes/no|natural-image model; max side800; no histology training MPP|strict checkpoint load; 280 native-size binary/composed outputs; 840 input SHA checks; 59 source SHA checks; 3 smoke/full identical; 6 GT/prompt fields rejected；56 windows/25 exposed developmental source images; noGT macroDice 0.86126460->0.86121993 delta -0.00004467 CI[-0.00025029,+0.00015755]; good-control harm1/16; GT scene-aligned3click reference delta+0.00255619 CI crosses0, NOT Agent gain；20261114全40硬化(37可调用+3保留遗漏)目标Dice0.842106→0.841164，Δ-0.000942，2改善/4恶化>0.01；40普通Δ+0.000286，5/0；非可靠净收益|
 |mescnn_cascade_r50_pyramid_png|MESCnn R50 作者金字塔 png|human · HE/PAS|yes/no|作者tile默认10x；本轮SVS AppMag20/40原生4096窗缩至2048/1024；原生MPP留档；精确作者物理尺度未知|20261115真实80/80输出，严格权重加载；输入SHA/尺寸/实例并集检查；执行快照与远程21文件SHA一致；exit0；同40硬化目标Dice0.676892 vs SegFormer0.842106，改善/恶化>0.01=7/20；普通40 Dice0.717101，匹配31/40；三例GT定位遗漏参考均未救回；非完整WSI/NMS|
 |mescnn_cascade_r50_pyramid_jpeg|MESCnn R50 作者金字塔 jpeg|human · HE/PAS|yes/no|作者tile默认10x；本轮SVS AppMag20/40原生4096窗缩至2048/1024；原生MPP留档；精确作者物理尺度未知|20261115真实80/80输出，严格权重加载；输入SHA/尺寸/实例并集检查；执行快照与远程21文件SHA一致；exit0；同40硬化目标Dice0.676851 vs SegFormer0.842106，改善/恶化>0.01=6/20；普通40 Dice0.717119，匹配31/40；三例GT定位遗漏参考均未救回；非完整WSI/NMS|
+|instanseg_brightfield_nuclei_v011|InstanSeg 明场细胞核实例|human · HE/PAS|yes/no|模型0.5um/px；输入必须提供实测MPP，作者wrapper缩放后回原尺寸；PAS仅探索|CUDA医院16局部＋TNBC8完成，实例尺寸/输入SHA通过，smoke重复字节一致；模型SHA与作者rdf一致；TNBC8/4slides核前景Dice0.857220，组件代理F10.910232；该数据为已知训练来源，不是独立测试；医院无核GT，PAS4仅探索|
+|dinov2_vits14_features|DINOv2 ViT-S/14 特征与检索|human · HE/PAS|yes/no|Resize短边256+CenterCrop224；原MPP与视野必须留档，不声称训练物理尺度|CUDA77原候选＋77固定224um视野完成，384维有限向量及L2检查；无重复RGB图；源组排除；smoke重复字节一致；同染色跨来源号组同类首近邻：原裁片73/77 vs RGB51/77；固定224um为63/77 vs RGB42/77。检索任务开发验收，不是肾病分类准确率；无专用头/无训练|
+|grandqc_tissue_mpp10|GrandQC 组织/背景检测|human · HE|yes/no|模型10um/px；图像实测MPP映射到10um格；ROI外白色补齐512|24HE局部（12原图＋12人工模糊）CUDA完成；任务state_dict严格加载，官方Zenodo MD5核对；输出/SHA通过；组织门控可执行，真实组织边界GT尚未评价；10um/px粗格与白补512的ROI协议，非完整作者WSI复现；非商业许可|
+|grandqc_artifact_mpp15|GrandQC 七类组织/伪影质控|human · HE|yes/no|组织10um/px门控＋伪影1.5um/px；原MPP必填；ROI外白补512|完整作者任务模型＋组织门控，24HE局部CUDA完成；Zenodo MD5核对；重复输出字节一致；人工σ8um严重模糊12/12失焦比例增加>0.01，均值0→0.649134；无真实伪影GT，不作为真实敏感性/特异性；1.5um/px、非商业许可|
 <!-- TABLE_END -->
+
+新增InstanSeg核分析、DINOv2表征、GrandQC组织/伪影4入口，226份正式CUDA输出，能力与许可边界见[新工具验收](../docs/OPEN_TOOLS_20261115.md)。唯一人工主表仍在原工作区，此处是生成审阅副本。

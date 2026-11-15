@@ -1,0 +1,112 @@
+[
+  {
+    "tool": "instanseg_brightfield_nuclei_v011",
+    "task": "nuclei",
+    "output": "nuclei_hospital16",
+    "exit_code": 0,
+    "seconds": 22.974262787029147,
+    "command": [
+      "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/tool_venv/bin/python",
+      "-u",
+      "-m",
+      "glomerulus_tools",
+      "run",
+      "--tool",
+      "instanseg_brightfield_nuclei_v011",
+      "--task",
+      "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/nuclei_remote_NO_GT.json",
+      "--output",
+      "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/results/nuclei_hospital16",
+      "--research"
+    ],
+    "gpu": 4
+  },
+  {
+    "tool": "instanseg_brightfield_nuclei_v011",
+    "task": "tnbc",
+    "output": "nuclei_TNBC8",
+    "exit_code": 0,
+    "seconds": 14.75767202116549,
+    "command": [
+      "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/tool_venv/bin/python",
+      "-u",
+      "-m",
+      "glomerulus_tools",
+      "run",
+      "--tool",
+      "instanseg_brightfield_nuclei_v011",
+      "--task",
+      "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/tnbc_remote_NO_GT.json",
+      "--output",
+      "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/results/nuclei_TNBC8",
+      "--research"
+    ],
+    "gpu": 4
+  },
+  {
+    "tool": "dinov2_vits14_features",
+    "task": "feature",
+    "output": "features77",
+    "exit_code": 0,
+    "seconds": 8.847998255863786,
+    "command": [
+      "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/tool_venv/bin/python",
+      "-u",
+      "-m",
+      "glomerulus_tools",
+      "run",
+      "--tool",
+      "dinov2_vits14_features",
+      "--task",
+      "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/feature_remote_NO_GT.json",
+      "--output",
+      "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/results/features77",
+      "--research"
+    ],
+    "gpu": 4
+  },
+  {
+    "tool": "grandqc_tissue_mpp10",
+    "task": "qc_paired",
+    "output": "tissue24",
+    "exit_code": 0,
+    "seconds": 11.956507966388017,
+    "command": [
+      "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/tool_venv/bin/python",
+      "-u",
+      "-m",
+      "glomerulus_tools",
+      "run",
+      "--tool",
+      "grandqc_tissue_mpp10",
+      "--task",
+      "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/qc_paired_remote_NO_GT.json",
+      "--output",
+      "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/results/tissue24",
+      "--research"
+    ],
+    "gpu": 4
+  },
+  {
+    "tool": "grandqc_artifact_mpp15",
+    "task": "qc_paired",
+    "output": "artifact24",
+    "exit_code": 0,
+    "seconds": 14.858150910120457,
+    "command": [
+      "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/tool_venv/bin/python",
+      "-u",
+      "-m",
+      "glomerulus_tools",
+      "run",
+      "--tool",
+      "grandqc_artifact_mpp15",
+      "--task",
+      "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/qc_paired_remote_NO_GT.json",
+      "--output",
+      "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/results/artifact24",
+      "--research"
+    ],
+    "gpu": 4
+  }
+]

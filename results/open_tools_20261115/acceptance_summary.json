@@ -1,0 +1,107 @@
+{
+  "nuclei_TNBC": {
+    "n": 8,
+    "slides": 4,
+    "mean_binary_dice": 0.8572198219372301,
+    "mean_instance_f1": 0.910231662842121,
+    "GT_components": 635,
+    "pred_instances": 581,
+    "matched_iou05": 559,
+    "not_independent_test": true,
+    "reason": "known training-source corpus; exact field split unknown;8 acceptance images only"
+  },
+  "retrieval": [
+    {
+      "model": "DINOv2",
+      "stain": "ALL",
+      "n": 77,
+      "top1_same_class": 0.948051948051948,
+      "balanced_top1_same_class": 0.9479729729729729,
+      "top5_same_class_precision": 0.8701298701298698,
+      "same_group_excluded": true,
+      "same_stain_only": true
+    },
+    {
+      "model": "DINOv2",
+      "stain": "HE",
+      "n": 68,
+      "top1_same_class": 0.9852941176470589,
+      "balanced_top1_same_class": 0.9848484848484849,
+      "top5_same_class_precision": 0.9088235294117647,
+      "same_group_excluded": true,
+      "same_stain_only": true
+    },
+    {
+      "model": "DINOv2",
+      "stain": "PAS",
+      "n": 9,
+      "top1_same_class": 0.6666666666666666,
+      "balanced_top1_same_class": 0.675,
+      "top5_same_class_precision": 0.5777777777777777,
+      "same_group_excluded": true,
+      "same_stain_only": true
+    },
+    {
+      "model": "RGB_histogram",
+      "stain": "ALL",
+      "n": 77,
+      "top1_same_class": 0.6623376623376623,
+      "balanced_top1_same_class": 0.6587837837837838,
+      "top5_same_class_precision": 0.6285714285714286,
+      "same_group_excluded": true,
+      "same_stain_only": true
+    },
+    {
+      "model": "RGB_histogram",
+      "stain": "HE",
+      "n": 68,
+      "top1_same_class": 0.6764705882352942,
+      "balanced_top1_same_class": 0.6735930735930736,
+      "top5_same_class_precision": 0.6500000000000001,
+      "same_group_excluded": true,
+      "same_stain_only": true
+    },
+    {
+      "model": "RGB_histogram",
+      "stain": "PAS",
+      "n": 9,
+      "top1_same_class": 0.5555555555555556,
+      "balanced_top1_same_class": 0.55,
+      "top5_same_class_precision": 0.4666666666666667,
+      "same_group_excluded": true,
+      "same_stain_only": true
+    }
+  ],
+  "quality_sanity": {
+    "pairs": 12,
+    "mean_original_OOF": 0.0,
+    "mean_blur_OOF": 0.6491337484681573,
+    "increased": 12,
+    "increase_gt001": 12,
+    "real_artifact_GT": false,
+    "not_realworld_sensitivity": true
+  },
+  "repeatability": [
+    {
+      "tool": "instanseg_brightfield_nuclei_v011",
+      "sample_id": "P004",
+      "byte_equal": true
+    },
+    {
+      "tool": "dinov2_vits14_features",
+      "sample_id": "P001",
+      "byte_equal": true
+    },
+    {
+      "tool": "grandqc_tissue_mpp10",
+      "sample_id": "P004",
+      "byte_equal": true
+    },
+    {
+      "tool": "grandqc_artifact_mpp15",
+      "sample_id": "P004",
+      "byte_equal": true
+    }
+  ],
+  "formal_samples": 149
+}

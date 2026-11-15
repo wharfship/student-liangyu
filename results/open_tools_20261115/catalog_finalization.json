@@ -1,0 +1,12 @@
+{
+  "before": "ade106fa727e763c93133a29a63169a21b4ada556f44de1e8800d59872852ded",
+  "after": "3ffcb2ff9ea05eeac0499583094df4e62ab1ce0a9f9cf9f03ac33140c30d63f7",
+  "updated": [
+    "instanseg_brightfield_nuclei_v011",
+    "dinov2_vits14_features",
+    "grandqc_tissue_mpp10",
+    "grandqc_artifact_mpp15"
+  ],
+  "default_changed": false,
+  "Agent_enabled_changed": false
+}

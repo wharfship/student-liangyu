@@ -1,0 +1,9 @@
+{
+  "exact_RGB_duplicates": [],
+  "raw_image_SHA_unique": 77,
+  "cohort_labels_only_offline": true,
+  "selection": "all77 already located exposed development targets",
+  "crop_basis": "predicted support only; noGT mask overlays",
+  "fixed_FOV_control_um": 224,
+  "not_independent_validation": true
+}

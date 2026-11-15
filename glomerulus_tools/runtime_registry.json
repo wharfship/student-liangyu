@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "catalog_sha256": "056686bda713329b9074741e4949ac097e726867f36baa93bc400ecbb6ae5e08",
+  "catalog_sha256": "3ffcb2ff9ea05eeac0499583094df4e62ab1ce0a9f9cf9f03ac33140c30d63f7",
   "tools": [
     {
       "id": "omni_full",
@@ -2930,6 +2930,162 @@
       "training_overlap_status": "{\"Zenodo4299694\": \"未知；缺精确训练成员\", \"NEPTUNE_test20\": \"未知；缺精确训练成员\", \"HuBMAP_kidney8\": \"未知；缺精确训练成员\", \"hospital40\": \"未知；缺精确训练成员\"}",
       "code_license": "GPL-3.0（作者仓库）；Detectron2 Apache-2.0",
       "weight_license": "未核"
+    },
+    {
+      "adapter": "pathology_utility",
+      "utility_kind": "instanseg",
+      "python": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/tool_venv/bin/python",
+      "source_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/assets/source/instanseg-414fbc9e8039c1d049cc27871d66409084ded21c",
+      "checkpoint": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/assets/instanseg_model/instanseg.pt",
+      "checkpoint_sha256": "0c724da169d507d8dd2e206ad3675a0b1566824eee6e20ad9a0ba916311d9dd0",
+      "requires_mpp": true,
+      "output_semantics": "nucleus_instances",
+      "id": "instanseg_brightfield_nuclei_v011",
+      "name": "InstanSeg 明场细胞核实例",
+      "protocol": "同官方TorchScript+固定作者wrapper；0.1/99.9百分位归一化；CUDA；实例输出；channels_last=False",
+      "status": "research_CUDA24_verified_nuclei_acceptance_promising",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "nucleus_instances",
+      "scale_status": "模型0.5um/px；输入必须提供实测MPP，作者wrapper缩放后回原尺寸；PAS仅探索",
+      "limitations": [
+        "不是肾小球真假或硬化专用裁判；不自动修改SegFormer。PAS仅InstanSeg/DINO探索；ROI协议不冒称WSI全链复现。"
+      ],
+      "training_sources": "公开TNBC/LyNSeC/NuInsSeg/IHC_TMA/CoNSeP；训练成员未完整取得；TNBC本轮仅作已知训练来源验收",
+      "training_data_access": "公开来源见作者；完整成员未知",
+      "training_overlap_status": "unknown；本轮不作独立泛化证明",
+      "code_license": "Apache-2.0",
+      "weight_license": "Apache-2.0"
+    },
+    {
+      "adapter": "pathology_utility",
+      "utility_kind": "dinov2",
+      "python": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/tool_venv/bin/python",
+      "source_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/assets/source/dinov2-7764ea0f912e53c92e82eb78a2a1631e92725fc8",
+      "checkpoint": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/assets/dinov2_vits14_pretrain.pth",
+      "checkpoint_sha256": "b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9",
+      "requires_mpp": true,
+      "output_semantics": "image_feature_extraction",
+      "id": "dinov2_vits14_features",
+      "name": "DINOv2 ViT-S/14 特征与检索",
+      "protocol": "作者ViT-S/14严格加载；RGB ImageNet mean/std；384维CLS及L2向量；CUDA；无分类头",
+      "status": "research_CUDA154_verified_retrieval_promising_FOV_sensitive",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE",
+        "PAS"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "image_feature_extraction",
+      "scale_status": "Resize短边256+CenterCrop224；原MPP与视野必须留档，不声称训练物理尺度",
+      "limitations": [
+        "不是肾小球真假或硬化专用裁判；不自动修改SegFormer。PAS仅InstanSeg/DINO探索；ROI协议不冒称WSI全链复现。"
+      ],
+      "training_sources": "LVD-142M非监督自然图像；不是病理专网；具体成员未知",
+      "training_data_access": "公开来源见作者；完整成员未知",
+      "training_overlap_status": "unknown；本轮不作独立泛化证明",
+      "code_license": "Apache-2.0",
+      "weight_license": "Apache-2.0"
+    },
+    {
+      "adapter": "pathology_utility",
+      "utility_kind": "grandqc_tissue",
+      "python": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/tool_venv/bin/python",
+      "source_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/assets/source/grandqc-002688d74a4ac86dfbb816a96df8461d6080f88a",
+      "checkpoint": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/assets/Tissue_Detection_MPP10.pth",
+      "checkpoint_sha256": "0e3577628a553774419a5b87a2947531988e07175b9e1a8048f53b6188f4d76e",
+      "requires_mpp": true,
+      "output_semantics": "tissue_quality_control",
+      "tissue_checkpoint": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/assets/Tissue_Detection_MPP10.pth",
+      "tissue_checkpoint_sha256": "0e3577628a553774419a5b87a2947531988e07175b9e1a8048f53b6188f4d76e",
+      "required_assets": [
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/assets/Tissue_Detection_MPP10.pth"
+      ],
+      "id": "grandqc_tissue_mpp10",
+      "name": "GrandQC 组织/背景检测",
+      "protocol": "作者Unet++ efficientnet-b0严格任务权重；作者JPEG80/OpenCV通道链；ImageNet预处理；bounded ROI研究适配",
+      "status": "research_CUDA24_verified_tissue_gate_no_real_GT",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "tissue_quality_control",
+      "scale_status": "模型10um/px；图像实测MPP映射到10um格；ROI外白色补齐512",
+      "limitations": [
+        "不是肾小球真假或硬化专用裁判；不自动修改SegFormer。PAS仅InstanSeg/DINO探索；ROI协议不冒称WSI全链复现。"
+      ],
+      "training_sources": "作者病理多来源训练；本地训练成员/重叠未知，按作者发布记录使用",
+      "training_data_access": "公开来源见作者；完整成员未知",
+      "training_overlap_status": "unknown；本轮不作独立泛化证明",
+      "code_license": "CC-BY-NC-SA-4.0",
+      "weight_license": "CC-BY-NC-SA-4.0"
+    },
+    {
+      "adapter": "pathology_utility",
+      "utility_kind": "grandqc_artifact",
+      "python": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/tool_venv/bin/python",
+      "source_dir": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/assets/source/grandqc-002688d74a4ac86dfbb816a96df8461d6080f88a",
+      "checkpoint": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/assets/GrandQC_MPP15.pth",
+      "checkpoint_sha256": "6e90ec8548d4050734c30e30d5ca7fe67e84b59b1dd8ae338447dad90bae4ff1",
+      "requires_mpp": true,
+      "output_semantics": "tissue_quality_control",
+      "tissue_checkpoint": "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/assets/Tissue_Detection_MPP10.pth",
+      "tissue_checkpoint_sha256": "0e3577628a553774419a5b87a2947531988e07175b9e1a8048f53b6188f4d76e",
+      "required_assets": [
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/assets/Tissue_Detection_MPP10.pth"
+      ],
+      "id": "grandqc_artifact_mpp15",
+      "name": "GrandQC 七类组织/伪影质控",
+      "protocol": "完整官方任务模型＋组织检测权重；RGB/ImageNet；保留原始类编号；组织门控；bounded ROI适配，非全WSI复现",
+      "status": "research_CUDA24_verified_synthetic_defocus_response",
+      "enabled": true,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "tissue_quality_control",
+      "scale_status": "组织10um/px门控＋伪影1.5um/px；原MPP必填；ROI外白补512",
+      "limitations": [
+        "不是肾小球真假或硬化专用裁判；不自动修改SegFormer。PAS仅InstanSeg/DINO探索；ROI协议不冒称WSI全链复现。"
+      ],
+      "training_sources": "作者多机构HE病理训练；训练成员/本地重叠未知",
+      "training_data_access": "公开来源见作者；完整成员未知",
+      "training_overlap_status": "unknown；本轮不作独立泛化证明",
+      "code_license": "CC-BY-NC-SA-4.0",
+      "weight_license": "CC-BY-NC-SA-4.0"
     }
   ],
   "default_tools": {

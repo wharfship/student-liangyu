@@ -1,0 +1,9 @@
+{
+  "first5_process_wall_seconds": 73.3945919405669,
+  "first5_formal_outputs": 149,
+  "fixed_FOV_outputs": 77,
+  "formal_total": 226,
+  "paid_API_calls": 0,
+  "training": false,
+  "assistant_billing_not_observable": true
+}

@@ -27,6 +27,23 @@ def main():
                                **asset_status(c)) for c in cards],ensure_ascii=False,indent=2));return
     if not args.tool or not args.task:parser.error('Need --tool and --task')
     card=get_card(args.tool)
+    if card.get('adapter')=='pathology_utility':
+        from .pathology_utilities import validate_batch
+        if args.action not in ('run','check') or not args.research or not card['enabled']:
+            parser.error('Pathology utility requires enabled tool, run/check and --research')
+        if args.candidates:parser.error('Image-only utility does not accept masks')
+        task=json.loads(args.task.read_text(encoding='utf-8-sig'));validate_batch(task,card)
+        assets=asset_status(card)
+        if args.action=='check':
+            print(json.dumps(dict(tool_id=card['id'],compatible=True,**assets),ensure_ascii=False,indent=2))
+            if not assets['available']:raise SystemExit(2)
+            return
+        if not assets['available']:raise ValueError('Missing utility assets: '+str(assets))
+        if not args.output:parser.error('Need --output')
+        if args.output.exists():raise ValueError('Output directory must be new')
+        subprocess.run([card['python'],'-u','-m','glomerulus_tools.pathology_utilities','--tool',card['id'],
+            '--task',str(args.task.resolve()),'--output',str(args.output.resolve())],cwd=ROOT.parent,check=True,timeout=7200)
+        return
     if args.action=='run' and card.get('adapter')=='mescnn':
         from .mescnn import validate_batch
         if not args.research or not card['enabled']:parser.error('MESCnn prepared tiles require enabled research tool')

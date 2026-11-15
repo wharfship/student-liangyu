@@ -30,17 +30,19 @@ CUDA_VISIBLE_DEVICES=0 python -m glomerulus_tools run --tool nepath_segformer_b5
 
 ## 内容与状态
 
-- `glomerulus_tools/`：统一入口、适配器、唯一catalog及生成表、37项测试；工具信息均从这里维护。
+- `glomerulus_tools/`：统一入口、适配器、唯一catalog及生成表、47项测试；工具信息均从这里维护。
 - `research/nepathtk_tools_20261105/`：冻结baseline包装器与配置；旧research为实验档案，不在此另建工具表。
 - `glomerulus_tools/experiments/`：本轮完整源脚本与必要旧评价依赖。运行前显式修改数据路径；历史批次文件未外发，不能免数据直接复算。
 - `configs/`、`environments/`：配置示例与实际环境冻结收据；`scripts/`只调整机器资产路径，不改变配方身份。
 - `results/`：分组结果、协议、验证和源码SHA；不含病例逐行结果或医院图册。
 - `provenance/`：来源commit、下载校验与导出文件清单；`third_party/`：许可说明。
 
-34个enabled记录（包含同一模型的不同输入配方）不表示本仓库附带相应数量的独立可用网络。首批资产整理覆盖SegFormer、MESCnn、SAMRefiner和RITM；其他历史适配器可能依赖尚未移植的旧ops模块。缺失会拒绝执行，不能把可执行状态等同于精度。
+38个enabled记录（包含配方和非分割工具）不表示本仓库附带相应数量的独立可用网络。首批资产整理覆盖SegFormer、MESCnn、SAMRefiner和RITM；其他历史适配器可能依赖尚未移植的旧ops模块。缺失会拒绝执行，不能把可执行状态等同于精度。
 
 [当前结果与负结果](docs/RESULTS.md) · [下一阶段实验](docs/NEXT_EXPERIMENTS.md) · [数据/权重放置](docs/DATA_AND_ASSETS.md) · [版本对应与局限](docs/REPRODUCIBILITY.md)
 
 尚未完成：完整可移植模型环境自动安装、医院数据外发授权、全部旧Agent依赖打包、可靠专用补救动作、无GT验收、动态观察消融和独立患者留出测试。VISTA仅作为主动观察设计参考，未宣称复现。原创代码公开许可待确定，第三方许可各自适用。
 
 11月15日新增：MESCnn真实10×金字塔PNG/JPEG各80次仍无硬化净收益；旧SegNeXt有一例真实补漏但候选成本高；Skinet完整资产取得、TF导入受平台指令集阻塞；无GT观察资产和评分合同已备，未运行VLM。[后续结果与下一步](docs/FOLLOWUP_20261115.md)。
+
+新增InstanSeg核分析、DINOv2表征、GrandQC组织/伪影4入口，226份正式CUDA输出，能力与许可边界见[新工具验收](docs/OPEN_TOOLS_20261115.md)。唯一人工主表仍在原工作区，此处是生成审阅副本。

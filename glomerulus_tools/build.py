@@ -28,7 +28,7 @@ def build():
         for alias in card.get('aliases', []):
             if alias in aliases: raise ValueError('Duplicate alias')
             aliases.add(alias)
-        if card['enabled'] and card.get('adapter') not in ('legacy', 'nepath', 'qupath', 'likiseg','mescnn','glo_matrix','candidate_view','visual_reader','candidate_classifier','object_evidence','mask_refinement'):
+        if card['enabled'] and card.get('adapter') not in ('legacy', 'nepath', 'qupath', 'likiseg','mescnn','glo_matrix','candidate_view','visual_reader','candidate_classifier','object_evidence','mask_refinement','pathology_utility'):
             raise ValueError('Enabled tool has no implemented adapter: '+card['id'])
         required_assets=('python','source_dir') if card.get('adapter') in ('candidate_view','visual_reader') else ('python','checkpoint','source_dir')
         if card['enabled'] and not all(card.get(k) for k in required_assets):

@@ -1,0 +1,86 @@
+{
+  "status": "complete",
+  "runs": [
+    {
+      "tool": "instanseg_brightfield_nuclei_v011",
+      "exit_code": 0,
+      "seconds": 7.122585272882134,
+      "command": [
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/tool_venv/bin/python",
+        "-u",
+        "-m",
+        "glomerulus_tools",
+        "run",
+        "--tool",
+        "instanseg_brightfield_nuclei_v011",
+        "--task",
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/instanseg_brightfield_nuclei_v011_smoke_NO_GT.json",
+        "--output",
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/smoke/instanseg_brightfield_nuclei_v011",
+        "--research"
+      ]
+    },
+    {
+      "tool": "dinov2_vits14_features",
+      "exit_code": 0,
+      "seconds": 5.733436235692352,
+      "command": [
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/tool_venv/bin/python",
+        "-u",
+        "-m",
+        "glomerulus_tools",
+        "run",
+        "--tool",
+        "dinov2_vits14_features",
+        "--task",
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/dinov2_vits14_features_smoke_NO_GT.json",
+        "--output",
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/smoke/dinov2_vits14_features",
+        "--research"
+      ]
+    },
+    {
+      "tool": "grandqc_tissue_mpp10",
+      "exit_code": 0,
+      "seconds": 7.037429083138704,
+      "command": [
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/tool_venv/bin/python",
+        "-u",
+        "-m",
+        "glomerulus_tools",
+        "run",
+        "--tool",
+        "grandqc_tissue_mpp10",
+        "--task",
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/grandqc_tissue_mpp10_smoke_NO_GT.json",
+        "--output",
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/smoke/grandqc_tissue_mpp10",
+        "--research"
+      ]
+    },
+    {
+      "tool": "grandqc_artifact_mpp15",
+      "exit_code": 0,
+      "seconds": 7.092209891881794,
+      "command": [
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/tool_venv/bin/python",
+        "-u",
+        "-m",
+        "glomerulus_tools",
+        "run",
+        "--tool",
+        "grandqc_artifact_mpp15",
+        "--task",
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/grandqc_artifact_mpp15_smoke_NO_GT.json",
+        "--output",
+        "/home/chenliangyu/project/new_agent/glomerulus_tools/experiments/open_tools_20261115/smoke/grandqc_artifact_mpp15",
+        "--research"
+      ]
+    }
+  ],
+  "gpu": 4,
+  "reference_exact_label_equal": false,
+  "reference_binary_agreement": 0.9999237060546875,
+  "reference_is_prediction_not_GT": true,
+  "GT_read": false
+}
