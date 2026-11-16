@@ -9,7 +9,7 @@
     ".gitattributes": "9462a474dcc7adc6e6fe1e19a16c3464bb4bddf04576a6157d3d4cb67e7241f2",
     ".github/workflows/check.yml": "6b86c4adec82394f6246990e1ed6df44ef3f1ffb92a6f3f7081aba298c565436",
     ".gitignore": "77754885ee0ea4dc8dd730bc063ce4869f2daa56fce8838f3f25478c2c0de553",
-    "README.md": "58964ab910879d78dd81e989c084734cd562714971cbec8be461c2c0d97deeaf",
+    "README.md": "9d8f87d2261b37ee50cd65940c9365d6dfeb2d18773ba296188176206fb68077",
     "START_HERE.md": "3e8a460827bb7ba176d7afeeab8c01f0d89806f6c600a46f4f01fb411b7f2aaf",
     "configs/execution_paths.example.json": "f85becabf3e9cf4c90a7abd50356ffdaa033ced859f55df9679fb1e1797473d2",
     "configs/sclerosis_agent_study_v1.plan.json": "5c791d3252e3b60849dc37521add5c33a9a56bed911949e2d438051d3f8743c3",

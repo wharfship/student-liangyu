@@ -14,13 +14,13 @@
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install -r requirements-core.txt
+python scripts/verify_export.py
 python -m glomerulus_tools.build --skip-browser
 python -m glomerulus_tools list
 python -m pytest glomerulus_tools/tests -q
-python scripts/verify_export.py
 ```
 
-Linux 激活环境用 `source .venv/bin/activate`。以上只验证登记、边界和接口，不执行模型分割。此次检查的实际解释器、依赖版本和通过数量见交付收据；模型的历史 freeze 在 `environments/`，它们不代表通用一键安装环境。
+Linux 激活环境用 `source .venv/bin/activate`。先验证原下载快照的SHA，再生成派生表；重新生成Excel会改变其文件字节，之后不应再用原冻结清单核验该副本。以上只验证登记、边界和接口，不执行模型分割。此次检查的实际解释器、依赖版本和通过数量见交付收据；模型的历史 freeze 在 `environments/`，它们不代表通用一键安装环境。
 
 准备合法数据和任务权重后，先按[资产说明](docs/DATA_AND_ASSETS.md)修改机器路径：
 
