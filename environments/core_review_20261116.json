@@ -1,0 +1,14 @@
+{
+  "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:05:56) [MSC v.1942 64 bit (AMD64)]",
+  "packages": {
+    "numpy": "2.4.4",
+    "opencv-python": "5.0.0.93",
+    "opencv-python-headless": null,
+    "Pillow": "12.2.0",
+    "scipy": "1.17.1",
+    "tifffile": "2026.7.14",
+    "xlsxwriter": "3.2.9",
+    "pytest": "9.0.3"
+  },
+  "scope": "existing local control environment, not clean install or model runtime validation"
+}

@@ -6,10 +6,5 @@
     "checkpoint": "/ABS/student-liangyu/research/nepathtk_tools_20261105/weights/segformer_b5.pth",
     "config": "/ABS/student-liangyu/research/nepathtk_tools_20261105/configs/segformer_mit-b5_8xb2-160k_kidney_1024x1024_d4.py",
     "extra_paths": []
-  },
-  "mescnn_cascade_r50": {
-    "python": "/ABS/mescnn/bin/python",
-    "source_dir": "/ABS/assets/MESCnn-284e83781ae8e83a1362d896c2ea11fa95f82a9e",
-    "checkpoint": "/ABS/assets/mescnn_cascade_r50_internal_model_final.pth"
   }
 }

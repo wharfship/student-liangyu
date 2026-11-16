@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "status": "proposed_not_executed",
+  "executable": false,
+  "date": "2026-11-16",
+  "purpose": "Verify a useful sclerosis repair action before testing Agent scheduling",
+  "current_development": {
+    "sclerotic_targets": 40,
+    "normal_already_detected_protection_targets": 40,
+    "independent_test": false,
+    "patient_identity_verified": false
+  },
+  "prerequisites": [
+    "Adjudicate existence, obvious extent errors, image failures, and uncertain boundaries separately",
+    "Verify model inputs, weights, coordinates, source/stain compatibility, and licenses",
+    "Demonstrate repeated benefit while measuring FP, adjacent-object and normal-object harm",
+    "Identify independent patient/source holdout and freeze policy before evaluation"
+  ],
+  "arms": {
+    "A": {"baseline_tool_id": "nepath_segformer_b5", "policy": "keep_baseline"},
+    "B": {"specialist_tool_id": null, "policy": "fixed_action", "ready": false},
+    "C": {"policy": "strong_fixed_rules_same_action_pool", "ready": false},
+    "D": {"policy": "dynamic_agent_same_action_pool_and_budget", "ready": false}
+  },
+  "retired_directions_do_not_run": ["MESCnn", "RITM", "SegNeXt_supplementation"],
+  "observation_ablations": ["fixed_local", "fixed_multiview", "question_driven_dynamic"],
+  "observation_evidence": ["raw_local_jpeg", "surrounding_context_jpeg", "before_after_difference_jpeg"],
+  "additional_evidence_optional_not_validated_as_acceptance": ["quality", "nuclear_measurements", "retrieval"],
+  "budget": {
+    "status": "must_freeze_on_development_before_holdout",
+    "shared_limits": ["model_calls", "gpu_seconds", "image_requests", "transmitted_pixels", "input_tokens", "output_tokens", "wall_seconds"],
+    "charge_failures_and_retries": true
+  },
+  "allowed_decisions": ["keep", "accept", "reobserve", "manual_review", "stop"],
+  "manual_review_behavior": "Keep baseline mask pending review; record review burden separately",
+  "decision_inputs_forbid": ["GT", "EVAL_ONLY", "offline_oracle", "holdout_labels"],
+  "metrics": ["one_to_one_instance_matching", "additional_FP", "target_Dice", "whole_image_Dice", "normal_and_neighbor_harm", "review_burden", "actual_compute_and_VLM_cost"],
+  "reporting": {
+    "stratify_by_stain": true,
+    "cluster_uncertainty_by_verified_patient_or_source": true,
+    "report_original_GT_and_adjudicated_subset_separately": true,
+    "do_not_claim_clinical_correctness_from_small_Dice_deltas": true
+  },
+  "stop_if": [
+    "No repeatable useful action",
+    "Unresolved input or scale mismatch",
+    "Uncontrolled normal or adjacent-object harm",
+    "No trustworthy existence or boundary evaluation",
+    "Budget exceeded or invalid tool output"
+  ]
+}

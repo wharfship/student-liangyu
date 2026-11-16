@@ -1,0 +1,119 @@
+{
+  "kind": "source identities verified during local review; not historical execution commits",
+  "original_workspace_required_for_case_level_reproduction": true,
+  "source_files": {
+    "glomerulus_tools/experiments/sclerosis_focus_20261114/preparation.json": {
+      "sha256": "c55a93f1e281a95cf8d3bd5467c269a1e0a541772cfdaf8dcfe07eef0a409ff6",
+      "bytes": 388
+    },
+    "glomerulus_tools/experiments/sclerosis_focus_20261114/evaluation_summary.json": {
+      "sha256": "2356dbbb6bff3f09ea8b8a45de815839565f729e6d2e3702fedcdda82ff56bcd",
+      "bytes": 9033
+    },
+    "glomerulus_tools/experiments/followup_20261115/mescnn_retirement_and_ritm_click_audit.json": {
+      "sha256": "2d7f77fbb10540b24ef0aa8daa2ca2bf8fc2d95c180762fb19c1993ba56bb16f",
+      "bytes": 1090
+    },
+    "glomerulus_tools/experiments/sclerosis_focus_20261114/specialist_evaluation_summary.json": {
+      "sha256": "9bfc4e67eef32fdbb21f274978701b33f1e4d708a0a79b26209fe0f37183a4f5",
+      "bytes": 5855
+    },
+    "glomerulus_tools/experiments/followup_20261115/paired_summary.json": {
+      "sha256": "1f652a278123c28e82d74387286ec1418c8f72452d09fb7bcf3a8f70f9f681e5",
+      "bytes": 7317
+    },
+    "glomerulus_tools/experiments/followup_20261115/legacy_object_summary.json": {
+      "sha256": "ce5659fb46a1db47932ccdc98030920bb3e39335ad83284660526fc151dc5e7d",
+      "bytes": 2483
+    },
+    "glomerulus_tools/experiments/followup_20261115/candidate_review65_EVAL_ONLY.json": {
+      "sha256": "4eee5259b0ea1e27b46469d9b03fc1acaa0df6a613b41192732354dda042a07b",
+      "bytes": 69080
+    },
+    "glomerulus_tools/experiments/sclerosis_focus_20261114/target_oracle_summary.json": {
+      "sha256": "15376ec8f5777134ff8a0594f0805e13864e49764a418ee11a0f51278a2db74b",
+      "bytes": 842
+    },
+    "glomerulus_tools/experiments/sclerosis_focus_20261114/seam_evaluation_summary.json": {
+      "sha256": "4f67b6d5e796db456911214dda77bc3339ccbcfaaad8de32eccc34094c98ca40",
+      "bytes": 573
+    },
+    "glomerulus_tools/experiments/followup_20261115/segformer_review_verification.json": {
+      "sha256": "a93c73952cade7093dd0cbaa1673a4d65d8e73d57be0a8fdc13484916ac97b29",
+      "bytes": 8394
+    },
+    "glomerulus_tools/experiments/new_method_search_20261112/evaluation_results/summary.csv": {
+      "sha256": "e1565a55d152206f37e47adf79b907d0967e9754a4865ea7bf3a1a673df383d7",
+      "bytes": 3941
+    },
+    "glomerulus_tools/catalog.csv": {
+      "sha256": "8e35025e584924f74314167f6eeee0d57864702a1a8ae56b92eb858d97a70184",
+      "bytes": 216587
+    },
+    "glomerulus_tools/experiments/tool_evidence_20261115/complementarity_summary.json": {
+      "sha256": "f3dfde0d865141d370070b04df15f16fe74c5c7809f7802c92c9859eeffb8c30",
+      "bytes": 2736
+    },
+    "docs/交接workflow的文件/2026-11-15_C003金字塔层异常与输入恢复更正.md": {
+      "sha256": "518c993e35a00d12a7064a302169f23553df4bb92ed546e3894fe52a6690053b",
+      "bytes": 2387
+    },
+    "docs/交接workflow的文件/2026-11-15_C037_C038源GT修正完成.md": {
+      "sha256": "546fab76ab932d89577e5d50c986d41d5a652ebf218bc6c6067471860a9bea4d",
+      "bytes": 2931
+    },
+    "docs/交接workflow的文件/2026-11-15_工具淘汰与Skinet期刊复审.md": {
+      "sha256": "250b6b28929629c752b07c2b22534e3100dc460271856d44943633971240417a",
+      "bytes": 3044
+    },
+    "docs/交接workflow的文件/2026-11-16_秘书整理_SegFormer人工复核图库.md": {
+      "sha256": "7c2b936a81da4cd401273295a804af25a0b56a76b24544e64eb7d91afd533337",
+      "bytes": 4854
+    },
+    "已经整理好的内容/医院分割结果分析/硬化专项验证_20261114/结果报告.md": {
+      "sha256": "931354fc5cd261afe3a0d6e28c593c05cd725074c86342691c5f4efe659f583e",
+      "bytes": 9908
+    },
+    "已经整理好的内容/医院分割结果分析/专项后续_20261115/结果汇报.md": {
+      "sha256": "4bc2ed1652f9a4295333a65b198199f6542cb11d2aa44205cc2969d79a7177ef",
+      "bytes": 12803
+    },
+    "已经整理好的内容/医院分割结果分析/工具权威性与互补_20261115/结果报告.md": {
+      "sha256": "5126191d6acc36cbca78bea05ac1c3b9e347f3332a24ca2570c2c6b031f00ec2",
+      "bytes": 11785
+    },
+    "glomerulus_tools/agent_capabilities/README.md": {
+      "sha256": "f7d3bf07e601184660fc3c98145390987d5cfdcd58c3057177aaebde822d1495",
+      "bytes": 6331
+    },
+    "glomerulus_tools/experiments/C003_pyramid_20261115/pyramid_audit.json": {
+      "sha256": "9d52afee7d8f4c3fe526e2fdd080986e2f3fae0e110d11d173a1e3b116d2bd18",
+      "bytes": 54485
+    },
+    "glomerulus_tools/experiments/tool_retirement_20261115/README.md": {
+      "sha256": "e8763dc3cf6cb8410df8bc5ca3246fe8fc98422d251a3920d69354715f9d36a0",
+      "bytes": 6340
+    },
+    "glomerulus_tools/experiments/tool_retirement_20261115/local_smoke_runs.json": {
+      "sha256": "cf017c30e105e9460b3e374674d2cf6a5cb14fa4c46f26cccf7c0cb131c310bd",
+      "bytes": 925
+    },
+    "glomerulus_tools/experiments/tool_retirement_20261115/local_smoke/skinet_cortex/record.json": {
+      "sha256": "3a430a17f555afc9192157bf38d851d6c7ce445b6af24f60e4117db148678939",
+      "bytes": 2046
+    },
+    "glomerulus_tools/experiments/tool_retirement_20261115/local_smoke/skinet_mest_main/record.json": {
+      "sha256": "587574326972eb09f365a11c78b602535d5f9e7c255d870c732e2ffd965da4ca",
+      "bytes": 2357
+    }
+  },
+  "exported_aggregate": "results/revision_20261116/evidence_summary.json",
+  "not_exported": [
+    "hospital images",
+    "case-level tables",
+    "GT",
+    "masks",
+    "model weights"
+  ],
+  "current_source_sync": "provenance/source_sync_20261116.json"
+}

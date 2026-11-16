@@ -5,7 +5,7 @@ from pathlib import Path
 from .catalog import ROOT, sha
 
 
-def build():
+def build(update_browser=True):
     with (ROOT/'catalog.csv').open(encoding='utf-8-sig', newline='') as stream:
         rows = list(csv.DictReader(stream))
     cards, ids, aliases = [], set(), set()
@@ -70,6 +70,8 @@ def build():
         code_license='源码许可',weight_license='权重许可',limitations='限制与不确定性',default_for='默认推荐物种',
         checkpoint='权重路径',checkpoint_sha256='权重SHA256',python='执行环境Python',config='模型配置',adapter='适配器',
         researcher_note='给研究者的备注（不进入AI输入）')
+    labels.update(display_family='浏览器工具归组',display_name='常用工具名',
+                  display_conclusion='效果结论与当前用途',display_review='获取测试与检查范围（JSON）')
     sheet.add_table(0,0,len(rows),len(headers)-1,{'name':'GlomerulusTools','style':'Table Style Medium 2',
         'columns':[{'header':labels.get(k,k),'format':wrap} for k in headers],
         'data':[[row[k] for k in headers] for row in display_rows]})
@@ -86,8 +88,15 @@ def build():
     start,end='<!-- TABLE_START -->','<!-- TABLE_END -->'
     before,tail=doc.split(start,1);_,after=tail.split(end,1)
     path.write_text(before+start+'\n'+'\n'.join(overview)+'\n'+end+after,encoding='utf-8')
+    from .browser_inventory import GALLERY, build_inventory
+    if update_browser and GALLERY.is_file():
+        build_inventory()
     print(json.dumps(dict(status='PASSED',rows=len(rows),enabled=sum(c['enabled'] for c in cards),
                           agent_enabled=sum(c['agent_enabled'] for c in cards)),ensure_ascii=False))
 
 
-if __name__ == '__main__': build()
+if __name__ == '__main__':
+    import argparse
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--skip-browser',action='store_true',help='Build catalog derivatives without writing a gallery held by another task')
+    build(update_browser=not parser.parse_args().skip_browser)

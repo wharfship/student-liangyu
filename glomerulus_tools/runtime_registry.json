@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "catalog_sha256": "3ffcb2ff9ea05eeac0499583094df4e62ab1ce0a9f9cf9f03ac33140c30d63f7",
+  "catalog_sha256": "8e35025e584924f74314167f6eeee0d57864702a1a8ae56b92eb858d97a70184",
   "tools": [
     {
       "id": "omni_full",
@@ -777,9 +777,9 @@
       "id": "nepath_segnext_mscant",
       "name": "NePath segnext_mscant",
       "protocol": "d4 AAG四类；概率均值→argmax→class1；无TTA；原坐标nearest",
-      "status": "full126_verified",
-      "enabled": true,
-      "agent_enabled": true,
+      "status": "retired_by_user_no_practical_complementarity",
+      "enabled": false,
+      "agent_enabled": false,
       "species": [
         "human"
       ],
@@ -789,10 +789,7 @@
         "SIL",
         "TRI"
       ],
-      "agent_stains": [
-        "HE",
-        "PAS"
-      ],
+      "agent_stains": [],
       "input_forms": [
         "patch",
         "wsi"
@@ -1026,8 +1023,8 @@
       "id": "mescnn_cascade_r50",
       "name": "mescnn_cascade_r50",
       "protocol": "选择准确的训练划分版本；无点/框",
-      "status": "research_prepared10x80_tested_no_sclerosis_rescue_negative_gain",
-      "enabled": true,
+      "status": "abandoned_by_user",
+      "enabled": false,
       "agent_enabled": false,
       "species": [
         "human"
@@ -1055,7 +1052,7 @@
       "id": "mescnn_mask_r101",
       "name": "mescnn_mask_r101",
       "protocol": "选择准确的训练划分版本；无点/框",
-      "status": "not_inference_accepted",
+      "status": "abandoned_by_user",
       "enabled": false,
       "agent_enabled": false,
       "species": [
@@ -1987,7 +1984,7 @@
       "id": "mescnn_lesion_classifier",
       "name": "MESCnn lesion classifier component",
       "protocol": "unimplemented_author_weight_candidate",
-      "status": "research_candidate_blocked",
+      "status": "abandoned_by_user",
       "enabled": false,
       "agent_enabled": false,
       "species": [
@@ -2486,7 +2483,7 @@
       "id": "skinet_mest_main_candidate",
       "name": "Skinet-MEST-C 主网络候选",
       "protocol": "cortex→mest_main；皮质依赖未改变；mest_glom是后续球内病变任务",
-      "status": "task_assets_complete_tf_import_blocked_no_avx",
+      "status": "local_cpu_smoke_passed_accuracy_unvalidated",
       "enabled": false,
       "agent_enabled": false,
       "species": [
@@ -2834,8 +2831,8 @@
       "id": "ritm_hrnet32_external_mask_point1",
       "name": "RITM HRNet32 外部mask单点纠错",
       "protocol": "deepest coarse-mask interior positive point; external mask; NoBRS; no ZoomIn; max800; FP32; flip TTA",
-      "status": "research_pilot_complete_no_automatic_net_gain",
-      "enabled": true,
+      "status": "retired_by_user_sam_preferred",
+      "enabled": false,
       "agent_enabled": false,
       "species": [
         "human"
@@ -2870,8 +2867,8 @@
       "id": "mescnn_cascade_r50_pyramid_png",
       "name": "MESCnn R50 作者金字塔 png",
       "protocol": "internal-validation; author nearest10x level within10%; png; score0.5; raw mask",
-      "status": "research_paired80_scored_no_sclerosis_net_gain",
-      "enabled": true,
+      "status": "abandoned_by_user",
+      "enabled": false,
       "agent_enabled": false,
       "species": [
         "human"
@@ -2906,8 +2903,8 @@
       "id": "mescnn_cascade_r50_pyramid_jpeg",
       "name": "MESCnn R50 作者金字塔 jpeg",
       "protocol": "internal-validation; author nearest10x level within10%; jpeg; score0.5; raw mask",
-      "status": "research_paired80_scored_no_sclerosis_net_gain",
-      "enabled": true,
+      "status": "abandoned_by_user",
+      "enabled": false,
       "agent_enabled": false,
       "species": [
         "human"
@@ -3086,6 +3083,625 @@
       "training_overlap_status": "unknown；本轮不作独立泛化证明",
       "code_license": "CC-BY-NC-SA-4.0",
       "weight_license": "CC-BY-NC-SA-4.0"
+    },
+    {
+      "adapter": "planned_workflow",
+      "open_source": {
+        "repository": "https://github.com/choosehappy/HistoQC",
+        "version": "376f49a53a8d3891b3f2cf2bd16aa62f6c71f5f5",
+        "license": "BSD-3-Clause-Clear",
+        "license_file": "C:\\Users\\chenl\\Desktop\\课题创建中\\glomerulus_tools\\experiments\\histoqc_tia_interfaces_20261115\\assets\\HistoQC-376f49a53a8d3891b3f2cf2bd16aa62f6c71f5f5\\LICENSE.txt",
+        "local_source": "C:\\Users\\chenl\\Desktop\\课题创建中\\glomerulus_tools\\experiments\\histoqc_tia_interfaces_20261115\\assets\\HistoQC-376f49a53a8d3891b3f2cf2bd16aa62f6c71f5f5"
+      },
+      "planned_operations": [
+        {
+          "operation": "basic_stats",
+          "description": "读取WSI基本信息与组织统计，不判断病变",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "wsi_path": {
+                "type": "string",
+                "minLength": 1,
+                "description": "绝对WSI路径；原切片只读"
+              },
+              "stain": {
+                "type": "string",
+                "minLength": 1,
+                "description": "本轮接口先限定HE",
+                "enum": [
+                  "HE"
+                ]
+              },
+              "source_mpp": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "level0实测μm/px"
+              },
+              "scale_evidence": {
+                "type": "string",
+                "minLength": 1,
+                "description": "元数据/标定依据"
+              },
+              "working_magnification": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "HistoQC工作倍率；须能由WSI元数据确定"
+              }
+            },
+            "required": [
+              "wsi_path",
+              "stain",
+              "source_mpp",
+              "scale_evidence",
+              "working_magnification"
+            ],
+            "additionalProperties": false
+          },
+          "source_api": [
+            "histoqc.BasicModule.getBasicStats",
+            "histoqc.BasicModule.finalComputations"
+          ],
+          "expected_outputs": [
+            "metadata.json",
+            "metrics.json",
+            "warnings"
+          ],
+          "output_contract_status": "planned_not_runtime_verified",
+          "limits": "需真实WSI读取和尺度验收；组织统计需先定义组织mask和分母"
+        },
+        {
+          "operation": "color_stats",
+          "description": "统计组织内亮度、RGB通道、对比度及颜色直方图",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "wsi_path": {
+                "type": "string",
+                "minLength": 1,
+                "description": "绝对WSI路径；原切片只读"
+              },
+              "stain": {
+                "type": "string",
+                "minLength": 1,
+                "description": "本轮接口先限定HE",
+                "enum": [
+                  "HE"
+                ]
+              },
+              "source_mpp": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "level0实测μm/px"
+              },
+              "scale_evidence": {
+                "type": "string",
+                "minLength": 1,
+                "description": "元数据/标定依据"
+              },
+              "working_magnification": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "HistoQC工作倍率；须能由WSI元数据确定"
+              }
+            },
+            "required": [
+              "wsi_path",
+              "stain",
+              "source_mpp",
+              "scale_evidence",
+              "working_magnification"
+            ],
+            "additionalProperties": false
+          },
+          "source_api": [
+            "histoqc.BrightContrastModule.getBrightnessGray",
+            "histoqc.BrightContrastModule.getBrightnessByChannelinColorSpace",
+            "histoqc.BrightContrastModule.getContrast",
+            "histoqc.HistogramModule.getHistogram"
+          ],
+          "expected_outputs": [
+            "metrics.json",
+            "histogram_artifact",
+            "thumbnail.jpg",
+            "warnings"
+          ],
+          "output_contract_status": "planned_not_runtime_verified",
+          "limits": "统计分母需记录；作者空mask可能返回-100，未来适配器必须转为无效状态，不能当正常数值"
+        },
+        {
+          "operation": "blur_qc",
+          "description": "产生模糊区域提示与组织可用范围，参数明确记录",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "wsi_path": {
+                "type": "string",
+                "minLength": 1,
+                "description": "绝对WSI路径；原切片只读"
+              },
+              "stain": {
+                "type": "string",
+                "minLength": 1,
+                "description": "本轮接口先限定HE",
+                "enum": [
+                  "HE"
+                ]
+              },
+              "source_mpp": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "level0实测μm/px"
+              },
+              "scale_evidence": {
+                "type": "string",
+                "minLength": 1,
+                "description": "元数据/标定依据"
+              },
+              "working_magnification": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "HistoQC工作倍率；须能由WSI元数据确定"
+              },
+              "blur_radius": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1024,
+                "description": "作者检测半径，单位随所用实现/工作格记录"
+              },
+              "blur_threshold": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "作者检测阈值，不是临床概率"
+              }
+            },
+            "required": [
+              "wsi_path",
+              "stain",
+              "source_mpp",
+              "scale_evidence",
+              "working_magnification",
+              "blur_radius",
+              "blur_threshold"
+            ],
+            "additionalProperties": false
+          },
+          "source_api": [
+            "histoqc.BlurDetectionModule.identifyBlurryRegions",
+            "histoqc.SaveModule.saveFinalMask"
+          ],
+          "expected_outputs": [
+            "blur_mask",
+            "usable_tissue_mask",
+            "coordinate_mapping.json",
+            "metrics.json",
+            "warnings"
+          ],
+          "output_contract_status": "planned_not_runtime_verified",
+          "limits": "先组织mask后检测；输出为工作格，回原图坐标必须记录；当前无真实模糊GT，不自动放行或删除"
+        },
+        {
+          "operation": "full_qc",
+          "description": "按冻结的官方配置执行WSI质控并返回结果表与掩膜",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "wsi_path": {
+                "type": "string",
+                "minLength": 1,
+                "description": "绝对WSI路径；原切片只读"
+              },
+              "stain": {
+                "type": "string",
+                "minLength": 1,
+                "description": "本轮接口先限定HE",
+                "enum": [
+                  "HE"
+                ]
+              },
+              "source_mpp": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "level0实测μm/px"
+              },
+              "scale_evidence": {
+                "type": "string",
+                "minLength": 1,
+                "description": "元数据/标定依据"
+              },
+              "working_magnification": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "HistoQC工作倍率；须能由WSI元数据确定"
+              },
+              "profile": {
+                "type": "string",
+                "minLength": 1,
+                "description": "仅允许固定作者配置，后续选定后冻结",
+                "enum": [
+                  "default",
+                  "light"
+                ]
+              }
+            },
+            "required": [
+              "wsi_path",
+              "stain",
+              "source_mpp",
+              "scale_evidence",
+              "working_magnification",
+              "profile"
+            ],
+            "additionalProperties": false
+          },
+          "source_api": [
+            "histoqc.__main__.main",
+            "histoqc/config/config.ini",
+            "histoqc/config/config_light.ini"
+          ],
+          "expected_outputs": [
+            "results.tsv",
+            "quality_masks",
+            "thumbnail.jpg",
+            "warnings"
+          ],
+          "output_contract_status": "planned_not_runtime_verified",
+          "limits": "作者配置含多个依赖模块和示例分类器；必须验收整条pipeline，不能以单模块可导入当整条可用"
+        }
+      ],
+      "id": "histoqc_wsi_quality_candidate",
+      "name": "HistoQC WSI质控（待使用）",
+      "protocol": "按operation与arguments区分功能；describe --research查看，check --research仅校验请求结构",
+      "status": "selected_by_user_pending_deployment_no_agent",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "unknown"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "WSI"
+      ],
+      "target": "WSI_quality_statistics",
+      "scale_status": "实际工作MPP/物理视野待按具体功能核验",
+      "limitations": [
+        "未通过本项目真实输入/输出与效果验收；保持disabled。不能把正式发表或下载当作好用证明。 用户已选入工具栏待使用；保持执行与Agent均禁用，后续验收具体功能再讨论启用。"
+      ],
+      "training_sources": "规则/预训练任务取决于具体配置，训练成员尚未验收",
+      "training_data_access": "待核实际使用成员与配置",
+      "training_overlap_status": "unknown",
+      "code_license": "BSD-3-Clause-Clear",
+      "weight_license": "未取得配对权重；工具箱算法可能无权重"
+    },
+    {
+      "adapter": "unimplemented_candidate",
+      "id": "hovernet_nuclear_types_candidate",
+      "name": "HoVer-Net核实例与类型候选",
+      "protocol": "尚未形成可执行验收配方",
+      "status": "paper_source_verified_no_paired_checkpoint_run",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "HE"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch"
+      ],
+      "target": "nucleus_instances_and_types",
+      "scale_status": "实际工作MPP/物理视野待按具体功能核验",
+      "limitations": [
+        "未通过本项目真实输入/输出与效果验收；保持disabled。不能把正式发表或下载当作好用证明。"
+      ],
+      "training_sources": "规则/预训练任务取决于具体配置，训练成员尚未验收",
+      "training_data_access": "待核实际使用成员与配置",
+      "training_overlap_status": "unknown",
+      "code_license": "MIT",
+      "weight_license": "未取得配对权重；工具箱算法可能无权重"
+    },
+    {
+      "adapter": "planned_workflow",
+      "open_source": {
+        "repository": "https://github.com/TissueImageAnalytics/tiatoolbox",
+        "version": "1.6.0",
+        "license": "BSD-3-Clause",
+        "license_file": "C:\\Users\\chenl\\Desktop\\课题创建中\\glomerulus_tools\\experiments\\tool_evidence_20261115\\assets\\tiatoolbox160\\tiatoolbox-1.6.0.dist-info\\LICENSE",
+        "local_source": "C:\\Users\\chenl\\Desktop\\课题创建中\\glomerulus_tools\\experiments\\tool_evidence_20261115\\assets\\tiatoolbox160",
+        "weights_license": "model-specific; no pretrained model enabled"
+      },
+      "planned_operations": [
+        {
+          "operation": "tissue_mask",
+          "description": "用传统阈值/形态法生成组织背景候选mask",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "image_path": {
+                "type": "string",
+                "minLength": 1,
+                "description": "绝对图像路径；原图只读"
+              },
+              "stain": {
+                "type": "string",
+                "minLength": 1,
+                "description": "本轮接口先限定HE，其他染色另验收",
+                "enum": [
+                  "HE"
+                ]
+              },
+              "source_mpp": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "输入实测μm/px"
+              },
+              "scale_evidence": {
+                "type": "string",
+                "minLength": 1,
+                "description": "标定或元数据依据"
+              },
+              "method": {
+                "type": "string",
+                "minLength": 1,
+                "description": "指定方法",
+                "enum": [
+                  "otsu",
+                  "morphological"
+                ]
+              }
+            },
+            "required": [
+              "image_path",
+              "stain",
+              "source_mpp",
+              "scale_evidence",
+              "method"
+            ],
+            "additionalProperties": false
+          },
+          "source_api": [
+            "tiatoolbox.tools.tissuemask.OtsuTissueMasker",
+            "tiatoolbox.tools.tissuemask.MorphologicalMasker"
+          ],
+          "expected_outputs": [
+            "tissue_mask.png",
+            "coordinate_mapping.json",
+            "metrics.json"
+          ],
+          "output_contract_status": "planned_not_runtime_verified",
+          "limits": "组织不是肾小球；淡染、脂肪等可能错分；具体MPP和形态参数待验收"
+        },
+        {
+          "operation": "stain_matrix",
+          "description": "估计HE染色向量，用于描述染色差异",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "image_path": {
+                "type": "string",
+                "minLength": 1,
+                "description": "绝对图像路径；原图只读"
+              },
+              "stain": {
+                "type": "string",
+                "minLength": 1,
+                "description": "本轮接口先限定HE，其他染色另验收",
+                "enum": [
+                  "HE"
+                ]
+              },
+              "source_mpp": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "输入实测μm/px"
+              },
+              "scale_evidence": {
+                "type": "string",
+                "minLength": 1,
+                "description": "标定或元数据依据"
+              },
+              "method": {
+                "type": "string",
+                "minLength": 1,
+                "description": "指定估计方式",
+                "enum": [
+                  "macenko",
+                  "ruifrok"
+                ]
+              }
+            },
+            "required": [
+              "image_path",
+              "stain",
+              "source_mpp",
+              "scale_evidence",
+              "method"
+            ],
+            "additionalProperties": false
+          },
+          "source_api": [
+            "tiatoolbox.tools.stainextract.MacenkoExtractor.get_stain_matrix",
+            "tiatoolbox.tools.stainextract.RuifrokExtractor.get_stain_matrix"
+          ],
+          "expected_outputs": [
+            "stain_matrix.npy",
+            "metrics.json",
+            "warnings"
+          ],
+          "output_contract_status": "planned_not_runtime_verified",
+          "limits": "Ruifrok为固定参考向量，不能说是样本自适应估计；矩阵不是病变分数，PAS不套HE语义"
+        },
+        {
+          "operation": "normalize_stain",
+          "description": "根据明确参考图进行颜色归一化，写新副本",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "image_path": {
+                "type": "string",
+                "minLength": 1,
+                "description": "绝对图像路径；原图只读"
+              },
+              "stain": {
+                "type": "string",
+                "minLength": 1,
+                "description": "本轮接口先限定HE，其他染色另验收",
+                "enum": [
+                  "HE"
+                ]
+              },
+              "source_mpp": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "输入实测μm/px"
+              },
+              "scale_evidence": {
+                "type": "string",
+                "minLength": 1,
+                "description": "标定或元数据依据"
+              },
+              "reference_image": {
+                "type": "string",
+                "minLength": 1,
+                "description": "用户/开发集预定参考图绝对路径，不按测试GT选图"
+              },
+              "method": {
+                "type": "string",
+                "minLength": 1,
+                "description": "指定方法",
+                "enum": [
+                  "macenko",
+                  "reinhard"
+                ]
+              }
+            },
+            "required": [
+              "image_path",
+              "stain",
+              "source_mpp",
+              "scale_evidence",
+              "reference_image",
+              "method"
+            ],
+            "additionalProperties": false
+          },
+          "source_api": [
+            "tiatoolbox.tools.stainnorm.get_normalizer",
+            "tiatoolbox.tools.stainnorm.StainNormalizer.fit",
+            "tiatoolbox.tools.stainnorm.StainNormalizer.transform",
+            "tiatoolbox.tools.stainnorm.ReinhardNormalizer"
+          ],
+          "expected_outputs": [
+            "normalized.png",
+            "before_after.jpg",
+            "transform_record.json",
+            "warnings"
+          ],
+          "output_contract_status": "planned_not_runtime_verified",
+          "limits": "只新增图像，不覆盖原图；几何应保持；颜色更接近参考不等于分割改善，前后模型收益需另测"
+        },
+        {
+          "operation": "extract_patches",
+          "description": "在明确物理尺度上滑窗切块，并保存对应坐标",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "wsi_path": {
+                "type": "string",
+                "minLength": 1,
+                "description": "绝对WSI路径"
+              },
+              "source_mpp": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "level0实测MPP"
+              },
+              "scale_evidence": {
+                "type": "string",
+                "minLength": 1,
+                "description": "标定依据"
+              },
+              "output_mpp": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "输出图块MPP"
+              },
+              "patch_size": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 8192,
+                "description": "输出边长像素"
+              },
+              "stride": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 8192,
+                "description": "输出网格步长像素"
+              },
+              "max_patches": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1000,
+                "description": "运行预算上限，超过应停止并报告"
+              }
+            },
+            "required": [
+              "wsi_path",
+              "source_mpp",
+              "scale_evidence",
+              "output_mpp",
+              "patch_size",
+              "stride",
+              "max_patches"
+            ],
+            "additionalProperties": false
+          },
+          "source_api": [
+            "tiatoolbox.tools.patchextraction.get_patch_extractor",
+            "tiatoolbox.tools.patchextraction.SlidingWindowPatchExtractor"
+          ],
+          "expected_outputs": [
+            "patches",
+            "coordinates_level0.csv",
+            "coverage.json",
+            "warnings"
+          ],
+          "output_contract_status": "planned_not_runtime_verified",
+          "limits": "units明确为mpp；边缘填充与有效范围须记录；不把重采样坐标与level0混淆；原型未验收"
+        }
+      ],
+      "id": "tiatoolbox_stain_workflow_candidate",
+      "name": "TIAToolbox病理分析工具箱（待使用）",
+      "protocol": "按operation与arguments区分功能；describe --research查看，check --research仅校验请求结构",
+      "status": "selected_by_user_pending_deployment_no_agent",
+      "enabled": false,
+      "agent_enabled": false,
+      "species": [
+        "human"
+      ],
+      "stains": [
+        "unknown"
+      ],
+      "agent_stains": [],
+      "input_forms": [
+        "patch",
+        "WSI"
+      ],
+      "target": "stain_analysis_workflow",
+      "scale_status": "实际工作MPP/物理视野待按具体功能核验",
+      "limitations": [
+        "未通过本项目真实输入/输出与效果验收；保持disabled。不能把正式发表或下载当作好用证明。 用户已选入工具栏待使用；保持执行与Agent均禁用，后续验收具体功能再讨论启用。"
+      ],
+      "training_sources": "规则/预训练任务取决于具体配置，训练成员尚未验收",
+      "training_data_access": "待核实际使用成员与配置",
+      "training_overlap_status": "unknown",
+      "code_license": "BSD-3-Clause",
+      "weight_license": "未取得配对权重；工具箱算法可能无权重"
     }
   ],
   "default_tools": {

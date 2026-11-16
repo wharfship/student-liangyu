@@ -1,0 +1,488 @@
+{
+  "cohort": {
+    "all_sclerosis": 40,
+    "normal_controls": 40,
+    "prepared_cases": 77,
+    "unavailable": 3,
+    "sclerosis_wsis": 21,
+    "sclerosis_groups": 19
+  },
+  "repair_summaries_ALL": [
+    {
+      "method": "samrefiner_vitb_paper_fp16",
+      "cohort": "sclerosis",
+      "stain": "ALL",
+      "n": 40,
+      "available": 37,
+      "source_wsis": 21,
+      "source_groups": 19,
+      "mean_target_dice_before": 0.8421060558217957,
+      "mean_target_dice_after": 0.8249266136436463,
+      "mean_delta_target_dice": -0.01717944217814927,
+      "cluster95_low": -0.03173286340359997,
+      "cluster95_high": -0.007412074836151427,
+      "target_improved_001": 5,
+      "target_worsened_001": 21,
+      "mean_delta_bf1_2um": -0.041431468817646505,
+      "own_ids_before_05": 37,
+      "own_ids_after_05": 37,
+      "own_ID_gross_lost_05": 0,
+      "neighbor_harm_actions_05": 0,
+      "mismatched_target_actions": 0,
+      "seconds": 37.134969907812774
+    },
+    {
+      "method": "samrefiner_vitb_paper_fp16",
+      "cohort": "normal_control",
+      "stain": "ALL",
+      "n": 40,
+      "available": 40,
+      "source_wsis": 21,
+      "source_groups": 19,
+      "mean_target_dice_before": 0.9141571985587336,
+      "mean_target_dice_after": 0.9040758360126462,
+      "mean_delta_target_dice": -0.01008136254608745,
+      "cluster95_low": -0.022594034032350704,
+      "cluster95_high": 0.002950925391098804,
+      "target_improved_001": 11,
+      "target_worsened_001": 16,
+      "mean_delta_bf1_2um": -0.02766311107218996,
+      "own_ids_before_05": 40,
+      "own_ids_after_05": 40,
+      "own_ID_gross_lost_05": 0,
+      "neighbor_harm_actions_05": 0,
+      "mismatched_target_actions": 0,
+      "seconds": 40.76542845321819
+    },
+    {
+      "method": "ritm_hrnet32_external_mask_point1",
+      "cohort": "sclerosis",
+      "stain": "ALL",
+      "n": 40,
+      "available": 37,
+      "source_wsis": 21,
+      "source_groups": 19,
+      "mean_target_dice_before": 0.8421060558217957,
+      "mean_target_dice_after": 0.841163661284631,
+      "mean_delta_target_dice": -0.0009423945371643955,
+      "cluster95_low": -0.0033695241336489457,
+      "cluster95_high": 0.000870883056083028,
+      "target_improved_001": 2,
+      "target_worsened_001": 4,
+      "mean_delta_bf1_2um": -0.02431744756972059,
+      "own_ids_before_05": 37,
+      "own_ids_after_05": 37,
+      "own_ID_gross_lost_05": 0,
+      "neighbor_harm_actions_05": 0,
+      "mismatched_target_actions": 0,
+      "seconds": 20.388604634441435
+    },
+    {
+      "method": "ritm_hrnet32_external_mask_point1",
+      "cohort": "normal_control",
+      "stain": "ALL",
+      "n": 40,
+      "available": 40,
+      "source_wsis": 21,
+      "source_groups": 19,
+      "mean_target_dice_before": 0.9141571985587336,
+      "mean_target_dice_after": 0.9144430390188034,
+      "mean_delta_target_dice": 0.00028584046007001094,
+      "cluster95_low": -0.0019589960051568218,
+      "cluster95_high": 0.0028530301916881913,
+      "target_improved_001": 5,
+      "target_worsened_001": 0,
+      "mean_delta_bf1_2um": -0.012764048046489026,
+      "own_ids_before_05": 40,
+      "own_ids_after_05": 40,
+      "own_ID_gross_lost_05": 0,
+      "neighbor_harm_actions_05": 0,
+      "mismatched_target_actions": 0,
+      "seconds": 20.50206981319934
+    }
+  ],
+  "original_MESCnn_ALL_raw": [
+    {
+      "cohort": "sclerosis",
+      "scope": "ALL",
+      "area_rule": "raw",
+      "n": 40,
+      "baseline_matched05": 37,
+      "specialist_matched05": 30,
+      "rescued05": 0,
+      "gross_lost05": 7,
+      "mean_baseline_target_dice": 0.8421060558217957,
+      "mean_specialist_target_dice": 0.6761531866936263,
+      "mean_delta_target_dice": -0.16595286912816917,
+      "cluster95_low": -0.29106854965604184,
+      "cluster95_high": -0.06052451948268252,
+      "target_improved001": 6,
+      "target_worsened001": 20,
+      "mean_delta_window_dice": -0.2020001280327705
+    },
+    {
+      "cohort": "normal_control",
+      "scope": "ALL",
+      "area_rule": "raw",
+      "n": 40,
+      "baseline_matched05": 40,
+      "specialist_matched05": 32,
+      "rescued05": 0,
+      "gross_lost05": 8,
+      "mean_baseline_target_dice": 0.9141571985587336,
+      "mean_specialist_target_dice": 0.7406295400687973,
+      "mean_delta_target_dice": -0.17352765848993615,
+      "cluster95_low": -0.27671910980398806,
+      "cluster95_high": -0.07583908334549108,
+      "target_improved001": 7,
+      "target_worsened001": 16,
+      "mean_delta_window_dice": -0.1341374725199614
+    }
+  ],
+  "paired_MESCnn_ALL": [
+    {
+      "mode": "PNG",
+      "cohort": "sclerosis",
+      "stain": "ALL",
+      "n": 40,
+      "baseline": 0.8421060558217957,
+      "previous": 0.6761531866936263,
+      "new": 0.6768916713964162,
+      "delta_vs_baseline": -0.16521438442537945,
+      "ci95": [
+        -0.2908501610977059,
+        -0.05927201947857083
+      ],
+      "delta_vs_previous": 0.0007384847027897407,
+      "previous_ci95": [
+        -0.0013649902290528745,
+        0.003358662121465773
+      ],
+      "improved001": 7,
+      "worsened001": 20,
+      "matched05": 30,
+      "baseline_matched05": 37,
+      "rescued05": 0,
+      "gross_lost05": 7
+    },
+    {
+      "mode": "PNG",
+      "cohort": "normal_control",
+      "stain": "ALL",
+      "n": 40,
+      "baseline": 0.9141571985587336,
+      "previous": 0.7406295400687973,
+      "new": 0.7171007666205227,
+      "delta_vs_baseline": -0.19705643193821074,
+      "ci95": [
+        -0.2966757585416699,
+        -0.09391230975750196
+      ],
+      "delta_vs_previous": -0.023528773448274608,
+      "previous_ci95": [
+        -0.06404449911044978,
+        0.0007376502911593131
+      ],
+      "improved001": 6,
+      "worsened001": 18,
+      "matched05": 31,
+      "baseline_matched05": 40,
+      "rescued05": 0,
+      "gross_lost05": 9
+    },
+    {
+      "mode": "JPG",
+      "cohort": "sclerosis",
+      "stain": "ALL",
+      "n": 40,
+      "baseline": 0.8421060558217957,
+      "previous": 0.6761531866936263,
+      "new": 0.6768511747030026,
+      "delta_vs_baseline": -0.16525488111879297,
+      "ci95": [
+        -0.2906723901510045,
+        -0.05957322138857431
+      ],
+      "delta_vs_previous": 0.0006979880093762019,
+      "previous_ci95": [
+        -0.0015866294649252144,
+        0.003422665520761094
+      ],
+      "improved001": 6,
+      "worsened001": 20,
+      "matched05": 30,
+      "baseline_matched05": 37,
+      "rescued05": 0,
+      "gross_lost05": 7
+    },
+    {
+      "mode": "JPG",
+      "cohort": "normal_control",
+      "stain": "ALL",
+      "n": 40,
+      "baseline": 0.9141571985587336,
+      "previous": 0.7406295400687973,
+      "new": 0.7171186244487596,
+      "delta_vs_baseline": -0.19703857410997397,
+      "ci95": [
+        -0.2965445451626766,
+        -0.09371737742247285
+      ],
+      "delta_vs_previous": -0.023510915620037813,
+      "previous_ci95": [
+        -0.06399725107511271,
+        0.0008997976901363857
+      ],
+      "improved001": 7,
+      "worsened001": 17,
+      "matched05": 31,
+      "baseline_matched05": 40,
+      "rescued05": 0,
+      "gross_lost05": 9
+    }
+  ],
+  "ritm_click_policy": "single positive pixel maximizing distance to predicted coarse-mask boundary; no GT, human, or VLM selection",
+  "ritm_means": {
+    "located37": {
+      "target_dice_before": 0.910384925212752,
+      "target_dice_after": 0.9093661203077094
+    },
+    "all40": {
+      "target_dice_before": 0.8421060558217957,
+      "target_dice_after": 0.841163661284631
+    }
+  },
+  "SegNeXt_sclerosis": {
+    "model": "segnext_mscant",
+    "cohort": "sclerosis",
+    "n": 40,
+    "baseline_matched": 37,
+    "other_matched": 36,
+    "rescued": 1,
+    "harmed": 2,
+    "true_omission_rescued": 1
+  },
+  "candidate_counts": {
+    "n": 65,
+    "matched05": 1,
+    "zero_GT_intersection": 60,
+    "unmatched_with_GT_intersection": 4
+  },
+  "historical_GT_informed_bounds": [
+    {
+      "cohort": "sclerosis",
+      "n": 40,
+      "mean_baseline": 0.8421060558217957,
+      "mean_best": 0.8496758364830101,
+      "mean_delta": 0.007569780661214762,
+      "improved001": 12,
+      "best_counts": {
+        "SAMRefiner": 6,
+        "MESCnn": 9,
+        "RITM": 11,
+        "keep_segformer": 14
+      },
+      "scope": "GT-informed per-target bound only; no neighbor safety; no simultaneous WSI policy"
+    },
+    {
+      "cohort": "normal_control",
+      "n": 40,
+      "mean_baseline": 0.9141571985587336,
+      "mean_best": 0.9347880515547811,
+      "mean_delta": 0.02063085299604746,
+      "improved001": 14,
+      "best_counts": {
+        "RITM": 8,
+        "SAMRefiner": 10,
+        "MESCnn": 11,
+        "keep_segformer": 11
+      },
+      "scope": "GT-informed per-target bound only; no neighbor safety; no simultaneous WSI policy"
+    }
+  ],
+  "seam_summary": [
+    {
+      "group": "normal_geometry_control",
+      "n": 6,
+      "mean_delta_window_dice": -0.00802899329285702,
+      "mean_delta_target_dice": -0.0011351577650961138,
+      "target_improved001": 0,
+      "target_worsened001": 0,
+      "window_ID_rescued05": 0,
+      "window_ID_lost05": 0
+    },
+    {
+      "group": "seam_candidate",
+      "n": 6,
+      "mean_delta_window_dice": 0.031301313715387975,
+      "mean_delta_target_dice": 0.06570106215222936,
+      "target_improved001": 3,
+      "target_worsened001": 2,
+      "window_ID_rescued05": 2,
+      "window_ID_lost05": 0
+    }
+  ],
+  "old56_current_GT_aggregate": [
+    {
+      "method": "ritm_gtclick1_EVAL_ONLY",
+      "dataset": "ALL",
+      "images": "25",
+      "windows": "56",
+      "baseline_dice": "0.8613451429951126",
+      "edited_dice": "0.8615790609835531",
+      "delta_dice": "0.00023391798844054178"
+    },
+    {
+      "method": "ritm_gtclick3_EVAL_ONLY",
+      "dataset": "ALL",
+      "images": "25",
+      "windows": "56",
+      "baseline_dice": "0.8613451429951126",
+      "edited_dice": "0.8605910314510156",
+      "delta_dice": "-0.0007541115440970448"
+    },
+    {
+      "method": "ritm_hrnet32_external_mask_point1",
+      "dataset": "ALL",
+      "images": "25",
+      "windows": "56",
+      "baseline_dice": "0.8613451429951126",
+      "edited_dice": "0.8612995408998433",
+      "delta_dice": "-4.5602095269332565e-05"
+    },
+    {
+      "method": "ritm_scene_gtclick1_EVAL_ONLY",
+      "dataset": "ALL",
+      "images": "25",
+      "windows": "56",
+      "baseline_dice": "0.8613451429951126",
+      "edited_dice": "0.8618697715429596",
+      "delta_dice": "0.0005246285478469881"
+    },
+    {
+      "method": "ritm_scene_gtclick3_EVAL_ONLY",
+      "dataset": "ALL",
+      "images": "25",
+      "windows": "56",
+      "baseline_dice": "0.8613451429951126",
+      "edited_dice": "0.8638380012626221",
+      "delta_dice": "0.002492858267509472"
+    }
+  ],
+  "auxiliary_summary": {
+    "retrieval": [
+      {
+        "method": "DINOv2",
+        "stain": "ALL",
+        "n": 77,
+        "top1_correct": 63,
+        "top5_mean": 0.7870129870129869
+      },
+      {
+        "method": "DINOv2",
+        "stain": "HE",
+        "n": 68,
+        "top1_correct": 57,
+        "top5_mean": 0.8088235294117646
+      },
+      {
+        "method": "DINOv2",
+        "stain": "PAS",
+        "n": 9,
+        "top1_correct": 6,
+        "top5_mean": 0.6222222222222222
+      },
+      {
+        "method": "Fixed_equal_rank_fusion",
+        "stain": "ALL",
+        "n": 77,
+        "top1_correct": 64,
+        "top5_mean": 0.703896103896104
+      },
+      {
+        "method": "Fixed_equal_rank_fusion",
+        "stain": "HE",
+        "n": 68,
+        "top1_correct": 55,
+        "top5_mean": 0.7264705882352941
+      },
+      {
+        "method": "Fixed_equal_rank_fusion",
+        "stain": "PAS",
+        "n": 9,
+        "top1_correct": 9,
+        "top5_mean": 0.5333333333333333
+      },
+      {
+        "method": "Nuclear_morphology",
+        "stain": "ALL",
+        "n": 77,
+        "top1_correct": 42,
+        "top5_mean": 0.5168831168831169
+      },
+      {
+        "method": "Nuclear_morphology",
+        "stain": "HE",
+        "n": 68,
+        "top1_correct": 36,
+        "top5_mean": 0.5176470588235293
+      },
+      {
+        "method": "Nuclear_morphology",
+        "stain": "PAS",
+        "n": 9,
+        "top1_correct": 6,
+        "top5_mean": 0.5111111111111111
+      }
+    ],
+    "paired": {
+      "both_correct": 35,
+      "DINO_only": 28,
+      "nuclei_only": 7,
+      "both_wrong": 7,
+      "fusion_gains": 7,
+      "fusion_losses": 6,
+      "fusion_minus_DINO_sourcegroup_bootstrap95": [
+        -0.07936958874458874,
+        0.10714285714285714
+      ],
+      "source_groups": 19
+    },
+    "quality": {
+      "pairs": 12,
+      "mean_original_OOF": 0.0,
+      "mean_blur_OOF": 0.8169677041574704,
+      "original_flags": 0,
+      "blur_flags": 10,
+      "nuclei_original": 1679,
+      "nuclei_blur": 1,
+      "median_nuclear_count_ratio": 0.0,
+      "original_retrieval_correct": 10,
+      "blur_retrieval_correct": 7,
+      "retrieval_gains": 0,
+      "retrieval_losses": 3,
+      "mean_self_cosine": 0.43953221788009006,
+      "real_GT": false,
+      "threshold_preset": 0.1,
+      "wider_context_flags": 12,
+      "narrow_misses_wider_flagged_count": 2
+    },
+    "verified_new_outputs": 125,
+    "reused_exact_input_features": 77,
+    "limits": [
+      "exposed GT-informed development cohort",
+      "no independent patient test",
+      "nuclei features describe whole224um field, not glomerulus-only mask",
+      "synthetic blur not real artifact validation",
+      "nearest-neighbor label agreement is not validated clinical classification",
+      "no segmentation mask edited"
+    ]
+  },
+  "date": "2026-11-16",
+  "kind": "aggregate-only evidence export, no new inference",
+  "review_scope": "existing aggregate/candidate-table consistency, not independent clinical or inference validation",
+  "checks_passed": true,
+  "GT_note": "old56 scores use corrected GT, prior predictions unchanged; hospital sclerosis40 is a different cohort",
+  "clinical_review_complete": false,
+  "new_agent_experiment": false
+}

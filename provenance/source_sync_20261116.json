@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-16",
+  "base_packaging_commit": "0a6370fb0b49be0db03a9d7552cc5b3e9fa3dd23",
+  "kind": "local working-tree review revision; no new model run",
+  "copied_source_sha256": {
+    "glomerulus_tools/__main__.py": "6446014abbcf73722c65ae1266a6da2635ddb24170660f0d00b23875bdfd950d",
+    "glomerulus_tools/browser_inventory.py": "f79e149ee1bd08f268bb75fcbfb04025a80dae87ea7df75a58a534010b9527a6",
+    "glomerulus_tools/build.py": "85308620ae90ea5dff9daae5c25563125c5fd6fda307858c7e3ac1ca4e9e7714",
+    "glomerulus_tools/workflow_interfaces.py": "59b0f4d53b62cd6fef674325c43494fa47cd8f7e58f9a495139cf648fdd89bd7",
+    "glomerulus_tools/tests/test_workflow_interfaces.py": "6ad0086afbfc245fe833b9a2a7aa39b598a84afd46e96e30282d36d3c39e7a58",
+    "glomerulus_tools/agent_capabilities/__init__.py": "8efd37b6e8594adb5723fe2b4741f99f56e84c723a074f30e91bd5db0a2febc6",
+    "glomerulus_tools/agent_capabilities/pyramid_read.py": "0752d0cc702f9c50b1f46bc4b023d2132bd8863d0b1e75771809dccab983da62",
+    "glomerulus_tools/agent_capabilities/shifted_grid.py": "6b732cd0ed04b1ed01c955bd62279da5b6b5ec75c880aebdc2eab8dda92eaa93",
+    "glomerulus_tools/catalog.csv": "8e35025e584924f74314167f6eeee0d57864702a1a8ae56b92eb858d97a70184"
+  },
+  "catalog_sha256": "8e35025e584924f74314167f6eeee0d57864702a1a8ae56b92eb858d97a70184",
+  "catalog_rows": 77,
+  "research_enabled": 33,
+  "agent_enabled": 10,
+  "committed": false,
+  "uploaded": false,
+  "feishu_sent": false
+}

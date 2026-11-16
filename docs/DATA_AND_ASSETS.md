@@ -1,5 +1,7 @@
 # 数据、权重与环境
 
+2026-11-16：优先部署SegFormer及当前启用工具。下列MESCnn/RITM获取说明仅用于历史追溯，工具已弃用/停用，不能依此重新启用。Skinet后续已在本机完成单图CPU执行，但仍禁用且未精度验收。
+
 医院原始WSI、实例GT、病例映射和预测不提供公开下载，须按机构授权取得。放置于本机`data/`或外部只读目录；不要提交Git。原GT仅离线评分，推理任务不允许GT字段。VLM仅发送JPEG副本，原图与掩膜保留原格式。
 
 以下SHA是实际已测试的身份。网络/训练划分版本不同不能用同一成绩：
@@ -24,6 +26,6 @@ RITM使用provenance/ritm_source_receipt.json内固定源码文件SHA。原归�
 公开NEPTUNE/HuBMAP等历史数据来源以catalog evidence追溯，本快照未附历史数据清单，不声称可直接复算其分数。训练成员和训练/测试重叠未知处保持未知。
 
 
-Skinet完整皮质与MEST主网络SavedModel来自 https://github.com/SkinetTeam/Skinet-MEST-C/releases/tag/v1.0 ，分别下载skinet_cortex.zip和skinet_mest_main.zip，放assets/并按作者方式解压（包含saved_model.pb/variables/label_map.pbtxt）。下载身份SHA在provenance/skinet_asset_receipts.json；发布页字节数核对一致，无作者另行哈希证据。此时完整权重已取得，不需重复下载。隔离TF2.15.1安装成功但服务器VM未暴露AVX，导入SIGILL，尚无模型结果；必须在兼容GPU平台先验收，不能把安装freeze当已验证可移植环境。训练MPP/染色/成员未知。
+Skinet完整皮质与MEST主网络SavedModel来自 https://github.com/SkinetTeam/Skinet-MEST-C/releases/tag/v1.0 ，分别下载skinet_cortex.zip和skinet_mest_main.zip，放assets/并按作者方式解压（包含saved_model.pb/variables/label_map.pbtxt）。下载身份SHA在provenance/skinet_asset_receipts.json；发布页字节数核对一致，无作者另行哈希证据。此时完整权重已取得，不需重复下载。原服务器VM未暴露AVX，TF2.15.1导入SIGILL；后续在本机独立Python3.10/TF2.15.1 CPU环境完成cortex和主网各一张1024裁片推理。主网范围明显偏大，仅工程smoke，尚无完整皮质裁切/滑窗链及正式精度结果。仍不开放研究/Agent执行；训练MPP/染色/成员与独立权重许可尚待验收。新的本机环境不替代旧服务器失败记录。
 
 新增工具的结果、模型取得、物理尺度与执行边界见[新工具验收](OPEN_TOOLS_20261115.md)。

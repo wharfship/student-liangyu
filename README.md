@@ -1,48 +1,72 @@
 # student-liangyu
 
-面向强分割模型残余错误的、由证据驱动的动态肾小球分割Agent研究。
+围绕 SegFormer 残余错误的、由证据驱动的肾小球分割 Agent 研究。
 
-**当前为2026-11-15本地整理快照，尚未上传。** SegFormer-B5为强基线；首先核实硬化球漏检、范围错误与组织混淆，证明补救工具有用，再比较专用方案、固定规则和动态Agent。现有新工具尚无硬化净收益，不能据工程跑通宣称Agent有效。
+**2026-11-16 研究代码与结果审阅版。** SegFormer-B5 仍是人肾默认基线。目前没有找到在医院硬化队列上稳定优于它的专用补救方案，尚未证明动态 Agent 带来净收益。先验证动作能改善，再研究何时调用、查看什么证据以及是否接受结果。
 
-## 环境与最小运行
+仓库：https://github.com/wharfship/student-liangyu 。导师或接手Agent请先读 [START_HERE.md](START_HERE.md)；[研究进展网页](site/index.html)可下载后直接打开，内容为脱敏分组结果。完整病例图库另行受限提供，未纳入公开代码。
 
-建议Python3.10。元数据和合同测试不需要GPU：
+## 环境与运行
 
-```bash
+元数据生成和合同测试不需要 GPU。建议将工具控制环境与各模型环境分开；历史模型环境使用 Python 3.10，不能将所有模型依赖装入同一个环境。
+
+```powershell
 python -m venv .venv
-# Linux: source .venv/bin/activate；Windows: .venv/Scripts/Activate.ps1
+.\.venv\Scripts\Activate.ps1
 python -m pip install -r requirements-core.txt
-python -m glomerulus_tools.build
+python -m glomerulus_tools.build --skip-browser
 python -m glomerulus_tools list
 python -m pytest glomerulus_tools/tests -q
+python scripts/verify_export.py
 ```
 
-以上验证登记、输入边界和代码接口，**不进行模型分割**。推理需另建匹配CUDA环境、取得任务权重和合法数据，并按[资产与环境说明](docs/DATA_AND_ASSETS.md)设置路径；原服务器绝对路径不是通用安装路径。
+Linux 激活环境用 `source .venv/bin/activate`。以上只验证登记、边界和接口，不执行模型分割。此次检查的实际解释器、依赖版本和通过数量见交付收据；模型的历史 freeze 在 `environments/`，它们不代表通用一键安装环境。
 
-```bash
+准备合法数据和任务权重后，先按[资产说明](docs/DATA_AND_ASSETS.md)修改机器路径：
+
+```powershell
+Copy-Item configs/execution_paths.example.json configs/execution_paths.local.json
+# 编辑本地路径；不要变更工具身份、权重SHA或启用状态。
 python scripts/configure_assets.py --overrides configs/execution_paths.local.json
-python -m glomerulus_tools check --tool nepath_segformer_b5 --task configs/my_patch_NO_GT.json --research
-# 实时检查空闲GPU，再设置CUDA_VISIBLE_DEVICES；Linux示例：
-CUDA_VISIBLE_DEVICES=0 python -m glomerulus_tools run --tool nepath_segformer_b5 --task configs/my_patch_NO_GT.json --output outputs/new_run --research
+Copy-Item configs/segformer_patch_NO_GT.example.json configs/my_patch_NO_GT.local.json
+# 编辑真实图像、SHA、MPP及标定依据。
+python -m glomerulus_tools check --tool nepath_segformer_b5 --task configs/my_patch_NO_GT.local.json --research
+# 仅在实时确认空闲GPU和模型环境后执行；下列0只是示例。
+$env:CUDA_VISIBLE_DEVICES="0"
+python -m glomerulus_tools run --tool nepath_segformer_b5 --task configs/my_patch_NO_GT.local.json --output outputs/new_run --research
 ```
 
-示例MPP须替换为实际输入的元数据/标定证据。Windows用`$env:CUDA_VISIBLE_DEVICES="0"`。研究调用不自动授权Agent采用结果；默认禁止CPU回退。
+`configure_assets.py` 会改变本机 catalog 路径，导出字节清单随之失效是预期现象；保留原审阅副本，部署副本另记录配置和源码 SHA。缺权重或旧适配依赖时拒绝执行，`list` 能显示工具不等于该工具已在新机器部署。默认禁止 CPU 回退。
 
-## 内容与状态
+## 当前结果
 
-- `glomerulus_tools/`：统一入口、适配器、唯一catalog及生成表、47项测试；工具信息均从这里维护。
-- `research/nepathtk_tools_20261105/`：冻结baseline包装器与配置；旧research为实验档案，不在此另建工具表。
-- `glomerulus_tools/experiments/`：本轮完整源脚本与必要旧评价依赖。运行前显式修改数据路径；历史批次文件未外发，不能免数据直接复算。
-- `configs/`、`environments/`：配置示例与实际环境冻结收据；`scripts/`只调整机器资产路径，不改变配方身份。
-- `results/`：分组结果、协议、验证和源码SHA；不含病例逐行结果或医院图册。
-- `provenance/`：来源commit、下载校验与导出文件清单；`third_party/`：许可说明。
+医院专项包含全部 40 个已标注硬化目标（HE35/PAS5）和 40 个已检出普通保护对照，属于已经用于分析的开发数据。
 
-38个enabled记录（包含配方和非分割工具）不表示本仓库附带相应数量的独立可用网络。首批资产整理覆盖SegFormer、MESCnn、SAMRefiner和RITM；其他历史适配器可能依赖尚未移植的旧ops模块。缺失会拒绝执行，不能把可执行状态等同于精度。
+|方法／历史配方|硬化40平均目标Dice|普通40平均目标Dice|
+|---|---:|---:|
+|SegFormer 保留原结果|0.842106|0.914157|
+|SAMRefiner 自动提示|0.824927|0.904076|
+|RITM 原mask＋自动内部正点|0.841164|0.914443|
+|MESCnn 真实10×金字塔JPEG|0.676851|0.717119|
 
-[当前结果与负结果](docs/RESULTS.md) · [下一阶段实验](docs/NEXT_EXPERIMENTS.md) · [数据/权重放置](docs/DATA_AND_ASSETS.md) · [版本对应与局限](docs/REPRODUCIBILITY.md)
+SegFormer 硬化目标达到 IoU≥0.5 的为37/40；普通保护对照40/40，因为它们按已检出选取，不能据此估计全部普通球召回。平均 Dice、实例匹配和整图 Dice 是不同指标。
 
-尚未完成：完整可移植模型环境自动安装、医院数据外发授权、全部旧Agent依赖打包、可靠专用补救动作、无GT验收、动态观察消融和独立患者留出测试。VISTA仅作为主动观察设计参考，未宣称复现。原创代码公开许可待确定，第三方许可各自适用。
+最新决定：**MESCnn 弃用，RITM 停用，SegNeXt 停止用于补漏。** Skinet 后来在本机完成皮质和主网各一张 CPU 推理，但尚无正式精度或硬化配对收益，仍禁用。历史结果不删除，也不能据旧复现说明重新启用。
 
-11月15日新增：MESCnn真实10×金字塔PNG/JPEG各80次仍无硬化净收益；旧SegNeXt有一例真实补漏但候选成本高；Skinet完整资产取得、TF导入受平台指令集阻塞；无GT观察资产和评分合同已备，未运行VLM。[后续结果与下一步](docs/FOLLOWUP_20261115.md)。
+C004 改变切块位置有单例恢复证据，后续6候选试验也出现目标消失；C003 从正常金字塔层恢复了输入，尚未生成新分割。InstanSeg、DINOv2、GrandQC 目前提供核测量、检索和质量证据，尚未证明能改善肾小球分割。HistoQC、TIAToolbox 已选入待部署，其接口描述可查看，不能执行。
 
-新增InstanSeg核分析、DINOv2表征、GrandQC组织/伪影4入口，226份正式CUDA输出，能力与许可边界见[新工具验收](docs/OPEN_TOOLS_20261115.md)。唯一人工主表仍在原工作区，此处是生成审阅副本。
+[完整结果与限制](docs/RESULTS.md) · [给导师的简短答复](docs/SUPERVISOR_REPLY_20261116.md) · [下一步与停止条件](docs/NEXT_EXPERIMENTS.md) · [版本对应](docs/REPRODUCIBILITY.md)
+
+## 目录与复现范围
+
+- `glomerulus_tools/`：统一入口、适配器、测试、原工作区唯一 catalog 的冻结副本，以及生成的注册表和 Excel。当前77条登记、33条研究启用、10条Agent启用；包含配方和组件，不能按网络数量理解。
+- `research/nepathtk_tools_20261105/`：冻结的基线包装器和配置。旧 research 为实验档案。
+- `glomerulus_tools/experiments/`：已纳入导出的实验脚本；历史准备脚本可能依赖内部路径，不应直接重跑。
+- `configs/`、`environments/`：任务示例、机器路径示例、环境收据和**尚未执行的**下一阶段实验协议。
+- `results/`：脱敏分组结果和验证收据；不含医院逐例结果、原图、GT、预测掩膜或图册。
+- `provenance/`：实际执行快照、上游身份和本轮文件 SHA 清单。历史运行版本与当前整理版本分别记录。
+- `third_party/`：第三方许可说明；权重不随仓库分发。
+
+原工作区仍是主维护位置，此处为生成的本地审阅副本，禁止双处独立维护主表。发布版本在既有整理提交 `0a6370fb0b49be0db03a9d7552cc5b3e9fa3dd23` 上继续整理；当前文件身份以 `provenance/export_manifest.json` 为准。历史推理身份与发布提交分别记录，不用发布提交冒充过去运行版本。
+
+尚未完成：可靠硬化补救动作、标注疑难病例的专业复核、无 GT 验收器、主动观察消融、同预算四组完整比较、独立患者留出评价及完整模型环境移植。VISTA 仅是主动观察设计参考，原文身份尚待核清，未声称复现。原创代码的公开许可尚待确定；第三方源码和权重各自适用原许可，GrandQC 有非商业限制。

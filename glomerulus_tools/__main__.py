@@ -12,7 +12,7 @@ from .contract import compatibility, prepare_task
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action',choices=['list','check','run','crop','review','classify','assess','refine','multiclass'])
+    parser.add_argument('action',choices=['list','describe','check','run','crop','review','classify','assess','refine','multiclass'])
     parser.add_argument('--tool');parser.add_argument('--task',type=Path)
     parser.add_argument('--output',type=Path);parser.add_argument('--research',action='store_true')
     parser.add_argument('--research-stain-override',choices=['HE'],help='Explicit out-of-domain Glo5 research test; does not change registered support')
@@ -25,8 +25,20 @@ def main():
         print(json.dumps([dict(tool_id=c['id'],status=c['status'],agent_enabled=c['agent_enabled'],
                                species=c['species'],stains=c['stains'],input_forms=c['input_forms'],
                                **asset_status(c)) for c in cards],ensure_ascii=False,indent=2));return
+    if args.action=='describe':
+        if not args.tool or not args.research:parser.error('Function protocols are researcher-only; need --tool and --research')
+        from .workflow_interfaces import describe
+        print(json.dumps(describe(get_card(args.tool)),ensure_ascii=False,indent=2));return
     if not args.tool or not args.task:parser.error('Need --tool and --task')
     card=get_card(args.tool)
+    if card.get('adapter')=='planned_workflow':
+        if args.action!='check' or not args.research:
+            parser.error('Pending tool has no executable adapter; only check --research is available; Agent access disabled')
+        if args.candidates:parser.error('Pending workflow does not accept candidate masks')
+        from .workflow_interfaces import check_request
+        result=check_request(json.loads(args.task.read_text(encoding='utf-8-sig')),card)
+        print(json.dumps(result,ensure_ascii=False,indent=2))
+        raise SystemExit(2)  # Protocol valid is not a runnable-tool pass.
     if card.get('adapter')=='pathology_utility':
         from .pathology_utilities import validate_batch
         if args.action not in ('run','check') or not args.research or not card['enabled']:

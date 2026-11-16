@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "updated_on": "2026-11-16",
+  "repository": "https://github.com/wharfship/student-liangyu",
+  "baseline": "nepath_segformer_b5",
+  "reliable_sclerosis_repair_established": false,
+  "dynamic_agent_advantage_established": false,
+  "cohort_is_exposed_development": true,
+  "retired_directions": [
+    "MESCnn",
+    "RITM",
+    "SegNeXt_supplementation"
+  ],
+  "skinet": "local_cpu_smoke_passed_accuracy_unvalidated_disabled",
+  "entrypoints": [
+    "START_HERE.md",
+    "docs/RESULTS.md",
+    "docs/NEXT_EXPERIMENTS.md"
+  ],
+  "patient_level_data_included": false,
+  "model_weights_included": false,
+  "patient_gallery": "separate_restricted_export_not_in_code_repository"
+}
